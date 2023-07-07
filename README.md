@@ -16,3 +16,7 @@
 6. [Environment configuration](docs/env.md)
 7. [Using project board](docs/project-managing.md)
 8. [Database setup](docs/database.md)
+
+### [Code of conduct](CODE_OF_CONDUCT.md)
+
+### [Contributing](CONTRIBUTING.md)
