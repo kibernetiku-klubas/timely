@@ -12,6 +12,10 @@ This project uses blade, so select build chirper with blade.
 - Shorter video that goes over the basics [here](https://youtu.be/AEVhR-hD2Wk).
 - 3 minute concept overview [here](https://youtu.be/dQw4w9WgXcQ).
 
+# PHP
+## [PHP docs](https://www.php.net/manual/en/)
+Deep knowlegde in PHP is not needed for laravel. Few basic things like variables. function and loop is pretty much all that is needed to start working.
+
 # Tailwind
 
 ## [Tailwind css docs](https://tailwindcss.com/docs/utility-first)
