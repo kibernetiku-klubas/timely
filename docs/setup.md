@@ -1,6 +1,6 @@
 # Setting up this project locally
 
-Make sure that your system has [PHP](https://www.php.net/manual/en/install.php) and [Composer](https://getcomposer.org/).
+Make sure that your system has [PHP](https://www.php.net/manual/en/install.php), [Composer](https://getcomposer.org/) and [node with npm](https://nodejs.org/en).
 For local development we will be using sqlite database. More about this project database [here](database.md)
 
 - Clone the repository

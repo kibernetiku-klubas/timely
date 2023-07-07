@@ -1,6 +1,6 @@
 # Coding standard that everyone MUST use in this project
 
-## !!All variables, functions, classes, comments, commits and docs must be in english.
+## All variables, functions, classes, comments, commits and docs must be in english.
 
 ## Must use PSR coding standard for PHP. [PSR](https://www.php-fig.org/psr/) 
 
