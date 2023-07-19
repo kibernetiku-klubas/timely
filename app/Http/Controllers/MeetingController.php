@@ -41,9 +41,10 @@ class MeetingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Meeting $meeting)
+    public function show($id)
     {
-        //
+        $meeting = Meeting::findOrFail($id);
+       return view('meetings.meeting', compact('meeting'));
     }
 
     /**
