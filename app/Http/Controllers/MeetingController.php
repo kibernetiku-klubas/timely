@@ -30,7 +30,7 @@ class MeetingController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:64',
         ]);
 
         $request->user()->meetings()->create($validated);
