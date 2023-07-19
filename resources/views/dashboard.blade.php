@@ -1,15 +1,3 @@
-<style>
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem; /* Adjust this value to set the space between cards */
-        margin-left: 15px;
-    }
-    .card {
-        flex: 0 0 calc(33.33% - 1rem); /* Adjust the percentage and spacing as needed */
-    }
-</style>
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -22,7 +10,8 @@
         <a href="/add-meeting"><button class="btn btn-outline">Add a new meeting</button></a>
         </div>
     </div>
-    <div class="card-container">
+    
+    <div class="card-container grid grid-cols-1 gap-4 place-items-center md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
     @foreach ($meetings as $meeting)
         <div class="card w-96 bg-primary-content shadow-x1 card-bordered">
             <div class="card-body">

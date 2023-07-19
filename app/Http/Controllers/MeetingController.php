@@ -13,10 +13,7 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //$meetings = Meeting::with('user')->latest()->get();
-        //$meetings = Meeting::all();
-        //return view('dashboard')->with('meetings', $meetings);
-        //return die(Meeting::all());
+        //
     }
 
     /**
