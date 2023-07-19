@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('meetings/{id}', [MeetingController::class, 'show']);
+
 Route::resource('meetings', MeetingController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
