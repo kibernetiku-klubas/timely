@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meeting;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class MeetingController extends Controller
@@ -26,9 +27,15 @@ class MeetingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        $request->user()->meetings()->create($validated);
+
+        return redirect(route("dashboard"));
     }
 
     /**
