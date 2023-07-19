@@ -10,6 +10,10 @@ class Meeting extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title'
+    ];
+
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
