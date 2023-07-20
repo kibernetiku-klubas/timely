@@ -22,13 +22,13 @@
             <!-- Location -->
             <div>
                 <x-input-label for="location" :value="__('Location')" />
-                <x-text-input id="location" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" type="string" name="location" :value="old('location')" required autofocus autocomplete="location" />
+                <x-text-input id="location" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white"  type="string" name="location" :value="old('location')" required autofocus autocomplete="location" />
                 <x-input-error :messages="$errors->get('location')" class="mt-2" />
             </div>
             <!-- Timezone -->
             <div>
                 <x-input-label for="timezone_offset" :value="__('Timezone')" />
-                <select name = "timezone_offset" id="timezone_offset" type="string" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select name = "timezone_offset" id="timezone_offset" type="string" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 bg-white">
                     <option selected>Choose a timezone</option>
                     <option value="0">(UTC) Dublin, Edinburgh, Lisbon, London</option>
                     <option value="1">(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
@@ -60,14 +60,14 @@
             </div>
             <!-- Duration -->
             <div>
-                <x-input-label for="duration" :value="__('Duration')" />
-                <x-text-input type="smallInteger" id="duration" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" type="string" name="duration" :value="old('duration')" required autofocus autocomplete="duration" />
+                <x-input-label for="duration" :value="__('Duration (min):')" />
+                <x-text-input type="smallInteger" id="duration" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="duration" :value="old('duration')" required autofocus autocomplete="duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
             <!-- Delete_after -->
             <div>
                 <x-input-label for="delete_after" :value="__('Delete after:')" />
-                <x-text-input type="integer" id="delete_after" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" type="string" name="delete_after" :value="old('delete_after')" required autofocus autocomplete="delete_after" />
+                <x-text-input type="integer" id="delete_after" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="delete_after" :value="old('delete_after')" required autofocus autocomplete="delete_after" />
                 <x-input-error :messages="$errors->get('delete_after')" class="mt-2" />
             </div>
             <div class="flex items-center justify-end mt-4">
