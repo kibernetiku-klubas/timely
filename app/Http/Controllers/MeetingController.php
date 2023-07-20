@@ -39,17 +39,22 @@ class MeetingController extends Controller
             'delete_after' => 'integer|max:32000'
         ]);
 
+        // Additional validation for timezone_offset, duration, and delete_after current values are example values
+        $validated['timezone_offset'] = max(min($validated['timezone_offset'], 13), -13);
+        $validated['duration'] = max(min($validated['duration'], 32000), 1);
+        $validated['delete_after'] = max(min($validated['delete_after'], 32000), 1);
+
         $meeting = new Meeting;
         $meeting->user_id = Auth::user()->id;
-        $meeting->title = $request->input('title');
-        $meeting->description = $request->input('description');
-        $meeting->location = $request->input('location');
-        $meeting->timezone_offset = $request->input('timezone_offset');
-        $meeting->duration = $request->input('duration');
+        $meeting->title = $validated['title'];
+        $meeting->description = $validated['description'];
+        $meeting->location = $validated['location'];
+        $meeting->timezone_offset = $validated['timezone_offset'];
+        $meeting->duration = $validated['duration'];
         $meeting->meet_times = '{}';
-        $meeting->delete_after = $request->input('delete_after');
+        $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
-        return redirect('/dashboard',);
+        return redirect('/dashboard');
     }
 
     /**
