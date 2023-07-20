@@ -3,7 +3,7 @@
 ## [Licence](LICENCE)
     
     Timely, a meeting scheduling and time managing web app
-    Copyright (C) 2023 Kibernetiniu gudruoliu bendruomene
+    Copyright (C) 2023 Kibernetiku klubas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
