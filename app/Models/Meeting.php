@@ -12,7 +12,12 @@ class Meeting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title',
+        'description',
+        'location',
+        'timezone_offset',
+        'duration',
+        'delete_after'
     ];
 
     protected $primaryKey = 'id';

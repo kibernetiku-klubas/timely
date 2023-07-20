@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MeetingController extends Controller
@@ -31,20 +32,32 @@ class MeetingController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:64',
+            'description' => 'max:255',
+            'location' => 'max:64',
+            'timezone_offset' => 'integer|max:13',
+            'duration' => 'integer|max:32000',
+            'delete_after' => 'integer|max:32000'
         ]);
 
-        $request->user()->meetings()->create($validated);
-
-        return redirect(route("dashboard"));
+        $meeting = new Meeting;
+        $meeting->user_id = Auth::user()->id;
+        $meeting->title = $request->input('title');
+        $meeting->description = $request->input('description');
+        $meeting->location = $request->input('location');
+        $meeting->timezone_offset = $request->input('timezone_offset');
+        $meeting->duration = $request->input('duration');
+        $meeting->meet_times = '{}';
+        $meeting->delete_after = $request->input('delete_after');
+        $meeting->save();
+        return redirect('/dashboard',);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Meeting $meeting)
     {
-        $meeting = Meeting::findOrFail($id);
-       return view('meetings.meeting', compact('meeting'));
+        //
     }
 
     /**
