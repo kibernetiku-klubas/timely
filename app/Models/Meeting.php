@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Uuid;
 
 class Meeting extends Model
@@ -19,7 +20,7 @@ class Meeting extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -31,5 +32,10 @@ class Meeting extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function dates(): HasMany
+    {
+        return $this->hasMany(Date::class);
     }
 }
