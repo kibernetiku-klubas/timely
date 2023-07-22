@@ -16,7 +16,7 @@
             <!-- Description -->
             <div>
                 <x-input-label for="description" :value="__('Description')" />
-                <x-textarea id="description" type="textarea" required autofocus autocomplete="description" name="description" :value="old('description')" />
+                <x-textarea type="textarea" id="description" required autofocus autocomplete="description" name="description">{{old('description')}}</x-textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
             <!-- Location -->
