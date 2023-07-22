@@ -57,6 +57,7 @@
                     <option value="-11">(UTC-11:00) Coordinated Universal Time-11</option>
                     <option value="-12">(UTC-12:00) International Date Line West</option>
                 </select>
+                <x-input-error :messages="$errors->get('timezone_offset')" class="mt-2" />
             </div>
             <!-- Duration -->
             <div>
