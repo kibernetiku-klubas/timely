@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMeeting;
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -28,22 +29,9 @@ class MeetingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreMeeting $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:64',
-            'description' => 'max:255',
-            'location' => 'max:64',
-            'timezone_offset' => 'required|integer|max:13|gt:0',
-            'duration' => 'integer|max:32000|gt:0',
-            'delete_after' => 'integer|max:32000|gt:0'
-
-        ]);
-
-        // Additional validation for timezone_offset, duration, and delete_after current values are example values
-        $validated['timezone_offset'] = max(min($validated['timezone_offset'], 13), -13);
-        $validated['duration'] = max(min($validated['duration'], 32000), 1);
-        $validated['delete_after'] = max(min($validated['delete_after'], 32000), 1);
+        $validated = $request->validated();
 
         $meeting = new Meeting;
         $meeting->user_id = Auth::user()->id;
