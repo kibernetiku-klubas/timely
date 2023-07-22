@@ -15,14 +15,14 @@ class MeetingFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => Uuid::uuid4()->toString(), // Generate UUID for the primary key
+            'id' => Uuid::uuid4()->toString(),
             'user_id' => function () {
                 return User::factory()->create()->id;
             },
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'location' => $this->faker->address,
-            'timezone' => 0,
+            'timezone_offset' => 0,
             'duration' => 30,
             'meet_times' => json_encode([]),
             'delete_after' => 90,
