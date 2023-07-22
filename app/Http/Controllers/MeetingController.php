@@ -34,7 +34,7 @@ class MeetingController extends Controller
             'title' => 'required|string|max:64',
             'description' => 'max:255',
             'location' => 'max:64',
-            'timezone_offset' => 'integer|max:13',
+            'timezone_offset' => 'required|integer|max:13|gt:0',
             'duration' => 'integer|max:32000|gt:0',
             'delete_after' => 'integer|max:32000|gt:0'
 
