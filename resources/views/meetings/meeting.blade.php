@@ -8,7 +8,7 @@
     {{$meeting->description}}<br>
     Location:
     {{$meeting->location}}<br>
-    Timezone: {{$meeting->timezone_offset}}<br>
+    Timezone: {{$meeting->timezone}}<br>
     Duration: {{$meeting->duration}}<br>
     Meet times: {{$meeting->meet_times}}<br>
     Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a>
