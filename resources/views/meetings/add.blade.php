@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl text-gray-800 leading-tight">
             Add a new meeting
         </h2>
     </x-slot>
@@ -28,7 +28,7 @@
             <!-- Timezone -->
             <div>
                 <x-input-label for="timezone_offset" :value="__('Timezone')" />
-                <select name = "timezone_offset" id="timezone_offset" type="string" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 bg-white">
+                <select name = "timezone_offset" id="timezone_offset" type="string" class="border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 bg-white">
                     <option selected disabled>Choose a timezone</option>
                     <option value="0">(UTC) Dublin, Edinburgh, Lisbon, London</option>
                     <option value="1">(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
