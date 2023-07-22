@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('meetings', function (Blueprint $table) {
-            /*
-                for contextual info about the structure
-                of the table, refer to timely#9 on the projects board.
-            */
+
+            /**
+             * for contextual info about the structure of the table,
+             * refer to docs/feature-docs/meeting-migration
+             */
             $table->uuid('id')->unique(); // string
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
