@@ -19,9 +19,9 @@ return new class extends Migration
             $table->uuid('id')->unique(); // string
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->string('description')->default('Just another meeting');
+            $table->longText('description')->default('Just another meeting');
             $table->string('location')->default('Not specified');
-            $table->smallInteger('timezone')->default('0');
+            $table->smallInteger('timezone_offset')->default('0');
             $table->smallInteger('duration')->default('30');
             $table->json('meet_times')->default(json_encode([]));
             $table->integer('delete_after')->default('90');
