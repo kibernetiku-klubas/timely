@@ -32,4 +32,10 @@ class MeetingController extends Controller
     {
         return view('meetings.meeting', ['meeting' => Meeting::findOrFail($id)]);
     }
+
+    public function showDashboard(){
+        return view('dashboard', [
+            'meetings' => Meeting::where('user_id', Auth::user()->id)->latest()->get(),
+        ]);
+    }
 }
