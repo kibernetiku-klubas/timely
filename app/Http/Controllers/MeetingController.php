@@ -21,7 +21,6 @@ class MeetingController extends Controller
         $meeting->location = $validated['location'];
         $meeting->timezone_offset = $validated['timezone_offset'];
         $meeting->duration = $validated['duration'];
-        $meeting->meet_times = '{}';
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
 
@@ -30,7 +29,10 @@ class MeetingController extends Controller
 
     public function show($id)
     {
-        return view('meetings.meeting', ['meeting' => Meeting::findOrFail($id)]);
+        return view('meetings.meeting', [
+            'user' => Auth::user(),
+            'meeting' => Meeting::findOrFail($id),
+        ]);
     }
 
     public function showDashboard(){

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\DateController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Meeting;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [MeetingController::class, 'showDashboard'])->name('dashboard');
     Route::resource('meetings', MeetingController::class);
     Route::view('/add-meeting', 'meetings.add');
+    Route::resource('dates', DateController::class);
 });
 
 require __DIR__ . '/auth.php';

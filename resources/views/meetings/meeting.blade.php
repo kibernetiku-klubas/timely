@@ -12,3 +12,5 @@ Duration (min): {{$meeting->duration}}<br>
 Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
 Created at: {{$meeting->created_at}}<br>
 Updated at: {{$meeting->updated_at}}
+
+@include ('meetings.edit-times')
