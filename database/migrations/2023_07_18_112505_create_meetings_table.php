@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('location')->default('Not specified');
             $table->smallInteger('timezone_offset')->default('0');
             $table->smallInteger('duration')->default('30');
-            $table->json('meet_times')->default(json_encode([]));
             $table->integer('delete_after')->default('90');
             $table->timestamps();
         });
