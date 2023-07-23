@@ -1,8 +1,7 @@
-<x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Meeting {{$meeting->title}}
-    </h2>
-</x-slot>
+@include ('meetings.edit-times')
+<h2 class="text-xl text-gray-800 leading-tight">
+    Meeting: {{$meeting->title}}
+</h2>
 Description:
 {{$meeting->description}}<br>
 Location:
@@ -13,4 +12,12 @@ Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
 Created at: {{$meeting->created_at}}<br>
 Updated at: {{$meeting->updated_at}}
 
-@include ('meetings.edit-times')
+Dates and times for the meeting:
+
+<ul>
+@foreach($dates as $date)
+    <li>
+    {{$date->date_and_time}}, votes: {{$date->voted_by}}
+    </li>
+@endforeach
+</ul>

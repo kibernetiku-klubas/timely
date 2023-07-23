@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMeeting;
+use App\Models\Date;
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -31,10 +32,12 @@ class MeetingController extends Controller
         return view('meetings.meeting', [
             'user' => Auth::user(),
             'meeting' => Meeting::findOrFail($id),
+            'dates' => Date::where('meeting_id', $id)->get()
         ]);
     }
 
-    public function showDashboard(){
+    public function showDashboard()
+    {
         return view('dashboard', [
             'meetings' => Meeting::where('user_id', Auth::user()->id)->latest()->get(),
         ]);
