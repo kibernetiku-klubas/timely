@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('meetings', function (Blueprint $table) {
-            /*
-                for contextual info about the structure
-                of the table, refer to timely#9 on the projects board.
-            */
+
+            /**
+             * for contextual info about the structure of the table,
+             * refer to docs/feature-docs/meeting-migration
+             */
             $table->uuid('id')->unique(); // string
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
@@ -23,7 +24,6 @@ return new class extends Migration
             $table->string('location')->default('Not specified');
             $table->smallInteger('timezone_offset')->default('0');
             $table->smallInteger('duration')->default('30');
-            $table->json('meet_times')->default(json_encode([]));
             $table->integer('delete_after')->default('90');
             $table->timestamps();
         });

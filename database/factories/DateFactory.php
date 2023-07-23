@@ -14,7 +14,7 @@ class DateFactory extends Factory
     {
         return [
             'date_and_time' => Carbon::now(),
-            'voted_by' => $this->faker->word(),
+            'voted_by' => $this->faker->name(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

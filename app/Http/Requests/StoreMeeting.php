@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreMeeting extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:64',
+            'description' => 'max:255',
+            'location' => 'max:64',
+            'timezone_offset' => 'required|integer|max:13|gt:0',
+            'duration' => 'integer|max:32000|gt:0',
+            'delete_after' => 'integer|max:32000|gt:0',
+        ];
+    }
+}

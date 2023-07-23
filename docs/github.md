@@ -22,6 +22,8 @@ Following these guidelines will help ensure a smooth and collaborative developme
    
    - Branch from the latest master: Always create your feature branches from the latest state of the master branch to ensure you have the most up-to-date codebase.
 
+   - Use many small commits in a branch instead of one large. 
+
 3. Developing Features:
    - Work in your branch: Switch to your feature branch and start working on your feature or bug fix. Commit your changes frequently, adhering to good coding practices and clear commit messages.
    
@@ -39,3 +41,6 @@ Following these guidelines will help ensure a smooth and collaborative developme
 
    - Use feature branches for collaboration: By creating feature branches, multiple team members can work concurrently without conflicting with each other. It also allows for easy code review and collaboration before merging into the master branch.
 
+6. Run all tests before pushing:
+   - Use ```php artisan test``` or press run from PhpStorm.
+   - Make sure all tests pass.

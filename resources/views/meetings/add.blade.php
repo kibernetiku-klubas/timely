@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl text-gray-800 leading-tight">
             Add a new meeting
         </h2>
     </x-slot>
@@ -28,7 +28,7 @@
             <!-- Timezone -->
             <div>
                 <x-input-label for="timezone_offset" :value="__('Timezone')" />
-                <select name = "timezone_offset" id="timezone_offset" type="string" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 bg-white">
+                <select name = "timezone_offset" id="timezone_offset" type="string" class="border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 bg-white">
                     <option selected disabled>Choose a timezone</option>
                     <option value="0">(UTC) Dublin, Edinburgh, Lisbon, London</option>
                     <option value="1">(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
@@ -69,13 +69,14 @@
             </div>
             <!-- Delete_after -->
             <div>
-                <x-input-label for="delete_after" :value="__('Delete after:')" />
+                <x-input-label for="delete_after" :value="__('Delete after (days):')" />
                 <x-text-input type="integer" id="delete_after" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="delete_after" :value="old('delete_after')" required autofocus autocomplete="delete_after" />
                 <x-input-error :messages="$errors->get('delete_after')" class="mt-2" />
             </div>
+            <!-- Save meeting -->
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button class="ml-4">
-                    {{ __('Create') }}
+                    {{ __('Create meeting') }}
                 </x-primary-button>
             </div>
         </form>
