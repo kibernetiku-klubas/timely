@@ -4,8 +4,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\DateController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Meeting;
-use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'welcome');
 

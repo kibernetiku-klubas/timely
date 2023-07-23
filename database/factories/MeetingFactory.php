@@ -24,7 +24,6 @@ class MeetingFactory extends Factory
             'location' => $this->faker->address,
             'timezone_offset' => 0,
             'duration' => 30,
-            'meet_times' => json_encode([]),
             'delete_after' => 90,
         ];
     }
