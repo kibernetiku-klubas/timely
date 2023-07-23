@@ -6,7 +6,6 @@ use App\Http\Requests\StoreMeeting;
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class MeetingController extends Controller
 {
@@ -21,7 +20,6 @@ class MeetingController extends Controller
         $meeting->location = $validated['location'];
         $meeting->timezone_offset = $validated['timezone_offset'];
         $meeting->duration = $validated['duration'];
-        $meeting->meet_times = '{}';
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
 
