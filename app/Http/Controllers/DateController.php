@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\DateController;
+use App\Http\Requests\StoreDate;
 use App\Models\Date;
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class DateController extends Controller
 {
@@ -16,26 +15,19 @@ class DateController extends Controller
         return redirect("dashboard");
     }
 
-    public function store (Request $request): RedirectResponse
+    public function store(StoreDate $request): RedirectResponse
     {
-        $meeting = Meeting::where('id', $request->meeting_id)->where('user_id', Auth::user()->id)->firstOrFail();
-        $dates = Date::where('meeting_id', $request->meeting_id)->get();
-        
-        $date = new Date;
-        $date->meeting_id = $meeting->id;
-        $date->date_and_time = $request->new_time;
+        $validatedData = $request->validated();
+        $meetingId = $request->input('meeting_id');
 
-        $isUnique = true;
-        foreach ($dates as $x) {
-            if ($x->date_and_time == $date->date_and_time)
-            {
-                $isUnique = false;
-                break;
-            }
-        }
-        if ($isUnique && count($dates) < 20)
+        $existingDatesCount = Date::where('meeting_id', $meetingId)->count();
+        if ($existingDatesCount < 20) {
+            $date = new Date;
+            $date->meeting_id = $meetingId;
+            $date->date_and_time = $validatedData['new_time'];
             $date->save();
+        }
 
-        return redirect("/meetings/$meeting->id");
+        return redirect("/meetings/$meetingId");
     }
 }
