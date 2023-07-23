@@ -22,7 +22,7 @@ class MeetingFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'location' => $this->faker->address,
-            'timezone' => 0,
+            'timezone_offset' => 0,
             'duration' => 30,
             'meet_times' => json_encode([]),
             'delete_after' => 90,
