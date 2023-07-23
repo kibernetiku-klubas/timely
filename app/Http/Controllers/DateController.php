@@ -33,7 +33,7 @@ class DateController extends Controller
                 break;
             }
         }
-        if ($isUnique && count($dates) < 25)
+        if ($isUnique && count($dates) < 20)
             $date->save();
 
         return redirect("/meetings/$meeting->id");
