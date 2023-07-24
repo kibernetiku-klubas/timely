@@ -39,7 +39,7 @@ class MeetingController extends Controller
     public function showDashboard()
     {
         return view('dashboard', [
-            'meetings' => Meeting::where('user_id', Auth::user()->id)->latest()->get(),
+            'meetings' => Meeting::where('user_id', Auth::user()->id)->get(),
         ]);
     }
 }
