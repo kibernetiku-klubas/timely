@@ -18,7 +18,7 @@
                         </a>
                     </li>
 
-                    <li onclick="event.preventDefault(); this.querySelector('form').submit();">
+                    <li onclick="preventDefault(); this.querySelector('form').submit();">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a href="{{ route('logout') }}">
