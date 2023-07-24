@@ -24,7 +24,7 @@ class MeetingController extends Controller
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Meeting created successfully');
     }
 
     public function show($id)
