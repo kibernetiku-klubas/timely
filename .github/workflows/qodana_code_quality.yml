@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - feature/display-all-dates
 
 jobs:
   qodana:
