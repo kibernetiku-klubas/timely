@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Meeting;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 use Ramsey\Uuid\Uuid;
 
 class MeetingFactory extends Factory
