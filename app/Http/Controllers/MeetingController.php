@@ -19,7 +19,7 @@ class MeetingController extends Controller
         $meeting->title = $validated['title'];
         $meeting->description = $validated['description'];
         $meeting->location = $validated['location'];
-        $meeting->timezone_offset = $validated['timezone_offset'];
+        $meeting->timezone = $validated['timezone'];
         $meeting->duration = $validated['duration'];
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
