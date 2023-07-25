@@ -19,7 +19,7 @@ class MeetingTest extends TestCase
             'title' => 'Test Meeting',
             'description' => 'This is a test meeting',
             'location' => 'Test Location',
-            'timezone_offset' => 2,
+            'timezone' => '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
             'duration' => 60,
             'delete_after' => 30,
         ];
@@ -32,7 +32,7 @@ class MeetingTest extends TestCase
             'title' => $formData['title'],
             'description' => $formData['description'],
             'location' => $formData['location'],
-            'timezone_offset' => $formData['timezone_offset'],
+            'timezone' => $formData['timezone'],
             'duration' => $formData['duration'],
             'delete_after' => $formData['delete_after'],
         ]);
@@ -46,7 +46,7 @@ class MeetingTest extends TestCase
             // Missing 'title' field, which is required
             'description' => 'This is a test meeting',
             'location' => 'Test Location',
-            'timezone_offset' => 2,
+            'timezone' => '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
             'duration' => 60,
             'delete_after' => 30,
         ];
