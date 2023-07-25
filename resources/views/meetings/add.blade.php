@@ -27,8 +27,8 @@
             </div>
             <!-- Timezone -->
             <div>
-                <x-input-label for="timezone_offset" :value="__('Timezone')" />
-                <select name = "timezone_offset" id="timezone_offset" type="string" class="border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 bg-white">
+                <x-input-label for="timezone" :value="__('Timezone')" />
+                <select name = "timezone" id="timezone" type="string" class="border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 bg-white">
                     <option selected disabled>Choose a timezone</option>
                     <option>(UTC) Dublin, Edinburgh, Lisbon, London</option>
                     <option>(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
@@ -57,7 +57,7 @@
                     <option>(UTC-11:00) Coordinated Universal Time-11</option>
                     <option>(UTC-12:00) International Date Line West</option>
                 </select>
-                @error('timezone_offset')
+                @error('timezone')
                     <p class="text-red-500 text-sm">{{ "Timezone must be selected." }}</p>
                 @enderror
             </div>

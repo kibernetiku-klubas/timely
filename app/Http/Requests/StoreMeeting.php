@@ -26,7 +26,7 @@ class StoreMeeting extends FormRequest
             'title' => 'required|string|max:64',
             'description' => 'max:255',
             'location' => 'max:64',
-            'timezone_offset' => 'required',
+            'timezone' => 'required|string',
             'duration' => 'integer|max:32000|gt:0',
             'delete_after' => 'integer|max:32000|gt:0',
         ];

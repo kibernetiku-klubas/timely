@@ -6,7 +6,7 @@ Description:
 {{$meeting->description}}<br>
 Location:
 {{$meeting->location}}<br>
-Timezone offset (h): {{$meeting->timezone_offset}}<br>
+Timezone: {{$meeting->timezone}}<br>
 Duration (min): {{$meeting->duration}}<br>
 Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
 Created at: {{$meeting->created_at}}<br>

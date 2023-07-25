@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description')->default('Just another meeting');
             $table->string('location')->default('Not specified');
-            $table->smallInteger('timezone_offset')->default('0');
+            $table->string('timezone');
             $table->smallInteger('duration')->default('30');
             $table->integer('delete_after')->default('90');
             $table->timestamps();
