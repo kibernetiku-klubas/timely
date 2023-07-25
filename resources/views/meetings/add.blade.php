@@ -57,9 +57,9 @@
                     <option>(UTC-11:00) Coordinated Universal Time-11</option>
                     <option>(UTC-12:00) International Date Line West</option>
                 </select>
-                @if ($errors->has('timezone_offset'))
-                    <p class="text-red-500 text-sm">{{ $errors->first('timezone_offset') }}</p>
-                @endif
+                @error('timezone_offset')
+                    <p class="text-red-500 text-sm">{{ "Timezone must be selected." }}</p>
+                @enderror
             </div>
             <!-- Duration -->
             <div>
