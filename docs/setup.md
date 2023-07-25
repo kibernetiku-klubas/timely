@@ -5,7 +5,7 @@ For local development we will be using sqlite database. More about this project 
 
 - Clone the repository
   ```
-  git clone https://github.com/kibernetiniu-gudruoliu-bendruomene/first-project.git
+  git clone https://github.com/kibernetiku-klubas/timely.git
   ```
 - cd to project dir
   ```
