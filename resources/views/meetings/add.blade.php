@@ -63,7 +63,7 @@
             </div>
             <!-- Duration -->
             <div>
-                <x-input-label for="duration" :value="__('Duration (min):')" />
+                <x-input-label for="duration" :value="__('Meeting duration (min):')" />
                 <x-text-input type="smallInteger" id="duration" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="duration" :value="old('duration')" required autofocus autocomplete="duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
