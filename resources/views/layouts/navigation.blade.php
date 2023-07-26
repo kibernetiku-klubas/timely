@@ -9,6 +9,7 @@
                     @csrf
                     <label tabindex="0" class="btn btn-ghost">
                         <div>
+                            @if (Auth::check())
                             {{ Auth::user()->name }}
                         </div>
                     </label>
@@ -25,6 +26,9 @@
                     </button>
                     </li>
                     </ul>
+                    @else
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
                 </form>
             </div>
         </div>

@@ -1,21 +1,23 @@
 <x-app-layout>
     <div class="flex flex-col sm:justify-center items-center py-8 sm:pt-0 bg-gray-100 text-black">
-        <div class="w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl overflow-hidden rounded-lg">
-@include ('meetings.edit-times')
-<h2 class="text-xl text-gray-800 leading-tight">
-    Meeting: {{$meeting->title}}
-</h2>
-Description:
-{{$meeting->description}}<br>
-Location:
-{{$meeting->location}}<br>
-Timezone: {{$meeting->timezone}}<br>
-Duration (min): {{$meeting->duration}}<br>
-Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
-Created at: {{$meeting->created_at}}<br>
-Updated at: {{$meeting->updated_at}}<br>
-
-Dates and times for the meeting:
+        <div
+            class="w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl overflow-hidden rounded-lg">
+            @if (Auth::check())
+                @include ('meetings.edit-times')
+            @endif
+            <h2 class="text-xl text-gray-800 leading-tight">
+                Meeting: {{$meeting->title}}
+            </h2>
+            Description:
+            {{$meeting->description}}<br>
+            Location:
+            {{$meeting->location}}<br>
+            Timezone: {{$meeting->timezone}}<br>
+            Duration (min): {{$meeting->duration}}<br>
+            Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
+            Created at: {{$meeting->created_at}}<br>
+            Updated at: {{$meeting->updated_at}}<br>
+            Dates and times for the meeting:
 
 <ul class="m-6">
 @foreach($dates as $date)
