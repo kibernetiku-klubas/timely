@@ -28,7 +28,7 @@ class StoreMeeting extends FormRequest
             'location' => 'max:64',
             'timezone' => 'required|string',
             'duration' => 'integer|max:32000|gt:0',
-            'delete_after' => 'integer|max:32000|gt:0',
+            'delete_after' => 'integer|max:180|gt:0',
         ];
     }
 }
