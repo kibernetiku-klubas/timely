@@ -37,7 +37,7 @@
                                 <x-input-label for="new_time" :value="__('Select new time:')" />
                                 <div class="inline-flex">
                                 <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)" :max-date="today()->addDays(90)" required />
-                                </div>
+                                </div><br>
                                 <x-primary-button type="submit" class="link-button mt-2">
                                     Confirm
                                 </x-primary-button>
@@ -50,7 +50,7 @@
                             <form method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}" onsubmit="return confirm('Are you sure you wish to delete this date?');">
                                 @csrf
                                 @method('DELETE')
-                                <x-primary-button type="submit" class="mt-7 ml-1">
+                                <x-primary-button type="submit" class="mt-[76px] -ml-[135px]">
                                     Delete
                                 </x-primary-button>
                             </form>
