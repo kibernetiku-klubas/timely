@@ -12,7 +12,7 @@
             <x-input-error :messages="$errors->get('new_time')" class="mt-2" />
         </div>
         <!-- Save -->
-        <x-primary-button class="ml-4">
+        <x-primary-button class="ml-4 mt-2">
             {{ __('Add time') }}
         </x-primary-button>
     </form>
