@@ -14,6 +14,9 @@ class VoteController extends Controller
         $dateIds = $request->input('date_ids', []);
         $votes = $request->input('votes', []);
 
+        if (empty($votes)) {
+            return redirect()->back()->with('error', 'Please select at least one option.');        }
+
         foreach ($dateIds as $dateId) {
             if (in_array($dateId, $votes)) {
                 Vote::create([
