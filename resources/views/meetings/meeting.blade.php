@@ -13,7 +13,7 @@ Timezone: {{$meeting->timezone}}<br>
 Duration (min): {{$meeting->duration}}<br>
 Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
 Created at: {{$meeting->created_at}}<br>
-Updated at: {{$meeting->updated_at}}
+Updated at: {{$meeting->updated_at}}<br>
 
 Dates and times for the meeting:
 
@@ -38,6 +38,10 @@ Dates and times for the meeting:
     </li>
 @endforeach
 </ul>
+
+        <a href='/meeting/{{ $meeting->id }}/delete'>
+            <button class='btn btn-error'>Delete meeting</button>
+        </a>
         </div>
     </div>
 </x-app-layout>

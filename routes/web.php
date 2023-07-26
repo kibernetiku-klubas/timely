@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('meetings', MeetingController::class);
     Route::view('/add-meeting', 'meetings.add');
     Route::resource('dates', DateController::class);
+    Route::get('/meeting/{id}/delete', [MeetingController::class, 'confirmDelete']);
+    Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meeting.delete');
 });
 
 require __DIR__ . '/auth.php';

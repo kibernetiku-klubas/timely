@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class MeetingController extends Controller
 {
+    public function confirmDelete($id)
+    {
+        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        return view('meetings.confirm-delete', compact('meeting'));
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        $meeting->delete();
+
+        return redirect('/dashboard');
+    }
+
     public function store(StoreMeeting $request): RedirectResponse
     {
         $validated = $request->validated();
