@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDate;
 use App\Models\Date;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Meeting;
 
 class DateController extends Controller
 {
@@ -33,11 +35,10 @@ class DateController extends Controller
     {
         $validatedData = $request->validated();
         $date = Date::findOrFail($id);
+        $meetingId = $date->meeting_id;
         if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
             $date->date_and_time = $validatedData['new_time'];
             $date->save();
-
-            $meetingId = $date->meeting_id;
         }
 
         return redirect("/meetings/$meetingId");
