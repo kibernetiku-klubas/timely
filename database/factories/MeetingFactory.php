@@ -21,7 +21,7 @@ class MeetingFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'location' => $this->faker->address,
-            'timezone_offset' => 0,
+            'timezone' => '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
             'duration' => 30,
             'delete_after' => 90,
         ];

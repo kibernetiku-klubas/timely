@@ -5,28 +5,31 @@
         </div>
         <div class="flex-none">
             <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost">
-                    <div>
-                        {{ Auth::user()->name }}
-                    </div>
-                </label>
-                <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-200 rounded-box w-52 text-black">
-                    <li>
-                        <a href="{{ route('profile.edit') }}">
-                            Profile
-                        </a>
-                    </li>
-
-                    <li onclick="preventDefault(); this.querySelector('form').submit();">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}">
-                                {{ __('Log Out') }}
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <label tabindex="0" class="btn btn-ghost">
+                        <div>
+                            @if (Auth::check())
+                            {{ Auth::user()->name }}
+                        </div>
+                    </label>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-200 rounded-box w-52 text-black">
+                        <li>
+                            <a href="{{ route('profile.edit') }}">
+                                Profile
                             </a>
-                        </form>
+                        </li>
+                    <li>
+                    <button type="submit">
+                        {{ __('Log Out') }}
+                    </button>
                     </li>
-                </ul>
+                    </ul>
+                    @else
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                </form>
             </div>
         </div>
     </div>
