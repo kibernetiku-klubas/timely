@@ -22,7 +22,8 @@
 <ul class="m-6">
 @foreach($dates as $date)
     <li class="my-6 shadow-xl p-6 rounded-xl">
-    {{$date->date_and_time}},
+    From: {{$date->date_and_time}}<br>
+    To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }},
         <div class="container">
         <div class="form-control">
             <label class="label cursor-pointer">
