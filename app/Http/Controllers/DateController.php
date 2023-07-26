@@ -33,21 +33,24 @@ class DateController extends Controller
     {
         $validatedData = $request->validated();
         $date = Date::findOrFail($id);
+        if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
+            $date->date_and_time = $validatedData['new_time'];
+            $date->save();
 
-        $date->date_and_time = $validatedData['new_time'];
-        $date->save();
-
-        $meetingId = $date->meeting_id;
+            $meetingId = $date->meeting_id;
+        }
 
         return redirect("/meetings/$meetingId");
     }
+
     public function destroy($id): RedirectResponse
     {
         $date = Date::findOrFail($id);
+        if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
         $meetingId = $date->meeting_id;
         
         $date->delete();
-
+        }
         return redirect("/meetings/$meetingId");
     }
 }

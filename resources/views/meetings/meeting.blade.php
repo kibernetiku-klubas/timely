@@ -25,11 +25,10 @@
                         <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
                     From: {{$date->date_and_time}}<br>
                     To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }},
-                    
                     <div class="container">
                         <div class="inline-flex rounded-md shadow-sm">
                             <!--Update chosen date-->
-                            @if ($user->id == $meeting->user_id)
+                            @if (Auth::check() && $user->id == $meeting->user_id)
                             <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
                                 @csrf
                                 @method('PUT')
@@ -64,17 +63,15 @@
                                 </div>
                             </label>
                         </div>
-                        </div>
-                        votes:
-                        <div class="tooltip" data-tip="Names of people who voted">
-                            Number of votes
-                        </div>
+                    </div>
+                    votes:
+                    <div class="tooltip" data-tip="Names of people who voted">
+                        Number of votes
+                    </div>
                     </li>
                 @endforeach
             </ul>
-            @if (Auth::check())
-                @if ($meeting->user_id == Auth::User()->id)
-                @endif
+            @if (Auth::check() && $meeting->user_id == Auth::User()->id)
                 <a href='/meeting/{{ $meeting->id }}/edit'>
                     <button class='btn btn-warning'>Edit meeting</button>
                 </a>
