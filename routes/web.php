@@ -20,6 +20,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/dates', [DateController::class, 'store'])->name('dates.store');
     Route::put('/dates/{id}', [DateController::class, 'update'])->name('dates.update');
     Route::delete('/dates/{id}', [DateController::class, 'destroy'])->name('dates.destroy');
+    Route::get('/meeting/{id}/delete', [MeetingController::class, 'confirmDelete']);
+    Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meetings.delete');
+    Route::get('/meeting/{id}/edit', [MeetingController::class, 'displayEdit']);
+    Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
 });
 
 require __DIR__ . '/auth.php';
