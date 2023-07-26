@@ -14,6 +14,7 @@
             .alert-container.fade-out {
                 opacity: 0;
             }
+
         </style>
 
         <script>

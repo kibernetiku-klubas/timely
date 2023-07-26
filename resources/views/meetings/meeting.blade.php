@@ -1,4 +1,8 @@
 <x-app-layout>
+    @if(session()->has('success'))
+        <x-notification>
+        </x-notification>
+    @endif
     <div class="flex flex-col sm:justify-center items-center py-8 sm:pt-0 bg-gray-100 text-black">
         <div
             class="w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl overflow-hidden rounded-lg">
@@ -16,15 +20,16 @@
             Created at: {{ $meeting->created_at }}<br>
             Updated at: {{ $meeting->updated_at }}<br>
 
-            Dates and times for the meeting:
             <div class="text-right pr-16">
-                <button class="btn" onclick="my_modal_1.showModal()">Vote on times</button>
+                <button class="btn btn-outline border-none text-black text-xl shadow-black shadow-2xl hover:shadow-none" onclick="votesModal.showModal()">Vote on times</button>
             </div>
-            <dialog id="my_modal_1" class="modal">
+            <dialog id="votesModal" class="modal">
                 <form method="POST" action="{{ route('vote.store') }}" class="modal-box bg-white shadow-2xl">
+                    <a class="btn btn-circle btn-outline mb-4" onclick="document.getElementById('votesModal').close();">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </a>
                     @csrf
                     <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
-
                     <h3 class="font-bold text-lg text-black">Check every time you want to vote on and enter your name to
                         save your votes</h3>
                     <p class="py-4 text-black">Note: Name will be visible to everyone viewing this meeting</p>
@@ -42,7 +47,7 @@
                                 <span class="label-text text-lg text-black">Vote on: {{$date->date_and_time}}</span>
                                 <div class="shadow-xl">
                                     <input type="checkbox" name="votes[]" value="{{ $date->id }}"
-                                           class="checkbox checkbox-lg checkbox-success" checked="checked">
+                                           class="checkbox checkbox-lg checkbox-success">
                                 </div>
                             </label>
                         </div>
@@ -55,9 +60,10 @@
                 </form>
             </dialog>
 
+            <div class="flex justify-center text-xl mt-8 font-bold"> DATES AND TIMES FOR THE MEETING:</div>
             <ul class="m-6">
                 @foreach($dates as $date)
-                    <li class="my-6 shadow-xl p-6 rounded-xl">
+                    <li class="my-6 shadow-2xl p-6 rounded-xl">
                         <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
                         <div class="flex justify-center">
                             <div class="mx-6">
@@ -111,10 +117,10 @@
                 @if ($meeting->user_id == Auth::User()->id)
                 @endif
                 <a href='/meeting/{{ $meeting->id }}/edit'>
-                    <button class='btn btn-warning'>Edit meeting</button>
+                    <button class='btn btn-warning shadow-xl'>Edit meeting</button>
                 </a>
                 <a href='/meeting/{{ $meeting->id }}/delete'>
-                    <button class='btn btn-error'>Delete meeting</button>
+                    <button class='btn btn-error shadow-xl'>Delete meeting</button>
                 </a>
             @endif
         </div>
