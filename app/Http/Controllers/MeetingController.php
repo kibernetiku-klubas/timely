@@ -26,7 +26,7 @@ class MeetingController extends Controller
 
     public function displayEdit($id)
     {
-        $meeting = $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
         return view('meetings.edit', compact('meeting'));
     }
 
@@ -36,15 +36,8 @@ class MeetingController extends Controller
 
         $meeting = new Meeting;
         $meeting->user_id = Auth::user()->id;
-        $meeting->title = $validated['title'];
-        $meeting->description = $validated['description'];
-        $meeting->location = $validated['location'];
-        $meeting->timezone = $validated['timezone'];
-        $meeting->duration = $validated['duration'];
-        $meeting->delete_after = $validated['delete_after'];
-        $meeting->save();
 
-        return redirect('/dashboard')->with('success', 'Meeting created successfully');
+        return $this->assignMeetingData($meeting, $validated, '/dashboard', 'Meeting created successfully');
     }
 
     public function show($id)
@@ -68,6 +61,11 @@ class MeetingController extends Controller
         $validated = $request->validated();
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
 
+        return $this->assignMeetingData($meeting, $validated, "meetings/$meeting->id");
+    }
+
+    private function assignMeetingData(Meeting $meeting, array $validated, string $redirectUrl, string $message = null): RedirectResponse
+    {
         $meeting->title = $validated['title'];
         $meeting->description = $validated['description'];
         $meeting->location = $validated['location'];
@@ -75,7 +73,7 @@ class MeetingController extends Controller
         $meeting->duration = $validated['duration'];
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
-        
-        return redirect("meetings/$meeting->id");
+
+        return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully');
     }
 }

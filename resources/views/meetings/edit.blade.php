@@ -9,23 +9,11 @@
             @csrf
             @method('patch')
             @php
-                $title = old('title');
-                $desc = old('description');
-                $location = old('location');
-                $duration = old('duration');
-                $delete_after = old('delete_after');
-
-                if ($title == '')
-                    $title = $meeting->title;
-                if ($desc == '')
-                    $desc = $meeting->description;
-                if ($location == '')
-                    $location = $meeting->location;
-                if ($duration == '')
-                    $duration = $meeting->duration;
-                if ($delete_after == '') {
-                    $delete_after = $meeting->delete_after;
-                }
+                $title = old('title') ?: $meeting->title;
+                $desc = old('description') ?: $meeting->description;
+                $location = old('location') ?: $meeting->location;
+                $duration = old('duration') ?: $meeting->duration;
+                $delete_after = old('delete_after') ?: $meeting->delete_after;
             @endphp
             <!-- Title -->
             <div>
