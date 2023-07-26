@@ -16,32 +16,38 @@
             Duration (min): {{$meeting->duration}}<br>
             Meeting link: <a href="">https://domain.com/{{$meeting->id}}</a><br>
             Created at: {{$meeting->created_at}}<br>
-            Updated at: {{$meeting->updated_at}}
-
+            Updated at: {{$meeting->updated_at}}<br>
             Dates and times for the meeting:
 
-            <ul class="m-6">
-                @foreach($dates as $date)
-                    <li class="my-6 shadow-xl p-6 rounded-xl">
-                        {{$date->date_and_time}},
-                        <div class="container">
-                            <div class="form-control">
-                                <label class="label cursor-pointer">
-                                    <span class="label-text text-lg text-black">Vote on this date:</span>
-                                    <div class="shadow-xl">
-                                        <input type="checkbox" checked="checked"
-                                               class="checkbox checkbox-lg checkbox-success"/>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        votes:
-                        <div class="tooltip" data-tip="Names of people who voted">
-                            Number of votes
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+<ul class="m-6">
+@foreach($dates as $date)
+    <li class="my-6 shadow-xl p-6 rounded-xl">
+    {{$date->date_and_time}},
+        <div class="container">
+        <div class="form-control">
+            <label class="label cursor-pointer">
+                <span class="label-text text-lg text-black">Vote on this date:</span>
+                <div class="shadow-xl">
+                <input type="checkbox" checked="checked" class="checkbox checkbox-lg checkbox-success" />
+                </div>
+            </label>
+        </div>
+        </div>
+        votes:
+        <div class="tooltip" data-tip="Names of people who voted">
+            Number of votes
+        </div>
+    </li>
+@endforeach
+</ul>
+    @if ($meeting->user_id == Auth::User()->id)
+        <a href='/meeting/{{ $meeting->id }}/edit'>
+            <button class='btn btn-warning'>Edit meeting</button>
+        </a>
+        <a href='/meeting/{{ $meeting->id }}/delete'>
+            <button class='btn btn-error'>Delete meeting</button>
+        </a>
+    @endif
         </div>
     </div>
 </x-app-layout>
