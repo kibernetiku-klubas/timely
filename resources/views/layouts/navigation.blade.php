@@ -27,7 +27,7 @@
                     </li>
                     </ul>
                     @else
-                        <a href="{{ route('register') }}">Sign in</a>
+                        <a href="{{ route('register') }}">Register</a>
                     @endif
                 </form>
             </div>
