@@ -28,4 +28,26 @@ class DateController extends Controller
 
         return redirect("/meetings/$meetingId");
     }
+
+    public function update(StoreDate $request, $id): RedirectResponse
+    {
+        $validatedData = $request->validated();
+        $date = Date::findOrFail($id);
+
+        $date->date_and_time = $validatedData['new_time'];
+        $date->save();
+
+        $meetingId = $date->meeting_id;
+
+        return redirect("/meetings/$meetingId");
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $date = Date::findOrFail($id);
+        $meetingId = $date->meeting_id;
+        
+        $date->delete();
+
+        return redirect("/meetings/$meetingId");
+    }
 }

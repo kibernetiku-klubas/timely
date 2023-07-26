@@ -29,7 +29,16 @@ class StoreDate extends FormRequest
         return [
             'new_time' => [
                 'required',
-                'unique:dates,date_and_time',
+                function ($attribute, $value, $fail) use ($meetingId) {
+                    // checks if the date is equal in the same meeting
+                    $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
+                    if ($this->getMethod() === 'PUT') { // excludes updated date from being checked (for when date is kept as before)
+                        $date->where('id', '!=', $this->route('date')->id);
+                    }
+                    if ($date->count() > 0) {
+                        $fail('The selected date already exists for this meeting.');
+                    }
+                },
                 function ($attribute, $value, $fail) use ($existingDatesCount) {
                     if ($existingDatesCount >= 20) {
                         $fail('The maximum number of dates (20) has been reached for this meeting.');
@@ -42,7 +51,6 @@ class StoreDate extends FormRequest
     public function messages(): array
     {
         return [
-            'new_time.unique' => 'The selected date already exists for this meeting.',
             'new_time.required' => 'Please select a date and time.',
         ];
     }
