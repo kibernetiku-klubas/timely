@@ -24,6 +24,12 @@ class MeetingController extends Controller
         return redirect('/dashboard');
     }
 
+    public function displayEdit($id)
+    {
+        $meeting = $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        return view('meetings.edit', compact('meeting'));
+    }
+
     public function store(StoreMeeting $request): RedirectResponse
     {
         $validated = $request->validated();
@@ -55,5 +61,21 @@ class MeetingController extends Controller
         return view('dashboard', [
             'meetings' => Meeting::where('user_id', Auth::user()->id)->get(),
         ]);
+    }
+
+    public function update(StoreMeeting $request, $id): RedirectResponse
+    {
+        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        $validated = $request->validated();
+
+        $meeting->title = $validated['title'];
+        $meeting->description = $validated['description'];
+        $meeting->location = $validated['location'];
+        $meeting->timezone = $validated['timezone'];
+        $meeting->duration = $validated['duration'];
+        $meeting->delete_after = $validated['delete_after'];
+        $meeting->save();
+        
+        return redirect("meetings/$meeting->id");
     }
 }

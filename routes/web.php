@@ -18,7 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::view('/add-meeting', 'meetings.add');
     Route::resource('dates', DateController::class);
     Route::get('/meeting/{id}/delete', [MeetingController::class, 'confirmDelete']);
-    Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meeting.delete');
+    Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meetings.delete');
+    Route::get('/meeting/{id}/edit', [MeetingController::class, 'displayEdit']);
+    Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
 });
 
 require __DIR__ . '/auth.php';

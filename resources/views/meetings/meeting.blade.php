@@ -38,10 +38,14 @@ Dates and times for the meeting:
     </li>
 @endforeach
 </ul>
-
+    @if ($meeting->user_id == Auth::User()->id)
+        <a href='/meeting/{{ $meeting->id }}/edit'>
+            <button class='btn btn-warning'>Edit meeting</button>
+        </a>
         <a href='/meeting/{{ $meeting->id }}/delete'>
             <button class='btn btn-error'>Delete meeting</button>
         </a>
+    @endif
         </div>
     </div>
 </x-app-layout>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-meet-form-layout>
-        <form method="POST" action='{{ route('meeting.delete', $id = $meeting->id) }}'>
+        <form method="POST" action='{{ route('meetings.delete', $id = $meeting->id) }}'>
             @csrf
             @method('delete')
             <h2 class='text-xl text-base-200'>{{ $meeting->title }}</h2><br>
