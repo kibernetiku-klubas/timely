@@ -8,5 +8,8 @@
             <input type='hidden' name='id' value='{{ $meeting->id }}'>
             <x-primary-button class='btn btn-outline btn-error'>Confirm deletion</x-primary-button>
         </form>
+            <a href="/meetings/{{ $meeting->id}}/">
+                <button class='btn btn-outline'>Cancel</button>
+            </a>
     </x-meet-form-layout>
 </x-app-layout>

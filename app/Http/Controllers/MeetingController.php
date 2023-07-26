@@ -65,8 +65,8 @@ class MeetingController extends Controller
 
     public function update(StoreMeeting $request, $id): RedirectResponse
     {
-        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
         $validated = $request->validated();
+        $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
 
         $meeting->title = $validated['title'];
         $meeting->description = $validated['description'];
