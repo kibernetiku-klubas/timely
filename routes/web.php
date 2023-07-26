@@ -17,6 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('meetings', MeetingController::class);
     Route::view('/add-meeting', 'meetings.add');
     Route::resource('dates', DateController::class);
+    Route::post('/dates', [DateController::class, 'store'])->name('dates.store');
+    Route::put('/dates/{id}', [DateController::class, 'update'])->name('dates.update');
+    Route::delete('/dates/{id}', [DateController::class, 'destroy'])->name('dates.destroy');
 });
 
 require __DIR__ . '/auth.php';
