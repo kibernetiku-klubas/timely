@@ -12,9 +12,7 @@ class Vote extends Model
 
     public $timestamps = false;
 
-    protected $fillable = [
-        'voted_by',
-    ];
+    protected $fillable = ['date_id', 'voted_by'];
 
     public function date(): BelongsTo
     {
