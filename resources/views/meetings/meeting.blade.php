@@ -128,7 +128,7 @@
                                             <div class="flex justify-end">
                                                 <!-- This button invokes the closeModal function to cancel deletion -->
                                                 <x-primary-button id="closeDialog" onclick="closeModal()">
-                                                    Close
+                                                    Cancel
                                                 </x-primary-button>
                                                 <!-- This button invokes the confirmDelete function to proceed with deletion -->
                                                 <x-primary-button id="confirmDelete" class="ml-2" onclick="confirmDelete()">
