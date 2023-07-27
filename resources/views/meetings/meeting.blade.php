@@ -78,7 +78,9 @@
                     <div class="flex justify-center items-center h-full mt-4">
                         <h2 class="text-lg text-black font-bold">NO DATES YET</h2>
                     </div>
+                @if(Auth::check())
                     <p class="flex justify-center items-center h-full text-md mt-1 text-black font-bold">Add dates by using date selector above</p>
+                    @endif
                 @endif
             <ul class="m-6">
                 @foreach($meeting->dates as $date)
