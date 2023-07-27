@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
                 ->count(5)
                 ->has(Vote::factory()->count(3))
             )
+            ->count(10)
             ->create();
     }
 }
