@@ -1,7 +1,6 @@
 <x-app-layout>
     @if(session()->has('success'))
-        <x-notification>
-        </x-notification>
+        <x-notification type="success" message="{{ session()->get('success') }}" />
     @endif
 
     <div class="py-12">
