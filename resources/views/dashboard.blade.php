@@ -9,8 +9,14 @@
         </div>
     </div>
 
-    <div class="flex justify-center text-3xl text-black mb-12 font-bold">Your meetings</div>
-    <div class="flex justify-center">
+    <div class="flex justify-center text-3xl text-black mb-12 font-bold">YOUR MEETINGS:</div>
+        @if($meetings->isEmpty())
+            <div class="flex justify-center items-center h-full">
+                <h2 class="text-2xl text-black font-bold">NO MEETINGS YET</h2>
+            </div>
+            <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">Create your first meeting by pressing "Add a new meeting button" above</p>
+        @endif
+        <div class="flex justify-center">
         <div class="card-container grid grid-cols-1 gap-5 place-items-center md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mx-14">
             @foreach ($meetings as $meeting)
                 <div class="card bg-primary-content shadow-xl w-full sm:w-full md:w-96 h-full">

@@ -74,6 +74,12 @@
                 </form>
             </dialog>
             <div class="flex justify-center text-xl mt-8 font-bold"> DATES AND TIMES FOR THE MEETING:</div>
+                @if($meeting->dates->isEmpty())
+                    <div class="flex justify-center items-center h-full mt-4">
+                        <h2 class="text-lg text-black font-bold">NO DATES YET</h2>
+                    </div>
+                    <p class="flex justify-center items-center h-full text-md mt-1 text-black font-bold">Add dates by using date selector above</p>
+                @endif
             <ul class="m-6">
                 @foreach($meeting->dates as $date)
                     <li class="my-6 shadow-2xl p-6 rounded-xl">
@@ -90,12 +96,17 @@
                             </div>
                             <div class="w-60">
                                 <details class="collapse collapse-arrow bg-white shadow-xl hover:bg-gray-300">
-                                    <summary class="collapse-title text-xl font-medium">{{ $date->votes->count() }}</summary>
+                                    <summary
+                                        class="collapse-title text-xl font-medium">{{ $date->votes->count() }}</summary>
                                     <div class="collapse-content">
-                                        <div class="font-bold">People who voted:<br></div>
-                                        @foreach($date->votes as $vote)
-                                            {{ $vote->voted_by }}<br>
-                                        @endforeach
+                                        @if($date->votes->isEmpty())
+                                            <div class="font-bold">No votes on this date</div>
+                                        @else
+                                            <div class="font-bold">People who voted:<br></div>
+                                            @foreach($date->votes as $vote)
+                                                {{ $vote->voted_by }}<br>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </details>
                             </div>
@@ -122,15 +133,19 @@
                                             @enderror
                                         </form>
                                         <!-- Delete chosen date -->
-                                        <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
+                                        <form id="deleteForm" method="POST"
+                                              action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button id="openDialog" class="mt-7 ml-1" onclick="openModal(event)">
+                                            <x-primary-button id="openDialog" class="mt-7 ml-1"
+                                                              onclick="openModal(event)">
                                                 Delete
                                             </x-primary-button>
                                         </form>
-                                        <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
-                                        <div id="dialog" class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
+                                        <div id="overlay"
+                                             class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+                                        <div id="dialog"
+                                             class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
                                             <h1 class="text-2xl font-semibold">Confirm Deletion</h1>
                                             <div class="py-5 border-t border-b border-gray-300">
                                                 <p>Are you sure you want to delete this date?</p>
@@ -139,7 +154,8 @@
                                                 <x-primary-button id="closeDialog" onclick="closeModal()">
                                                     Cancel
                                                 </x-primary-button>
-                                                <buttom id="confirmDelete" class="ml-2 btn btn-error" onclick="confirmDelete()">
+                                                <buttom id="confirmDelete" class="ml-2 btn btn-error"
+                                                        onclick="confirmDelete()">
                                                     Confirm Delete
                                                 </buttom>
                                             </div>
@@ -175,10 +191,12 @@
         dialog.classList.remove('hidden');
         overlay.classList.remove('hidden');
     }
+
     function closeModal() {
         dialog.classList.add('hidden');
         overlay.classList.add('hidden');
     }
+
     function confirmDelete() {
         deleteForm.submit();
     }
