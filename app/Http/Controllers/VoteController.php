@@ -18,6 +18,10 @@ class VoteController extends Controller
             return redirect()->back()->with('error', 'Please select at least one option.');
         }
 
+        if (session()->has('voted_' . $meetingId)) {
+            return redirect()->back()->with('error', 'You have already voted for this meeting.');
+        }
+
         foreach ($dateIds as $dateId) {
             if (in_array($dateId, $votes)) {
                 Vote::create([
@@ -26,6 +30,8 @@ class VoteController extends Controller
                 ]);
             }
         }
+
+        session(['voted_' . $meetingId => true]);
 
         return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully!');
     }
