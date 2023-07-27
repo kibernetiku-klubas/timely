@@ -38,7 +38,7 @@
             <div>
                 <x-input-label for="voted_by" :value="__('Your name')"/>
                 <x-text-input id="voted_by" class="block mt-1 w-full text-black" type="text" name="voted_by"
-                              :value="old('voted_by')" required autofocus/>
+                              :value="old('voted_by')" required autofocus maxlength="50" />
                 <x-input-error :messages="$errors->get('votes')" class="mt-2 text-red-700"/>
             </div>
             @foreach($meeting->dates as $date)
