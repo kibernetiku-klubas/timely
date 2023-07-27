@@ -92,7 +92,7 @@
                         </div>
                         <div class="container">
                             <div class="inline-flex rounded-md shadow-sm">
-                                <!--Update chosen date-->
+                                <!-- Update chosen date -->
                                 @if (Auth::check())
                                     @if ($user->id == $meeting->user_id)
                                         <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
@@ -110,16 +110,32 @@
                                             @error('new_time')
                                             <p class="text-red-500 text-sm">{{ "The selected date already exists." }}</p>
                                             @enderror
-                                            <!--Delete chosen date-->
                                         </form>
-                                        <form method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}"
-                                              onsubmit="return confirm('Are you sure you wish to delete this date?');">
+                                        <!-- Delete chosen date -->
+                                        <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-primary-button type="submit" class="mt-7 ml-1">
+                                            <x-primary-button id="openDialog" class="mt-7 ml-1" onclick="openModal(event)">
                                                 Delete
                                             </x-primary-button>
                                         </form>
+                                        <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+                                        <div id="dialog" class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
+                                            <h1 class="text-2xl font-semibold">Confirm Deletion</h1>
+                                            <div class="py-5 border-t border-b border-gray-300">
+                                                <p>Are you sure you want to delete this date?</p>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <!-- This button invokes the closeModal function to cancel deletion -->
+                                                <x-primary-button id="closeDialog" onclick="closeModal()">
+                                                    Close
+                                                </x-primary-button>
+                                                <!-- This button invokes the confirmDelete function to proceed with deletion -->
+                                                <x-primary-button id="confirmDelete" class="ml-2" onclick="confirmDelete()">
+                                                    Confirm Delete
+                                                </x-primary-button>
+                                            </div>
+                                        </div>
                                     @endif
                                 @endif
                             </div>
@@ -140,3 +156,27 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    // Finds the HTML elements by ID, assigns JS variables for them
+    var openButton = document.getElementById('openDialog');
+    var dialog = document.getElementById('dialog');
+    var closeButton = document.getElementById('closeDialog');
+    var overlay = document.getElementById('overlay');
+    var deleteForm = document.getElementById('deleteForm');
+    
+    // Removes "hidden" from the modal's background overlay and dialogue box. (makes them appear for the user upon click)
+    function openModal(event) { 
+        event.preventDefault();
+        dialog.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+    }
+    // Adds back "hidden" to the modal's background overlay and dialogue box. (makes them disappear when user cancels deletion)
+    function closeModal() {
+        dialog.classList.add('hidden');
+        overlay.classList.add('hidden');
+    }
+    // Confirms deletion, removes the date
+    function confirmDelete() {
+        deleteForm.submit();
+    }
+</script>
