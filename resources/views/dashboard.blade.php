@@ -32,4 +32,7 @@
             @endforeach
         </div>
     </div>
+        <div class="mt-8 mr-40 flex justify-end">
+            {{ $meetings->links() }}
+        </div>
 </x-app-layout>
