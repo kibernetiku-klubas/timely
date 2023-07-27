@@ -97,6 +97,7 @@
                 </x-primary-button>
             </div>
         </form>
+        @include('meetings.edit-votes')
     </x-meet-form-layout>
 </x-app-layout>
 
