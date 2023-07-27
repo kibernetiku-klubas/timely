@@ -1,6 +1,3 @@
-<head>
-    <title>{{$meeting->title}} • Timely</title>
-</head>
 <x-app-layout>
 
     @if (session()->has('error'))

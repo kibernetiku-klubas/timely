@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vote;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class VoteController extends Controller
@@ -34,5 +35,26 @@ class VoteController extends Controller
         session(['voted_' . $meetingId => true]);
 
         return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully!');
+    }
+
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $vote = Vote::findOrFail($id);
+        $vote->voted_by = $request->input('voted_by');
+        $vote->save();
+
+        return redirect()->route('meeting.show', ['id' => $vote->date->meeting->id])
+            ->with('success', 'Vote updated successfully!');
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $vote = Vote::findOrFail($id);
+        $meetingId = $vote->date->meeting->id;
+        $vote->delete();
+
+        return redirect()->route('meeting.show', ['id' => $meetingId])
+            ->with('success', 'Vote deleted successfully!');
     }
 }
