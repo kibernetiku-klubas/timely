@@ -33,7 +33,7 @@ class StoreDate extends FormRequest
                     // checks if the date is equal in the same meeting
                     $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
                     if ($this->getMethod() === 'PUT') { // excludes updated date from being checked (for when date is kept as before)
-                        $date->where('id', '!=', $this->route('date')->id);
+                        $date->where('id', '!=', $this->route('date'));
                     }
                     if ($date->count() > 0) {
                         $fail('The selected date already exists for this meeting.');

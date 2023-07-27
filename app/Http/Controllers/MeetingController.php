@@ -45,7 +45,7 @@ class MeetingController extends Controller
         return view('meetings.meeting', [
             'user' => Auth::user(),
             'meeting' => Meeting::findOrFail($id),
-            'dates' => Date::where('meeting_id', $id)->get()
+            'dates' => Date::where('meeting_id', $id)->orderBy('date_and_time', 'asc')->get()
         ]);
     }
 

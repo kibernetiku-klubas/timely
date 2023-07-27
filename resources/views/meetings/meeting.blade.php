@@ -1,9 +1,9 @@
 <x-app-layout>
     @if (session()->has('error'))
-        <x-notification type="error" message="{{ session('error') }}" />
+        <x-notification type="error" message="{{ session('error') }}"/>
     @endif
     @if(session()->has('success'))
-        <x-notification type="success" message="{{ session()->get('success') }}" />
+        <x-notification type="success" message="{{ session()->get('success') }}"/>
     @endif
     <div class="flex flex-col sm:justify-center items-center py-8 sm:pt-0 bg-gray-100 text-black">
         <div
@@ -73,15 +73,17 @@
                     @endif
                 </form>
             </dialog>
-
             <div class="flex justify-center text-xl mt-8 font-bold"> DATES AND TIMES FOR THE MEETING:</div>
             <ul class="m-6">
                 @foreach($dates as $date)
                     <li class="my-6 shadow-2xl p-6 rounded-xl">
                         <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
+
                         <div class="flex justify-center">
                             <div class="mx-6">
-                                {{$date->date_and_time}}
+                                From: {{$date->date_and_time}}<br>
+                                To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }}
+                                ,
                             </div>
                             <div class="mr-2 font-bold">
                                 Votes:
@@ -90,7 +92,7 @@
                                 Number of votes
                             </div>
                         </div>
-                        <div class="container">
+                        <div class="container flex justify-center">
                             <div class="inline-flex rounded-md shadow-sm">
                                 <!-- Update chosen date -->
                                 @if (Auth::check())
@@ -126,26 +128,23 @@
                                                 <p>Are you sure you want to delete this date?</p>
                                             </div>
                                             <div class="flex justify-end">
-                                                <!-- This button invokes the closeModal function to cancel deletion -->
                                                 <x-primary-button id="closeDialog" onclick="closeModal()">
                                                     Cancel
                                                 </x-primary-button>
-                                                <!-- This button invokes the confirmDelete function to proceed with deletion -->
-                                                <x-primary-button id="confirmDelete" class="ml-2" onclick="confirmDelete()">
+                                                <buttom id="confirmDelete" class="ml-2 btn btn-error" onclick="confirmDelete()">
                                                     Confirm Delete
-                                                </x-primary-button>
+                                                </buttom>
                                             </div>
                                         </div>
                                     @endif
+
                                 @endif
                             </div>
                         </div>
                     </li>
                 @endforeach
             </ul>
-            @if (Auth::check())
-                @if ($meeting->user_id == Auth::User()->id)
-                @endif
+            @if (Auth::check() && $meeting->user_id == Auth::User()->id)
                 <a href='/meeting/{{ $meeting->id }}/edit'>
                     <button class='btn btn-warning shadow-xl'>Edit meeting</button>
                 </a>
@@ -157,25 +156,21 @@
     </div>
 </x-app-layout>
 <script>
-    // Finds the HTML elements by ID, assigns JS variables for them
-    var openButton = document.getElementById('openDialog');
-    var dialog = document.getElementById('dialog');
-    var closeButton = document.getElementById('closeDialog');
-    var overlay = document.getElementById('overlay');
-    var deleteForm = document.getElementById('deleteForm');
-    
-    // Removes "hidden" from the modal's background overlay and dialogue box. (makes them appear for the user upon click)
-    function openModal(event) { 
+    let openButton = document.getElementById('openDialog');
+    let dialog = document.getElementById('dialog');
+    let closeButton = document.getElementById('closeDialog');
+    let overlay = document.getElementById('overlay');
+    let deleteForm = document.getElementById('deleteForm');
+
+    function openModal(event) {
         event.preventDefault();
         dialog.classList.remove('hidden');
         overlay.classList.remove('hidden');
     }
-    // Adds back "hidden" to the modal's background overlay and dialogue box. (makes them disappear when user cancels deletion)
     function closeModal() {
         dialog.classList.add('hidden');
         overlay.classList.add('hidden');
     }
-    // Confirms deletion, removes the date
     function confirmDelete() {
         deleteForm.submit();
     }

@@ -63,13 +63,13 @@
             </div>
             <!-- Duration -->
             <div>
-                <x-input-label for="duration" :value="__('Duration (min):')" />
+                <x-input-label for="duration" :value="__('Meeting duration (min):')" />
                 <x-text-input type="smallInteger" id="duration" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="duration" :value="old('duration')" required autofocus autocomplete="duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
             <!-- Delete_after -->
             <div>
-                <x-input-label for="delete_after" :value="__('Delete after (days):')" />
+                <x-input-label for="delete_after" :value="__('Delete after (days) from creation:')" />
                 <x-text-input type="integer" id="delete_after" class="block mt-1 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm bg-white" type="string" name="delete_after" :value="old('delete_after')" required autofocus autocomplete="delete_after" />
                 <x-input-error :messages="$errors->get('delete_after')" class="mt-2" />
             </div>
