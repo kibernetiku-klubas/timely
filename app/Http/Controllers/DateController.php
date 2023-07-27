@@ -28,7 +28,7 @@ class DateController extends Controller
             $date->save();
         }
 
-        return redirect("/meetings/$meetingId");
+        return redirect("/meetings/$meetingId")->with('success', 'Date saved');
     }
 
     public function update(StoreDate $request, $id): RedirectResponse
