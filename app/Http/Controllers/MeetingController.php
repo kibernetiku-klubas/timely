@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMeeting;
-use App\Models\Date;
 use App\Models\Meeting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -42,10 +41,11 @@ class MeetingController extends Controller
 
     public function show($id)
     {
+        $meeting = Meeting::with('dates.votes')->findOrFail($id);
+
         return view('meetings.meeting', [
             'user' => Auth::user(),
-            'meeting' => Meeting::findOrFail($id),
-            'dates' => Date::where('meeting_id', $id)->orderBy('date_and_time', 'asc')->get()
+            'meeting' => $meeting,
         ]);
     }
 
