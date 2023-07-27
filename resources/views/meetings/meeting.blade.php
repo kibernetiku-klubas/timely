@@ -94,35 +94,50 @@
                         </div>
                         <div class="container flex justify-center">
                             <div class="inline-flex rounded-md shadow-sm">
-                                <!--Update chosen date-->
-                                @if (Auth::check() && $user->id == $meeting->user_id)
-                                    <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
-                                        <x-input-label for="new_time" :value="__('Select new time:')"/>
-                                        <div class="inline-flex">
-                                            <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)"
-                                                         :max-date="today()->addDays(90)" required/>
+                                <!-- Update chosen date -->
+                                @if (Auth::check())
+                                    @if ($user->id == $meeting->user_id)
+                                        <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+                                            <x-input-label for="new_time" :value="__('Select new time:')"/>
+                                            <div class="inline-flex">
+                                                <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)"
+                                                             :max-date="today()->addDays(90)" required/>
+                                            </div>
+                                            <x-primary-button type="submit" class="link-button mt-2">
+                                                Confirm
+                                            </x-primary-button>
+                                            @error('new_time')
+                                            <p class="text-red-500 text-sm">{{ "The selected date already exists." }}</p>
+                                            @enderror
+                                        </form>
+                                        <!-- Delete chosen date -->
+                                        <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <x-primary-button id="openDialog" class="mt-7 ml-1" onclick="openModal(event)">
+                                                Delete
+                                            </x-primary-button>
+                                        </form>
+                                        <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+                                        <div id="dialog" class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
+                                            <h1 class="text-2xl font-semibold">Confirm Deletion</h1>
+                                            <div class="py-5 border-t border-b border-gray-300">
+                                                <p>Are you sure you want to delete this date?</p>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <x-primary-button id="closeDialog" onclick="closeModal()">
+                                                    Cancel
+                                                </x-primary-button>
+                                                <buttom id="confirmDelete" class="ml-2 btn btn-error" onclick="confirmDelete()">
+                                                    Confirm Delete
+                                                </buttom>
+                                            </div>
                                         </div>
-                                        <br>
-                                        <x-primary-button type="submit" class="link-button mt-2">
-                                            Confirm
-                                        </x-primary-button>
-                                        @error('new_time')
-                                        <p class="text-red-500 text-sm">{{ "The selected date already exists." }}</p>
-                                        @enderror
-                                        <!--Delete chosen date-->
+                                    @endif
 
-                                    </form>
-                                    <form method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}"
-                                          onsubmit="return confirm('Are you sure you wish to delete this date?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <x-primary-button type="submit" class="mt-[76px] -ml-[135px]">
-                                            Delete
-                                        </x-primary-button>
-                                    </form>
                                 @endif
                             </div>
                         </div>
@@ -140,3 +155,23 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    let openButton = document.getElementById('openDialog');
+    let dialog = document.getElementById('dialog');
+    let closeButton = document.getElementById('closeDialog');
+    let overlay = document.getElementById('overlay');
+    let deleteForm = document.getElementById('deleteForm');
+
+    function openModal(event) {
+        event.preventDefault();
+        dialog.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+    }
+    function closeModal() {
+        dialog.classList.add('hidden');
+        overlay.classList.add('hidden');
+    }
+    function confirmDelete() {
+        deleteForm.submit();
+    }
+</script>
