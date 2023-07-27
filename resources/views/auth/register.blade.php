@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <body data-page-title="Register"></body>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

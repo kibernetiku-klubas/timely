@@ -1,7 +1,5 @@
-<head>
-    <title>Confirm deletion • Timely</title>
-</head>
 <x-app-layout>
+    <body data-page-title="Confirm deletion"></body>
     <x-meet-form-layout>
         <form method="POST" action='{{ route('meetings.delete', $id = $meeting->id) }}'>
             @csrf

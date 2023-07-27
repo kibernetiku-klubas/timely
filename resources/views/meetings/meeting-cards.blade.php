@@ -47,10 +47,10 @@
                                     <x-primary-button id="closeDialog" onclick="closeModal()">
                                         Cancel
                                     </x-primary-button>
-                                    <buttom id="confirmDelete" class="ml-2 btn btn-error"
+                                    <button id="confirmDelete" class="ml-2 btn btn-error"
                                             onclick="confirmDelete()">
                                         Confirm Delete
-                                    </buttom>
+                                    </button>
                                 </div>
                             </div>
                         @endif

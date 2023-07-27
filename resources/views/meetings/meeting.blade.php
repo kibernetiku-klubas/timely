@@ -1,8 +1,5 @@
-<head>
-    <title>{{$meeting->title}} • Timely</title>
-</head>
 <x-app-layout>
-
+    <body data-page-title={{$meeting->title}}></body>
     @if (session()->has('error'))
         <x-notification type="error" message="{{ session('error') }}"/>
     @endif

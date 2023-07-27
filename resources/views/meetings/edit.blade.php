@@ -1,7 +1,5 @@
-<head>
-    <title>Edit meeting • Timely</title>
-</head>
 <x-app-layout>
+    <body data-page-title="Edit meeting"></body>
     <x-slot name="header">
         <h2 class="text-xl text-gray-800 leading-tight">
             Add a new meeting
