@@ -82,7 +82,8 @@
                         <div class="flex justify-center">
                             <div class="mx-6">
                                 From: {{$date->date_and_time}}<br>
-                                To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }},
+                                To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }}
+                                ,
                             </div>
                             <div class="mr-2 font-bold">
                                 Votes:

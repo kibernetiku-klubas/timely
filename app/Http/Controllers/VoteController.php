@@ -15,7 +15,8 @@ class VoteController extends Controller
         $votes = $request->input('votes', []);
 
         if (empty($votes)) {
-            return redirect()->back()->with('error', 'Please select at least one option.');        }
+            return redirect()->back()->with('error', 'Please select at least one option.');
+        }
 
         foreach ($dateIds as $dateId) {
             if (in_array($dateId, $votes)) {

@@ -41,7 +41,7 @@ class DateController extends Controller
             $date->save();
         }
 
-        return redirect("/meetings/$meetingId");
+        return redirect("/meetings/$meetingId")->with('success', 'Date updated');
     }
 
     public function destroy($id): RedirectResponse
@@ -49,9 +49,9 @@ class DateController extends Controller
         $date = Date::findOrFail($id);
         if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
         $meetingId = $date->meeting_id;
-        
+
         $date->delete();
         }
-        return redirect("/meetings/$meetingId");
+        return redirect("/meetings/$meetingId")->with('error', 'Date deleted!');
     }
 }
