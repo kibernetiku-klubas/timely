@@ -9,7 +9,12 @@
         <div
             class="w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl overflow-hidden rounded-lg">
             @if (Auth::check())
-                @include ('meetings.edit-times')
+                <details class="collapse bg-white shadow-xl mb-6">
+                    <summary class="collapse-title text-xl font-medium">Click here to add times</summary>
+                    <div class="collapse-content">
+                        @include ('meetings.edit-times')
+                    </div>
+                </details>
             @endif
             <h2 class="text-xl text-gray-800 leading-tight">
                 Meeting: {{ $meeting->title }}
