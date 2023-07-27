@@ -1,9 +1,9 @@
 <x-app-layout>
     @if (session()->has('error'))
-        <x-notification type="error" message="{{ session('error') }}" />
+        <x-notification type="error" message="{{ session('error') }}"/>
     @endif
     @if(session()->has('success'))
-        <x-notification type="success" message="{{ session()->get('success') }}" />
+        <x-notification type="success" message="{{ session()->get('success') }}"/>
     @endif
     <div class="flex flex-col sm:justify-center items-center py-8 sm:pt-0 bg-gray-100 text-black">
         <div
@@ -73,15 +73,16 @@
                     @endif
                 </form>
             </dialog>
-
             <div class="flex justify-center text-xl mt-8 font-bold"> DATES AND TIMES FOR THE MEETING:</div>
             <ul class="m-6">
                 @foreach($dates as $date)
                     <li class="my-6 shadow-2xl p-6 rounded-xl">
                         <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
+
                         <div class="flex justify-center">
                             <div class="mx-6">
-                                {{$date->date_and_time}}
+                                From: {{$date->date_and_time}}<br>
+                                To: {{date("Y-m-d H:i", strtotime("$date->date_and_time + $meeting->duration minute")) }},
                             </div>
                             <div class="mr-2 font-bold">
                                 Votes:
@@ -90,46 +91,44 @@
                                 Number of votes
                             </div>
                         </div>
-                        <div class="container">
+                        <div class="container flex justify-center">
                             <div class="inline-flex rounded-md shadow-sm">
                                 <!--Update chosen date-->
-                                @if (Auth::check())
-                                    @if ($user->id == $meeting->user_id)
-                                        <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
-                                            <x-input-label for="new_time" :value="__('Select new time:')"/>
-                                            <div class="inline-flex">
-                                                <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)"
-                                                             :max-date="today()->addDays(90)" required/>
-                                            </div>
-                                            <x-primary-button type="submit" class="link-button mt-2">
-                                                Confirm
-                                            </x-primary-button>
-                                            @error('new_time')
-                                            <p class="text-red-500 text-sm">{{ "The selected date already exists." }}</p>
-                                            @enderror
-                                            <!--Delete chosen date-->
-                                        </form>
-                                        <form method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}"
-                                              onsubmit="return confirm('Are you sure you wish to delete this date?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <x-primary-button type="submit" class="mt-7 ml-1">
-                                                Delete
-                                            </x-primary-button>
-                                        </form>
-                                    @endif
+                                @if (Auth::check() && $user->id == $meeting->user_id)
+                                    <form method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+                                        <x-input-label for="new_time" :value="__('Select new time:')"/>
+                                        <div class="inline-flex">
+                                            <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)"
+                                                         :max-date="today()->addDays(90)" required/>
+                                        </div>
+                                        <br>
+                                        <x-primary-button type="submit" class="link-button mt-2">
+                                            Confirm
+                                        </x-primary-button>
+                                        @error('new_time')
+                                        <p class="text-red-500 text-sm">{{ "The selected date already exists." }}</p>
+                                        @enderror
+                                        <!--Delete chosen date-->
+
+                                    </form>
+                                    <form method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}"
+                                          onsubmit="return confirm('Are you sure you wish to delete this date?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-primary-button type="submit" class="mt-[76px] -ml-[135px]">
+                                            Delete
+                                        </x-primary-button>
+                                    </form>
                                 @endif
                             </div>
                         </div>
                     </li>
                 @endforeach
             </ul>
-            @if (Auth::check())
-                @if ($meeting->user_id == Auth::User()->id)
-                @endif
+            @if (Auth::check() && $meeting->user_id == Auth::User()->id)
                 <a href='/meeting/{{ $meeting->id }}/edit'>
                     <button class='btn btn-warning shadow-xl'>Edit meeting</button>
                 </a>
