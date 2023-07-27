@@ -1,3 +1,6 @@
+<head>
+    <title>Confirm deletion • Timely</title>
+</head>
 <x-app-layout>
     <x-meet-form-layout>
         <form method="POST" action='{{ route('meetings.delete', $id = $meeting->id) }}'>

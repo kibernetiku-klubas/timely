@@ -1,3 +1,6 @@
+<head>
+    <title>Dashboard • Timely</title>
+</head>
 <x-app-layout>
     @if(session()->has('success'))
         <x-notification type="success" message="{{ session()->get('success') }}" />
