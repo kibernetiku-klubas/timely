@@ -51,7 +51,7 @@ class MeetingController extends Controller
 
     public function showDashboard()
     {
-        $meetings = Meeting::where('user_id', Auth::user()->id)->simplePaginate(16);
+        $meetings = Meeting::where('user_id', Auth::user()->id)->simplePaginate(12);
 
         return view('dashboard', [
             'meetings' => $meetings,
