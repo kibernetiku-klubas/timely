@@ -1,7 +1,5 @@
-<head>
-    <title>Dashboard • Timely</title>
-</head>
 <x-app-layout>
+    <body data-page-title="Dashboard"></body>
     @if(session()->has('success'))
         <x-notification type="success" message="{{ session()->get('success') }}" />
     @endif
