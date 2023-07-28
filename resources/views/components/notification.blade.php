@@ -1,6 +1,7 @@
 <div>
     <div class="alert-container">
-        <div class="flex justify-center {{ $type === 'success' ? 'text-green-600' : 'text-red-600' }} bg-white px-4 py-3 rounded-lg shadow-xl relative max-w-lg mx-auto mt-6 p-6">
+        <div
+            class="flex justify-center {{ $type === 'success' ? 'text-green-600' : 'text-red-600' }} bg-white px-4 py-3 rounded-lg shadow-xl relative max-w-lg mx-auto mt-6 p-6 uppercase">
             <strong class="font-bold">{{ $message }}</strong>
         </div>
     </div>

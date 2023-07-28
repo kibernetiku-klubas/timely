@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Date;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreDate extends FormRequest
 {
@@ -53,5 +54,15 @@ class StoreDate extends FormRequest
         return [
             'new_time.required' => 'Please select a date and time.',
         ];
+    }
+
+    /**
+     * @throws HttpResponseException
+     */
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new HttpResponseException(
+            redirect()->back()->with('error', $validator->errors()->first())
+        );
     }
 }

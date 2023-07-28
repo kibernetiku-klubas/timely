@@ -1,5 +1,5 @@
 <nav>
-    <div class="navbar bg-white border-b-2 text-black flex flex-col sm:flex-row sm:justify-between">
+    <div class="navbar bg-white border-b-2 text-black flex flex-col sm:flex-row sm:justify-between w-full">
         <div class="flex-1 flex justify-center sm:justify-start">
             <a class="btn btn-ghost normal-case text-xl" href="{{ route('dashboard') }}">Timely</a>
         </div>

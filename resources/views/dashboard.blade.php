@@ -1,5 +1,9 @@
 <x-app-layout>
     <body data-page-title="Dashboard"></body>
+    @if (session()->has('error'))
+        <x-notification type="error" message="{{ session('error') }}"/>
+    @endif
+
     @if(session()->has('success'))
         <x-notification type="success" message="{{ session()->get('success') }}"/>
     @endif

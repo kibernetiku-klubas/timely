@@ -28,7 +28,7 @@ class DateController extends Controller
             $date->save();
         }
 
-        return redirect("/meetings/$meetingId")->with('success', 'Date saved');
+        return redirect("/meetings/$meetingId")->with('success', 'Date saved.');
     }
 
     public function update(StoreDate $request, $id): RedirectResponse
@@ -41,7 +41,7 @@ class DateController extends Controller
             $date->save();
         }
 
-        return redirect("/meetings/$meetingId")->with('success', 'Date updated');
+        return redirect("/meetings/$meetingId")->with('success', 'Date updated.');
     }
 
     public function destroy($id): RedirectResponse
@@ -52,6 +52,6 @@ class DateController extends Controller
 
         $date->delete();
         }
-        return redirect("/meetings/$meetingId")->with('error', 'Date deleted!');
+        return redirect("/meetings/$meetingId")->with('error', 'Date deleted.');
     }
 }
