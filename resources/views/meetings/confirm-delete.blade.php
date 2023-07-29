@@ -2,7 +2,7 @@
     <body data-page-title="Confirm delete"></body>
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
-            <div class="fill-current text-black text-4xl font-bold">DELETE.</div>
+            <div class="fill-current text-black text-4xl font-bold">DELETE</div>
             <div class="fill-current text-black text-4xl font-bold">MEETING.</div>
         </div>
     </div>
