@@ -3,27 +3,34 @@
     <div class="text-lg font-bold text-black uppercase mb-4">Meeting created by {{$creator->name}}</div>
 
     <div class="flex items-center mb-4">
-        <svg fill="#000000" height="30" width="30" viewBox="0 0 512 512" class="mr-3 ml-1">
-            <path d="M0,462h256v-64H0V462z M0,355.3h512v-64H0V355.3z M256,184.7H0v64h256V184.7z M0,78v64h512V78H0z"/>
-        </svg>
+        <div class="svg-container">
+            <svg fill="#000000" height="25" width="25" viewBox="0 0 512 512" class="mr-1 ml-1">
+                <path
+                    d="M0,462h256v-64H0V462z M0,355.3h512v-64H0V355.3z M256,184.7H0v64h256V184.7z M0,78v64h512V78H0z"/>
+            </svg>
+        </div>
         <div>{{ $meeting->description }}</div>
     </div>
 
     <div class="flex items-center mb-4">
-        <svg width="25" height="25" viewBox="0 0 64 64" class="mr-2">
-            <path fill="#000000" d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24
+        <div class="svg-container">
+            <svg width="25" height="25" viewBox="0 0 64 64" class="mr-2">
+                <path fill="#000000" d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24
             C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24
             C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z"/>
-        </svg>
+            </svg>
+        </div>
         <div>{{ $meeting->location }}</div>
     </div>
 
     <div class="flex items-center mb-4">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
-            <path
-                d="M12 7V12L14.5 13.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <div class="svg-container">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                <path
+                    d="M12 7V12L14.5 13.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
         <div>{{ $meeting->duration }} minutes</div>
     </div>
 

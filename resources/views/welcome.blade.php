@@ -81,8 +81,8 @@
                 <span>made easy.</span>
             </h1>
             <p class="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
-                Having trouble finding the meeting time that suits everyone? Look no further than your free and
-                open-source solution - Timely
+                Having trouble finding the meeting time that suits everyone? Look no further than your free,
+                open-source and privacy respecting solution - Timely
             </p>
             <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
                 <a href="{{ route('dashboard') }}"
