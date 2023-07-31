@@ -1,16 +1,23 @@
 <x-app-layout>
-    <body data-page-title="Confirm deletion"></body>
+    <body data-page-title="Confirm delete"></body>
+    <div class="flex flex-col sm:justify-center items-center mt-8">
+        <div>
+            <div class="fill-current text-black text-4xl font-bold">DELETE</div>
+            <div class="fill-current text-black text-4xl font-bold">MEETING.</div>
+        </div>
+    </div>
     <x-meet-form-layout>
         <form method="POST" action='{{ route('meetings.delete', $id = $meeting->id) }}'>
             @csrf
             @method('delete')
-            <h2 class='text-xl text-base-200'>{{ $meeting->title }}</h2><br>
-            <p class='text-base-200'>Are you sure you'd like to remove this meeting?</p><br>
+            <h2 class='text-2xl text-black font-bold uppercase'>{{ $meeting->title }}</h2><br>
+            <p class='text-red-700 uppercase'>Are you sure you want to delete this meeting?</p><br>
             <input type='hidden' name='id' value='{{ $meeting->id }}'>
-            <x-primary-button class='btn btn-outline btn-error'>Confirm deletion</x-primary-button>
-        </form>
+
             <a href="/meetings/{{ $meeting->id}}/">
-                <button class='btn btn-outline'>Cancel</button>
+                <x-secondary-button>Cancel</x-secondary-button>
             </a>
+            <x-danger-button>Confirm deletion</x-danger-button>
+        </form>
     </x-meet-form-layout>
 </x-app-layout>

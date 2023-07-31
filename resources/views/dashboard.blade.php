@@ -1,39 +1,44 @@
 <x-app-layout>
     <body data-page-title="Dashboard"></body>
-    @if(session()->has('success'))
-        <x-notification type="success" message="{{ session()->get('success') }}" />
+    @if (session()->has('error'))
+        <x-notification type="error" message="{{ session('error') }}"/>
     @endif
 
-    <div class="py-12">
-        <div class="flex items-center justify-center">
-        <a href="/add-meeting"><button class="btn btn-outline border-none bg-primary-content text-black text-xl shadow-xl p-8 content-center">Add a new meeting <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/> </svg></button></a>
+    @if(session()->has('success'))
+        <x-notification type="success" message="{{ session()->get('success') }}"/>
+    @endif
+
+    <div class="flex flex-col sm:justify-center items-center mt-8">
+        <div>
+            <div class="fill-current text-black text-4xl font-bold">YOUR</div>
+            <div class="fill-current text-black text-4xl font-bold mb-8">MEETINGS.</div>
         </div>
     </div>
-
-    <div class="flex justify-center text-3xl text-black mb-12 font-bold">YOUR MEETINGS:</div>
-        @if($meetings->isEmpty())
-            <div class="flex justify-center items-center h-full">
-                <h2 class="text-2xl text-black font-bold">NO MEETINGS YET</h2>
-            </div>
-            <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">Create your first meeting by pressing "Add a new meeting button" above</p>
-        @endif
-        <div class="flex justify-center">
-        <div class="card-container grid grid-cols-1 gap-5 place-items-center md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mx-14">
+    @if($meetings->isEmpty())
+        <div class="flex justify-center items-center h-full">
+            <h2 class="text-2xl text-black font-bold">NO MEETINGS YET</h2>
+        </div>
+        <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">Create your first meeting
+            by pressing "Create a meeting" button</p>
+    @endif
+    <div class="flex justify-center">
+        <div
+            class="card-container grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-2 sm:mx-4 md:mx-8">
             @foreach ($meetings as $meeting)
-                <div class="card bg-primary-content shadow-xl w-full sm:w-full md:w-96 h-full">
-                    <div class="card-body">
-                        <h2 class="card-title text-base-200">{{ $meeting->title }}</h2>
-                        <div class="card-actions justify-end">
-                            <a href='/meetings/{{ $meeting->id }}'>
-                                <button class="btn btn-outline border-none text-black text-xl shadow-xl hover:shadow-gray-400">View</button>
-                            </a>
+                <a href='/meetings/{{ $meeting->id }}' class="flex items-center justify-center h-full">
+                    <div class="card bg-white hover:bg-gray-200 shadow-xl w-full h-full hover:shadow-lg rounded-lg p-4">
+                        <div class="card-body">
+                            <h2 class="card-title text-xl sm:text-2xl md:text-base lg:text-xl text-black">
+                                {{ $meeting->title }}
+                            </h2>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>
-        <div class="mt-8 mr-40 flex justify-end">
-            {{ $meetings->links() }}
-        </div>
+
+    <div class="mt-8 mr-4 md:mr-8 flex justify-end">
+        {{ $meetings->links() }}
+    </div>
 </x-app-layout>

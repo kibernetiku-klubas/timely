@@ -49,4 +49,9 @@ class Meeting extends Model
     {
         return $this->hasManyThrough(Vote::class, Date::class);
     }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

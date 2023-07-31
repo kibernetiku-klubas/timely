@@ -34,7 +34,7 @@ class VoteController extends Controller
 
         session(['voted_' . $meetingId => true]);
 
-        return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully!');
+        return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully.');
     }
 
 
@@ -45,7 +45,7 @@ class VoteController extends Controller
         $vote->save();
 
         return redirect()->route('meeting.show', ['id' => $vote->date->meeting->id])
-            ->with('success', 'Vote updated successfully!');
+            ->with('success', 'Vote updated successfully.');
     }
 
     public function destroy($id): RedirectResponse
@@ -55,6 +55,6 @@ class VoteController extends Controller
         $vote->delete();
 
         return redirect()->route('meeting.show', ['id' => $meetingId])
-            ->with('success', 'Vote deleted successfully!');
+            ->with('error', 'Vote deleted successfully.');
     }
 }

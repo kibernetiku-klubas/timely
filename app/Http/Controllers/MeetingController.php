@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMeeting;
 use App\Models\Meeting;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class MeetingController extends Controller
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
         $meeting->delete();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('error', $message ?? 'Meeting deleted.');
     }
 
     public function displayEdit($id)
@@ -36,7 +37,7 @@ class MeetingController extends Controller
         $meeting = new Meeting;
         $meeting->user_id = Auth::user()->id;
 
-        return $this->assignMeetingData($meeting, $validated, '/dashboard', 'Meeting created successfully');
+        return $this->assignMeetingData($meeting, $validated, '/dashboard', 'Meeting created successfully.');
     }
 
     public function show($id)
@@ -45,6 +46,7 @@ class MeetingController extends Controller
 
         return view('meetings.meeting', [
             'user' => Auth::user(),
+            'creator' => $meeting->creator,
             'meeting' => $meeting,
         ]);
     }
@@ -76,6 +78,6 @@ class MeetingController extends Controller
         $meeting->delete_after = $validated['delete_after'];
         $meeting->save();
 
-        return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully');
+        return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully.');
     }
 }
