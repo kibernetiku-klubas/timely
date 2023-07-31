@@ -28,7 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
-
 });
 
 require __DIR__ . '/auth.php';
