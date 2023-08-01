@@ -31,12 +31,18 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'name' => ['required', 'string', 'max:255', 'unique:users,name,' . strtolower($request->input('name'))],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $lowercaseName = strtolower($request->input('name'));
+
+        if (User::where('name', $lowercaseName)->exists()) {
+            return redirect()->back()->withErrors(['name' => 'This name is already taken. Please choose a different one.']);
+        }
+
         $user = User::create([
-            'name' => $request->name,
+            'name' => $lowercaseName,
             'password' => Hash::make($request->password),
         ]);
 
