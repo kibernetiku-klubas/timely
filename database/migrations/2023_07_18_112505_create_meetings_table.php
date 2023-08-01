@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('timezone');
             $table->smallInteger('duration')->default('30');
             $table->integer('delete_after')->default('90');
+            $table->boolean('is1v1')->default('false');
             $table->timestamps();
         });
     }
