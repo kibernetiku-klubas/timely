@@ -14,6 +14,7 @@ class Date extends Model
     protected $table = 'dates';
 
     protected $fillable = ['date_and_time', 'voted_by'];
+
     public function meeting(): BelongsTo
     {
         return $this->belongsTo(Meeting::class, 'meeting_id', 'id');

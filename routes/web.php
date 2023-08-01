@@ -29,7 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
     Route::view('/pr', 'pr-egg');
-
 });
 
 require __DIR__ . '/auth.php';
