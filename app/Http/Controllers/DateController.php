@@ -10,10 +10,6 @@ use App\Models\Meeting;
 
 class DateController extends Controller
 {
-    public function index(): RedirectResponse
-    {
-        return redirect("dashboard");
-    }
 
     public function store(StoreDate $request): RedirectResponse
     {
@@ -48,9 +44,9 @@ class DateController extends Controller
     {
         $date = Date::findOrFail($id);
         if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
-        $meetingId = $date->meeting_id;
+            $meetingId = $date->meeting_id;
 
-        $date->delete();
+            $date->delete();
         }
         return redirect("/meetings/$meetingId")->with('error', 'Date deleted.');
     }
