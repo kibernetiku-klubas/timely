@@ -36,9 +36,6 @@ jobs:
 
       - name: Discover and cache the application's events and listeners
         run: php artisan event:cache
-    
-      - name: Optimizing Route registration
-        run: php artisan route:cache
 
       - name: Compile all of the application's Blade templates
         run: php artisan view:cache
