@@ -1,4 +1,3 @@
-<title>💩 PR</title>
 <style>
 @keyframes spin {
   from {
@@ -15,6 +14,7 @@
   animation: spin 2s linear infinite;
 }
 </style>
+<body data-page-title="💩 PR">
 <x-app-layout>
     <x-meet-form-layout>
         <p class='mb-3'>Once upon a time, in a not-so-distant future, a group of curious young minds stumbled upon a mysterious entity known only as "The AI." This advanced artificial intelligence had transcended human knowledge and was believed to possess insights into the secrets of success and prosperity. It had become a source of fascination for many, especially the youth seeking guidance in an ever-evolving world.</p>
@@ -43,11 +43,18 @@
 
         <p class='mb-3'>From that moment onward, the youth carried "PR" as a guiding light, illuminating their path towards a brighter future—one where authenticity, empathy, and self-improvement formed the bedrock of a united and harmonious society. And they lived not just happily ever after but with purpose and meaning, leaving an enduring legacy for generations to come.</p>
 
+        <div class="flex justify-center lg:tooltip m-5" data-tip="pull request">
+            <h1 class='text-3xl font-bold text-black spinner'>💩</h1>
+        </div>
         <div class="flex justify-center lg:tooltip m-5" data-tip="PULL REQUEST">
             <h1 class='text-3xl font-bold text-black spinner'>PR*</h1>
         </div>
         <div class="flex justify-center lg:tooltip m-5" data-tip="pull request">
             <h1 class='text-3xl font-bold text-black spinner'>pr*</h1>
         </div>
+        <div class="flex justify-center lg:tooltip m-5" data-tip="pull request">
+            <h1 class='text-3xl font-bold text-black spinner'>💩</h1>
+        </div>
     </x-meet-form-layout>
 </x-app-layout>
+</body>
