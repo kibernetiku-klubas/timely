@@ -20,7 +20,7 @@ return new class extends Migration
             $table->uuid('id')->unique(); // string
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->longText('description')->default('Just another meeting');
+            $table->longText('description');
             $table->string('location')->default('Not specified');
             $table->string('timezone');
             $table->smallInteger('duration')->default('30');
