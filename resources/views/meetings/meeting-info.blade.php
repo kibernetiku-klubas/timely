@@ -37,7 +37,7 @@
     <div class="font-bold pr-2 uppercase flex justify-center">Link to meeting:</div>
     <div class="flex justify-center items-center mb-6">
         <div class="tooltip mb-2" data-tip="Press the icon on the right to copy">
-            <a class="link" id="link">http://127.0.0.1:8000/meetings/{{ $meeting->id }}</a>
+            <a class="link" id="link">https://timely.lt/meetings/{{ $meeting->id }}</a>
         </div>
         <a id="copyLink" class="btn-ghost rounded-lg">
             <svg width="30" height="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
@@ -56,13 +56,13 @@
 
 <script>
     document.getElementById("copyLink").addEventListener("click", function () {
-        navigator.clipboard.writeText('http://127.0.0.1:8000/meetings/{{ $meeting->id }}')
+        navigator.clipboard.writeText('https://timely.lt/meetings/{{ $meeting->id }}')
             .then(() => console.log('Text copied to clipboard'))
             .catch(err => console.log('Failed to copy text: ', err));
         let linkElement = document.getElementById("link");
         linkElement.innerText = "Link copied!";
         setTimeout(function () {
-            linkElement.innerText = "http://127.0.0.1:8000/meetings/{{ $meeting->id }}";
+            linkElement.innerText = "https://timely.lt/meetings/{{ $meeting->id }}";
         }, 2250);
     });
 </script>
