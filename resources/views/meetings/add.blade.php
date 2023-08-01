@@ -1,4 +1,10 @@
 <x-app-layout>
+    <!-- Moment.js library, which is needed for getting user's timezone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+    <!-- Script which detects the user's timezone -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
             <div class="fill-current text-black text-4xl font-bold">CREATE A</div>
@@ -42,36 +48,19 @@
             </div>
             <!-- Timezone -->
             <div>
+                <?php
+                $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);   
+                ?>
                 <x-input-label for="timezone" :value="__('TIMEZONE')"/>
                 <select name="timezone" id="timezone" type="string"
                         class="border border-gray-300 text-black rounded-lg w-full mt-1 bg-white text-md focus:border-purple-500 focus:purple-500">
-                    <option selected disabled>Choose a timezone</option>
-                    <option>(UTC) Dublin, Edinburgh, Lisbon, London</option>
-                    <option>(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
-                    <option>(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
-                    <option>(UTC+03:00) Kaliningrad, Minsk</option>
-                    <option>(UTC+04:00) Moscow, St. Petersburg, Volgograd</option>
-                    <option>(UTC+05:00) Islamabad, Karachi</option>
-                    <option>(UTC+06:00) Ekaterinburg</option>
-                    <option>(UTC+07:00) Bangkok, Hanoi, Jakarta</option>
-                    <option>(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
-                    <option>(UTC+09:00) Osaka, Sapporo, Tokyo</option>
-                    <option>(UTC+10:00) Canberra, Melbourne, Sydney</option>
-                    <option>(UTC+11:00) Solomon Is., New Caledonia</option>
-                    <option>(UTC+12:00) Auckland, Wellington</option>
-                    <option>(UTC+13:00) Samoa</option>
-                    <option>(UTC-01:00) Cape Verde Is.</option>
-                    <option>(UTC-02:00) Mid-Atlantic</option>
-                    <option>(UTC-03:00) Greenland</option>
-                    <option>(UTC-04:00) Georgetown, La Paz, Manaus, San Juan</option>
-                    <option>(UTC-05:00) Eastern Time (US & Canada)</option>
-                    <option>(UTC-06:00) Central Time (US & Canada)</option>
-                    <option>(UTC-07:00) Mountain Time (US & Canada)</option>
-                    <option>(UTC-08:00) Pacific Time (US & Canada)</option>
-                    <option>(UTC-09:00) Alaska</option>
-                    <option>(UTC-10:00) Hawaii</option>
-                    <option>(UTC-11:00) Coordinated Universal Time-11</option>
-                    <option>(UTC-12:00) International Date Line West</option>
+                        <!--Acts as failsafe if script refuses to load, displays this instead-->
+                        <option value="default">Please select a timezone</option>
+                    @foreach($timezones as $timezone)
+                        <option value="{{ $timezone }}">
+                            {{ $timezone }}
+                        </option>
+                    @endforeach
                 </select>
                 @error('timezone')
                 <p class="text-red-500 text-sm">{{ "Timezone must be selected." }}</p>
@@ -109,4 +98,3 @@
         </form>
     </x-meet-form-layout>
 </x-app-layout>
-
