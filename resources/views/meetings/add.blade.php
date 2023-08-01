@@ -42,36 +42,45 @@
             </div>
             <!-- Timezone -->
             <div>
+                <?php
+                $timezones = [
+                    '(UTC) Dublin, Edinburgh, Lisbon, London',
+                    '(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna',
+                    '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
+                    '(UTC+03:00) Kaliningrad, Minsk',
+                    '(UTC+04:00) Moscow, St. Petersburg, Volgograd',
+                    '(UTC+05:00) Islamabad, Karachi',
+                    '(UTC+06:00) Ekaterinburg',
+                    '(UTC+07:00) Bangkok, Hanoi, Jakarta',
+                    '(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi',
+                    '(UTC+09:00) Osaka, Sapporo, Tokyo',
+                    '(UTC+10:00) Canberra, Melbourne, Sydney',
+                    '(UTC+11:00) Solomon Is., New Caledonia',
+                    '(UTC+12:00) Auckland, Wellington',
+                    '(UTC+13:00) Samoa',
+                    '(UTC-01:00) Cape Verde Is.',
+                    '(UTC-02:00) Mid-Atlantic',
+                    '(UTC-03:00) Greenland',
+                    '(UTC-04:00) Georgetown, La Paz, Manaus, San Juan',
+                    '(UTC-05:00) Eastern Time (US & Canada)',
+                    '(UTC-06:00) Central Time (US & Canada)',
+                    '(UTC-07:00) Mountain Time (US & Canada)',
+                    '(UTC-08:00) Pacific Time (US & Canada)',
+                    '(UTC-09:00) Alaska',
+                    '(UTC-10:00) Hawaii',
+                    '(UTC-11:00) Coordinated Universal Time-11',
+                    '(UTC-12:00) International Date Line West'
+                ]
+                ?>
                 <x-input-label for="timezone" :value="__('TIMEZONE')"/>
                 <select name="timezone" id="timezone" type="string"
                         class="border border-gray-300 text-black rounded-lg w-full mt-1 bg-white text-md focus:border-purple-500 focus:purple-500">
-                    <option selected disabled>Choose a timezone</option>
-                    <option>(UTC) Dublin, Edinburgh, Lisbon, London</option>
-                    <option>(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
-                    <option>(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
-                    <option>(UTC+03:00) Kaliningrad, Minsk</option>
-                    <option>(UTC+04:00) Moscow, St. Petersburg, Volgograd</option>
-                    <option>(UTC+05:00) Islamabad, Karachi</option>
-                    <option>(UTC+06:00) Ekaterinburg</option>
-                    <option>(UTC+07:00) Bangkok, Hanoi, Jakarta</option>
-                    <option>(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
-                    <option>(UTC+09:00) Osaka, Sapporo, Tokyo</option>
-                    <option>(UTC+10:00) Canberra, Melbourne, Sydney</option>
-                    <option>(UTC+11:00) Solomon Is., New Caledonia</option>
-                    <option>(UTC+12:00) Auckland, Wellington</option>
-                    <option>(UTC+13:00) Samoa</option>
-                    <option>(UTC-01:00) Cape Verde Is.</option>
-                    <option>(UTC-02:00) Mid-Atlantic</option>
-                    <option>(UTC-03:00) Greenland</option>
-                    <option>(UTC-04:00) Georgetown, La Paz, Manaus, San Juan</option>
-                    <option>(UTC-05:00) Eastern Time (US & Canada)</option>
-                    <option>(UTC-06:00) Central Time (US & Canada)</option>
-                    <option>(UTC-07:00) Mountain Time (US & Canada)</option>
-                    <option>(UTC-08:00) Pacific Time (US & Canada)</option>
-                    <option>(UTC-09:00) Alaska</option>
-                    <option>(UTC-10:00) Hawaii</option>
-                    <option>(UTC-11:00) Coordinated Universal Time-11</option>
-                    <option>(UTC-12:00) International Date Line West</option>
+                    <option>Select timezone</option>
+                    @foreach($timezones as $timezone)
+                        <option value="{{ $timezone }}" @if($userTimezone == $timezone) selected @endif>
+                            {{ $timezone }}
+                        </option>
+                    @endforeach
                 </select>
                 @error('timezone')
                 <p class="text-red-500 text-sm">{{ "Timezone must be selected." }}</p>
