@@ -39,9 +39,6 @@ jobs:
 
       - name: Compile all of the application's Blade templates
         run: php artisan view:cache
-
-      - name: Cache the framework bootstrap files
-        run: php artisan optimize
         
       - name: Generate Laravel application key
         run: php artisan key:generate
