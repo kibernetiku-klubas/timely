@@ -1,15 +1,16 @@
 @php
     $hasVoted = session()->has('voted_' . $meeting->id);
 @endphp
+
 @if (!$hasVoted)
-        <button
-            class="btn btn-outline border-none text-black text-xl shadow-lg hover:shadow-none"
-            onclick="votesModal.showModal()">ADD YOUR VOTES
-        </button>
+    <button
+        class="btn btn-outline border-none text-black text-xl shadow-lg hover:shadow-none"
+        onclick="votesModal.showModal()">ADD YOUR VOTES
+    </button>
 @else
-        <button class="btn btn-outline border-none text-black text-xl shadow-2xl" disabled="disabled">
-            <div class="text-gray-700">You have already voted</div>
-        </button>
+    <button class="btn btn-outline border-none text-black text-xl shadow-2xl" disabled="disabled">
+        <div class="text-gray-700">You have already voted</div>
+    </button>
 @endif
 
 <dialog id="votesModal" class="modal">
@@ -48,10 +49,20 @@
                 <input type="hidden" name="date_ids[]" value="{{ $date->id }}">
                 <div class="form-control">
                     <label class="label cursor-pointer">
-                        <span class="label-text text-lg text-black font-bold">VOTE ON: {{$date->date_and_time}}</span>
+                            <span
+                                class="label-text text-lg text-black font-bold">VOTE ON: {{$date->date_and_time}}</span>
                         <div class="shadow-xl">
-                            <input type="checkbox" name="votes[]" value="{{ $date->id }}"
-                                   class="checkbox checkbox-lg checkbox-success">
+                            @php
+                                $isDateTaken = \App\Models\Vote::where('date_id', $date->id)->exists();
+                                $disableCheckbox = $meeting->is1v1 == 1 && $isDateTaken;
+                            @endphp
+                            @if ($disableCheckbox)
+                                <input type="checkbox" name="votes[]" value="{{ $date->id }}"
+                                       class="checkbox checkbox-lg checkbox-success" disabled>
+                            @else
+                                <input type="checkbox" name="votes[]" value="{{ $date->id }}"
+                                       class="checkbox checkbox-lg checkbox-success">
+                            @endif
                         </div>
                     </label>
                 </div>
