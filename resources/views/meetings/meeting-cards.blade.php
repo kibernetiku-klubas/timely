@@ -71,10 +71,13 @@
                     </div>
                 </div>
 
-                <div class="font-bold text-xl flex items-center mt-4">Votes:</div>
+
+                <div class="font-bold text-xl flex justify-center mt-4"></div>
+                <div class="flex justify-center text-black text-3xl font-bold">Votes: {{ $date->votes->count() }}</div>
+                <div class="flex justify-center">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center">
                     <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
-                        <summary class="collapse-title text-2xl md:text-3xl font-bold">{{ $date->votes->count() }}<span
+                        <summary class="collapse-title text-2xl md:text-3xl font-bold"><span
                                 class="text-base md:text-lg ml-2 md:ml-4">CLICK TO SEE WHO VOTED</span></summary>
                         <div class="collapse-content px-4 md:px-6">
                             @if($date->votes->isEmpty())
@@ -87,6 +90,7 @@
                             @endif
                         </div>
                     </details>
+                </div>
                 </div>
             </li>
         @endforeach
