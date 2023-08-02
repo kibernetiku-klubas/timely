@@ -48,7 +48,7 @@
         </dialog>
 
 
-        <form method="POST" action="{{ route('meetings.store') }}" onsubmit="return validateForm()">
+        <form method="POST" action="{{ route('meetings.store') }}">
             @csrf
 
             <div class="tooltip tooltip-right" data-tip="Which to choose?">
