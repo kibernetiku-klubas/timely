@@ -22,6 +22,7 @@ class MeetingTest extends TestCase
             'timezone' => 'Europe/Vilnius',
             'duration' => 60,
             'delete_after' => 30,
+            'is1v1' => 0,
         ];
 
         $response = $this->actingAs($user)->post(route('meetings.store'), $formData);
