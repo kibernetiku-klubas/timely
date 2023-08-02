@@ -30,13 +30,13 @@ class VoteController extends Controller
         }
 
         foreach ($dateIds as $dateId) {
-            $voteCountForDate = Vote::where('date_id', $dateId)->count();
-
-            if ($meeting->is1v1 == 1 && $voteCountForDate > 0) {
-                return redirect()->back()->with('error', 'Someone has already voted for this date.');
-            }
-
             if (in_array($dateId, $votes)) {
+                $voteCountForDate = Vote::where('date_id', $dateId)->count();
+
+                if ($meeting->is1v1 == 1 && $voteCountForDate > 0) {
+                    return redirect()->back()->with('error', 'Someone has already voted for this date.');
+                }
+
                 Vote::create([
                     'date_id' => $dateId,
                     'voted_by' => $votedBy,
@@ -48,7 +48,6 @@ class VoteController extends Controller
 
         return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully.');
     }
-
 
     public function update(Request $request, $id): RedirectResponse
     {
