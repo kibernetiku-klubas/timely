@@ -19,7 +19,7 @@ class MeetingTest extends TestCase
             'title' => 'Test Meeting',
             'description' => 'This is a test meeting',
             'location' => 'Test Location',
-            'timezone' => '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
+            'timezone' => 'Europe/Vilnius',
             'duration' => 60,
             'delete_after' => 30,
         ];
@@ -46,7 +46,7 @@ class MeetingTest extends TestCase
             // Missing 'title' field, which is required
             'description' => 'This is a test meeting',
             'location' => 'Test Location',
-            'timezone' => '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius',
+            'timezone' => 'Europe/Vilnius',
             'duration' => 60,
             'delete_after' => 30,
         ];
