@@ -14,7 +14,7 @@ class DeleteExpiredMeetings extends Command
 
     public function handle()
     {
-        $now = now();
+        $now = now()->addDay(); // adds one day to the current one using carbon, to prevent accidental deletion due to timezone differences
         Meeting::where(DB::raw("DATE(created_at, '+' || delete_after || ' day')"), '<', $now)->delete();
         $this->info('Expired meetings deleted successfully.');
     }
