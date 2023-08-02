@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <ul class="grid md:grid-cols-2 sm:grid-cols-1 gap-2">
+    <ul class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-2">
         @foreach($dates as $date)
             <li class="p-6 shadow-xl rounded-lg">
 
@@ -75,22 +75,21 @@
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">Votes: {{ $date->votes->count() }}</div>
                 <div class="flex justify-center">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-                    <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
-                        <summary class="collapse-title text-2xl md:text-3xl font-bold"><span
-                                class="text-base md:text-lg ml-2 md:ml-4">CLICK TO SEE WHO VOTED</span></summary>
-                        <div class="collapse-content px-4 md:px-6">
-                            @if($date->votes->isEmpty())
-                                <div class="font-bold">NO VOTES ON THIS DATE</div>
-                            @else
-                                <div class="font-bold mb-2 md:mb-4">PEOPLE WHO VOTED:</div>
-                                @foreach($date->votes as $vote)
-                                    <div class="mb-1">{{ $vote->voted_by }}</div>
-                                @endforeach
-                            @endif
-                        </div>
-                    </details>
-                </div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
+                            <summary class="collapse-title text-md font-bold">CLICK TO SEE WHO VOTED</summary>
+                            <div class="collapse-content px-4 md:px-6">
+                                @if($date->votes->isEmpty())
+                                    <div class="font-bold">NO VOTES ON THIS DATE</div>
+                                @else
+                                    <div class="font-bold mb-2 md:mb-4">PEOPLE WHO VOTED:</div>
+                                    @foreach($date->votes as $vote)
+                                        <div class="mb-1">{{ $vote->voted_by }}</div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </details>
+                    </div>
                 </div>
             </li>
         @endforeach
