@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMeeting;
 use App\Models\Meeting;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,10 +46,19 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::with('dates.votes')->findOrFail($id);
 
+        $datesGroupedByYear = $meeting->dates->map(function ($date) {
+            $carbonDate = Carbon::parse($date->date_and_time);
+            $date->date_and_time = $carbonDate; // Replace the original string with a Carbon instance
+            return $date;
+        })->groupBy(function ($date) {
+            return $date->date_and_time->format('Y');
+        });
+
         return view('meetings.meeting', [
             'user' => Auth::user(),
             'creator' => $meeting->creator,
             'meeting' => $meeting,
+            'datesGroupedByYear' => $datesGroupedByYear,
         ]);
     }
 
