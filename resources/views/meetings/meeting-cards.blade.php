@@ -1,22 +1,20 @@
-@foreach($datesGroupedByYear as $year => $dates)
+@foreach ($datesGroupedByYear as $year => $dates)
     <div class="text-center mt-8 mb-4">
         <div class="divider">
             <h1 class="text-3xl font-bold">{{ $year }}</h1>
         </div>
     </div>
     <ul class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-2">
-        @foreach($dates as $date)
+        @foreach ($dates as $date)
             <li class="p-6 shadow-xl rounded-lg">
-
-                <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
+                <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
                 <div class="flex justify-between">
-                    @if($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
+                    @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
                         <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">Most voted</div>
                     @else
                         <div class="badge badge-outline outline-none border-none mt-3"></div>
-
                     @endif
-                    <!-- Update chosen date -->
+
                     @if (Auth::check() && $user->id == $meeting->user_id)
                         <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                             @csrf
@@ -46,9 +44,7 @@
                             <div class="flex justify-end">
                                 <x-secondary-button class="m-1" id="closeDialog" onclick="closeModal()">Cancel
                                 </x-secondary-button>
-                                <x-danger-button class="m-1" onclick="confirmDelete()">Confirm
-                                    Delete
-                                </x-danger-button>
+                                <x-danger-button class="m-1" onclick="confirmDelete()">Confirm Delete</x-danger-button>
                             </div>
                         </div>
                     @endif
@@ -57,11 +53,13 @@
                 @php
                     $formattedDate = date("M d", strtotime($date->date_and_time));
                     $endTime = $date->date_and_time->copy()->addMinutes($meeting->duration);
+                    $isDateTaken = \App\Models\Vote::where('date_id', $date->id)->exists();
                 @endphp
 
                 <div class="flex justify-center">
                     <div>
-                        <div class="text-4xl font-bold">{{ $formattedDate }}</div>
+                        <div class="text-3xl font-bold">{{ $date->date_and_time->format('D') }}.</div>
+                        <div class="text-4xl font-bold mb-4">{{ $formattedDate }}</div>
                         <div class="font-bold uppercase"><span
                                 class="text-5xl font-bold">{{ $date->date_and_time->format('H:i') }}</span></div>
                         <div class="font-bold uppercase"><span class="text-5xl">{{ $endTime->format('H:i') }}</span>
@@ -70,17 +68,25 @@
                 </div>
 
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
-                <div class="flex justify-center text-black text-3xl font-bold">Votes: {{ $date->votes->count() }}</div>
+                <div class="flex justify-center text-black text-3xl font-bold">
+                    @if ($meeting->is1v1 === 0)
+                        Votes: {{ $date->votes->count() }}
+                    @elseif ($meeting->is1v1 === 1 && $isDateTaken)
+                        TAKEN.
+                    @else
+                        FREE.
+                    @endif
+                </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-center">
                         <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
                             <summary class="collapse-title text-md font-bold">CLICK TO SEE WHO VOTED</summary>
                             <div class="collapse-content px-4 md:px-6">
-                                @if($date->votes->isEmpty())
+                                @if ($date->votes->isEmpty())
                                     <div class="font-bold">NO VOTES ON THIS DATE</div>
                                 @else
                                     <div class="font-bold mb-2 md:mb-4">PEOPLE WHO VOTED:</div>
-                                    @foreach($date->votes as $vote)
+                                    @foreach ($date->votes as $vote)
                                         <div class="mb-1">{{ $vote->voted_by }}</div>
                                     @endforeach
                                 @endif

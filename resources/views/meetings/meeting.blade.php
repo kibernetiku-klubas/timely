@@ -21,8 +21,8 @@
             @include('meetings.meeting-info')
 
 
-            <div class="flex justify-center text-xl mt-8 font-bold"> DATES AND TIMES FOR THE MEETING:</div>
-            <div class="flex justify-center text-xl mt-8">
+            <div class="flex justify-center text-xl font-bold"> DATES AND TIMES FOR THE MEETING:</div>
+            <div class="flex justify-center text-xl mt-4">
                 @if($meeting->is1v1 == 1)
                     Note: This meeting is 1 on 1, so only one vote per date is allowed.
                 @endif
