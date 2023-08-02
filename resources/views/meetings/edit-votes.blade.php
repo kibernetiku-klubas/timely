@@ -6,7 +6,7 @@
         <div class="uppercase font-bold text-black my-4">Select a time to edit votes:</div>
 
         @if($meeting->dates->isEmpty())
-            <p class=" font-bold text-black my-4">No dates to edit votes found.</p>
+            <p class=" font-bold text-red-500 my-4">No dates in this meeting.</p>
         @else
             @foreach($meeting->dates as $date)
                 @if($date->votes->isEmpty())
@@ -15,7 +15,7 @@
                             Date and Time: <div>{{ $date->date_and_time }}</div>
                         </summary>
                         <div class="collapse-content">
-                            <p class="font-bold text-black my-4">No votes to edit for this date.</p>
+                            <p class="font-bold text-red-500 my-4">No votes for this date.</p>
                         </div>
                     </details>
                 @else
