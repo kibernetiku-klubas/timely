@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meeting;
 use App\Models\Vote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ class VoteController extends Controller
     public function store(Request $request)
     {
         $meetingId = $request->input('meeting_id');
+        $meeting = Meeting::findOrFail($meetingId);
         $votedBy = $request->input('voted_by');
         $dateIds = $request->input('date_ids', []);
         $votes = $request->input('votes', []);
@@ -23,7 +25,17 @@ class VoteController extends Controller
             return redirect()->back()->with('error', 'You have already voted for this meeting.');
         }
 
+        if ($meeting->is1v1 == 1 && count($votes) > 1) {
+            return redirect()->back()->with('error', 'You can only vote for one option for this meeting.');
+        }
+
         foreach ($dateIds as $dateId) {
+            $voteCountForDate = Vote::where('date_id', $dateId)->count();
+
+            if ($meeting->is1v1 == 1 && $voteCountForDate > 0) {
+                return redirect()->back()->with('error', 'Someone has already voted for this date.');
+            }
+
             if (in_array($dateId, $votes)) {
                 Vote::create([
                     'date_id' => $dateId,

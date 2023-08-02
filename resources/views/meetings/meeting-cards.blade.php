@@ -69,7 +69,6 @@
                     </div>
                 </div>
 
-
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">Votes: {{ $date->votes->count() }}</div>
                 <div class="flex justify-center">
