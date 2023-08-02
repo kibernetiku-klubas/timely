@@ -38,12 +38,27 @@
                 margin: 0 auto;
             }
 
-            /* 4. Fix the horizontal scroll on small screens */
-            body {
+            /* 4. Ensure content does not exceed the viewport width */
+            .px-12 {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            /* 5. Center content in the hero section */
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            html, body {
                 overflow-x: hidden;
             }
+
         }
     </style>
+
 
 </head>
 
@@ -56,10 +71,12 @@
                 @auth
                     <a href="{{ url('/dashboard') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Log in</a>
+                    <a href="{{ route('login') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Log
+                        in</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Register</a>
+                        <a href="{{ route('register') }}"
+                           class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Register</a>
                     @endif
                 @endauth
             </div>
@@ -172,11 +189,13 @@
         <div class="max-w-md" data-aos="fade-left">
             <p class="text-xl">Just like our minimalist dashboard doesn't waste your time.</p>
             <p class="mb-5 text-2xl font-bold">Make your step to effortless meeting scheduling.</p>
+            <div>
+                <a href="{{ route('dashboard') }}">
+                    <button class="btn btn-primary bg-purple-500 border-purple-500" data-aos="zoom-in">Get Started.</button>
+                </a>
+            </div>
         </div>
     </div>
-    <a href="{{ route('dashboard') }}">
-        <button class="btn btn-primary bg-purple-500 border-purple-500 mt-56" data-aos="zoom-in">Get Started.</button>
-    </a>
 </div>
 <footer class="footer footer-center p-4 bg-white text-black">
     <div>
