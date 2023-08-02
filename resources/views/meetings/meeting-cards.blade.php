@@ -1,11 +1,9 @@
 @foreach($datesGroupedByYear as $year => $dates)
     <div class="text-center mt-8 mb-4">
-        <div class="year-separator"></div>
         <div class="divider">
             <h1 class="text-3xl font-bold">{{ $year }}</h1>
         </div>
     </div>
-
     <ul class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-2">
         @foreach($dates as $date)
             <li class="p-6 shadow-xl rounded-lg">
@@ -93,5 +91,5 @@
                 </div>
             </li>
         @endforeach
-        @endforeach
     </ul>
+@endforeach
