@@ -50,4 +50,17 @@ class DateController extends Controller
         }
         return redirect("/meetings/$meetingId")->with('error', 'Date deleted.');
     }
+    public function select($id)
+{
+    $date = Date::findOrFail($id);
+
+    // Get the meeting associated with the date
+    $meeting = $date->meeting;
+
+    // Update the selected value for all dates associated with the meeting
+    $meeting->dates()->update(['selected' => 0]);
+    $date->update(['selected' => 1]);
+
+    return response()->json(['message' => 'Date selected successfully']);
+}
 }

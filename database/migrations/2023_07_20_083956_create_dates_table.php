@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignUuid('meeting_id')->constrained('meetings')->onDelete('cascade');
             $table->dateTime('date_and_time');
             $table->timestamps();
+            $table->tinyInteger('selected')->default(0);
         });
     }
 
