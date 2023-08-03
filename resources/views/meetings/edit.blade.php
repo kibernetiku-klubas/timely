@@ -51,7 +51,7 @@
             <!-- Timezone -->
             <div>
                 <?php
-                $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);   
+                $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
                 ?>
                 <x-input-label for="timezone" :value="__('TIMEZONE')"/>
                 <select name="timezone" id="timezone" type="string"
@@ -86,6 +86,9 @@
                               autocomplete="delete_after" placeholder="Choose time until deletion"/>
                 <x-input-error :messages="$errors->get('delete_after')" class="mt-2"/>
             </div>
+
+            <input type="hidden" value="{{$meeting->is1v1}}" name="is1v1">
+
             <!-- Save meeting -->
             <div class="flex items-center justify-end my-4">
                 <a href="/meetings/{{ $meeting->id }}   " tabindex="-1">
