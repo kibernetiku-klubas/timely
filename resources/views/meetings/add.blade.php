@@ -1,7 +1,8 @@
 <x-app-layout>
     <!-- Moment.js library, which is needed for getting user's timezone -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
     <!-- Script which detects the user's timezone -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -48,14 +49,13 @@
             </div>
             <!-- Timezone -->
             <div>
-                <?php
-                $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);   
-                ?>
+                @php
+                    $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+                @endphp
                 <x-input-label for="timezone" :value="__('TIMEZONE')"/>
                 <select name="timezone" id="timezone" type="string"
                         class="border border-gray-300 text-black rounded-lg w-full mt-1 bg-white text-md focus:border-purple-500 focus:purple-500">
-                        <!--Acts as failsafe if script refuses to load, displays this instead-->
-                        <option value="default">Please select a timezone</option>
+                    <option value="default">Please select a timezone</option>
                     @foreach($timezones as $timezone)
                         <option value="{{ $timezone }}">
                             {{ $timezone }}

@@ -74,34 +74,3 @@
         </div>
     </div>
 </x-app-layout>
-
-<script>
-    let openButtons = document.querySelectorAll('.openDialog');
-    let dialog = document.getElementById('dialog');
-    let closeButton = document.getElementById('closeDialog');
-    let overlay = document.getElementById('overlay');
-
-    let currentForm;
-
-    function openModal(event) {
-        event.preventDefault();
-        dialog.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-        currentForm = event.target.closest('form');
-    }
-
-    function closeModal() {
-        dialog.classList.add('hidden');
-        overlay.classList.add('hidden');
-    }
-
-    function confirmDelete() {
-        if (currentForm) {
-            currentForm.submit();
-        }
-    }
-
-    openButtons.forEach(button => {
-        button.addEventListener('click', openModal);
-    });
-</script>

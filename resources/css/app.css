@@ -2,27 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Existing styles */
 
-/* Add the following CSS to fix even spaces between SVGs and text */
 .flex.items-center > .svg-container {
     flex-shrink: 0;
     display: inline-block;
 }
 
-/* Adjust the spacing as needed */
 .flex.items-center > .svg-container:not(:last-child) {
     margin-right: 0.5rem;
 }
 
-/* Add media query to handle smaller screens */
 @media (max-width: 768px) {
     .flex.items-center.flex-wrap {
         flex-direction: column;
     }
 
     .flex.items-center > .svg-container:not(:last-child) {
-        margin-right: 0; /* Remove spacing between SVGs on smaller screens */
-        margin-bottom: 0.5rem; /* Add some spacing between SVGs and text on smaller screens */
+        margin-right: 0;
+        margin-bottom: 0.5rem;
     }
 }
