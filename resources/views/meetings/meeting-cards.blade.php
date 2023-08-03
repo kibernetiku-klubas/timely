@@ -16,7 +16,7 @@
                     @endif
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
-                        <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
+                        <form id="deleteForm{{ $date->id }}" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                             @csrf
                             @method('DELETE')
                             <div class="dropdown">

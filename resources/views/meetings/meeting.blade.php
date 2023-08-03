@@ -76,16 +76,18 @@
 </x-app-layout>
 
 <script>
-    let openButton = document.getElementById('openDialog');
+    let openButtons = document.querySelectorAll('.openDialog');
     let dialog = document.getElementById('dialog');
     let closeButton = document.getElementById('closeDialog');
     let overlay = document.getElementById('overlay');
-    let deleteForm = document.getElementById('deleteForm');
+
+    let currentForm;
 
     function openModal(event) {
         event.preventDefault();
         dialog.classList.remove('hidden');
         overlay.classList.remove('hidden');
+        currentForm = event.target.closest('form');
     }
 
     function closeModal() {
@@ -94,6 +96,12 @@
     }
 
     function confirmDelete() {
-        deleteForm.submit();
+        if (currentForm) {
+            currentForm.submit();
+        }
     }
+
+    openButtons.forEach(button => {
+        button.addEventListener('click', openModal);
+    });
 </script>

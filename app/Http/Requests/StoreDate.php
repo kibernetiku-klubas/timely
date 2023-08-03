@@ -3,7 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Models\Date;
+use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
@@ -25,28 +27,42 @@ class StoreDate extends FormRequest
     public function rules(): array
     {
         $meetingId = $this->input('meeting_id');
-        $existingDatesCount = Date::where('meeting_id', $meetingId)->count();
+        $existingDatesCount = $this->getExistingDatesCount($meetingId);
 
         return [
             'new_time' => [
                 'required',
-                function ($attribute, $value, $fail) use ($meetingId) {
-                    // checks if the date is equal in the same meeting
-                    $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
-                    if ($this->getMethod() === 'PUT') { // excludes updated date from being checked (for when date is kept as before)
-                        $date->where('id', '!=', $this->route('date'));
-                    }
-                    if ($date->count() > 0) {
-                        $fail('The selected date already exists for this meeting.');
-                    }
-                },
-                function ($attribute, $value, $fail) use ($existingDatesCount) {
-                    if ($existingDatesCount >= 20) {
-                        $fail('The maximum number of dates (20) has been reached for this meeting.');
-                    }
-                },
+                $this->ruleUniqueDate($meetingId),
+                $this->ruleMaxDates($existingDatesCount),
             ],
         ];
+    }
+
+    private function getExistingDatesCount($meetingId): int
+    {
+        return Date::where('meeting_id', $meetingId)->count();
+    }
+
+    private function ruleUniqueDate($meetingId): Closure
+    {
+        return function ($attribute, $value, $fail) use ($meetingId) {
+            $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
+            if ($this->getMethod() === 'PUT') {
+                $date->where('id', '!=', $this->route('date'));
+            }
+            if ($date->count() > 0) {
+                $fail('The selected date already exists for this meeting.');
+            }
+        };
+    }
+
+    private function ruleMaxDates($existingDatesCount): Closure
+    {
+        return function ($attribute, $value, $fail) use ($existingDatesCount) {
+            if ($existingDatesCount >= 20) {
+                $fail('The maximum number of dates (20) has been reached for this meeting.');
+            }
+        };
     }
 
     public function messages(): array
@@ -59,7 +75,7 @@ class StoreDate extends FormRequest
     /**
      * @throws HttpResponseException
      */
-    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
             redirect()->back()->with('error', $validator->errors()->first())
