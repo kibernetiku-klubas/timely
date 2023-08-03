@@ -12,9 +12,9 @@ class DeleteExpiredMeetings extends Command
     protected $signature = 'meetings:delete-expired';
     protected $description = 'Deletes expired meetings';
 
-    public function handle()
+    public function handle(): void
     {
-        $now = now()->addDay(); // adds one day to the current one using carbon, to prevent accidental deletion due to timezone differences
+        $now = now()->addDay();
         Meeting::where(DB::raw("DATE(created_at, '+' || delete_after || ' day')"), '<', $now)->delete();
         $this->info('Expired meetings deleted successfully.');
     }

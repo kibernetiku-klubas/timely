@@ -19,42 +19,85 @@ class VoteController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->with('error', 'Maximum length exceeded.');
         }
-
-        $meetingId = $request->input('meeting_id');
-        $meeting = Meeting::findOrFail($meetingId);
+      
         $votedBy = $request->input('voted_by');
         $dateIds = $request->input('date_ids', []);
         $votes = $request->input('votes', []);
+        $meeting = $this->getMeeting($request->input('meeting_id'));
 
-        if (empty($votes)) {
-            return redirect()->back()->with('error', 'Please select at least one option.');
+        if (!$this->hasVotes($votes)) {
+            return $this->redirectWithErrorMessage('Please select at least one option.');
         }
 
-        if (session()->has('voted_' . $meetingId)) {
-            return redirect()->back()->with('error', 'You have already voted for this meeting.');
+        if ($this->hasAlreadyVotedForThis($meeting->id)) {
+            return $this->redirectWithErrorMessage('You have already voted for this meeting.');
         }
 
-        if ($meeting->is1v1 == 1 && count($votes) > 1) {
-            return redirect()->back()->with('error', 'You can only vote for one option for this meeting.');
+        if ($this->hasMoreVotesThanAllowed($meeting, $votes)) {
+            return $this->redirectWithErrorMessage('You can only vote for one option for this meeting.');
         }
 
+        $this->registerVotes($meeting, $dateIds, $votes, $votedBy);
+
+        return $this->redirectWithSuccessMessage($meeting->id);
+    }
+
+    private function getMeeting($meetingId)
+    {
+        return Meeting::findOrFail($meetingId);
+    }
+
+    private function hasVotes($votes)
+    {
+        return !empty($votes);
+    }
+
+    private function hasAlreadyVotedForThis($meetingId)
+    {
+        return session()->has('voted_' . $meetingId);
+    }
+
+    private function hasMoreVotesThanAllowed($meeting, $votes)
+    {
+        return $meeting->is1v1 == 1 && count($votes) > 1;
+    }
+
+    private function registerVotes($meeting, $dateIds, $votes, $votedBy): void
+    {
         foreach ($dateIds as $dateId) {
             if (in_array($dateId, $votes)) {
-                $voteCountForDate = Vote::where('date_id', $dateId)->count();
-
-                if ($meeting->is1v1 == 1 && $voteCountForDate > 0) {
-                    return redirect()->back()->with('error', 'Someone has already voted for this date.');
+                if ($meeting->is1v1 == 1 && Vote::where('date_id', $dateId)->count() > 0) {
+                    $this->redirectWithErrorMessage('Someone has already voted for this date.');
+                    return;
                 }
 
-                Vote::create([
-                    'date_id' => $dateId,
-                    'voted_by' => $votedBy,
-                ]);
+                $this->createVote($dateId, $votedBy);
             }
         }
 
-        session(['voted_' . $meetingId => true]);
+        $this->markMeetingAsVoted($meeting->id);
+    }
 
+    private function createVote($dateId, $votedBy)
+    {
+        Vote::create([
+            'date_id' => $dateId,
+            'voted_by' => $votedBy,
+        ]);
+    }
+
+    private function markMeetingAsVoted($meetingId)
+    {
+        session(['voted_' . $meetingId => true]);
+    }
+
+    private function redirectWithErrorMessage($message)
+    {
+        return redirect()->back()->with('error', $message);
+    }
+
+    private function redirectWithSuccessMessage($meetingId)
+    {
         return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully.');
     }
 

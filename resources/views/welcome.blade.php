@@ -12,39 +12,33 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        /* Styling for smaller screens */
         @media screen and (max-width: 640px) {
-            /* 1. Navigation links overlap on smaller screens */
             .relative.sm\:flex.sm\:justify {
                 flex-direction: column;
                 align-items: center;
-                padding-bottom: 16px; /* Add some padding at the bottom to separate links */
+                padding-bottom: 16px;
             }
 
-            /* 2. The "Timely" logo and navigation links are fixed, causing issues on smaller screens */
             .sm\:fixed.top-0.left-0.p-6.z-10.text-2xl.text-black.font-bold.btn-ghost.rounded-xl {
-                position: static; /* Remove fixed positioning */
+                position: static;
             }
 
             .sm\:fixed.sm\:top-0.sm\:right-0.p-6.text-right.z-10 {
-                position: static; /* Remove fixed positioning */
-                margin-top: 16px; /* Add some margin to separate the links */
+                position: static;
+                margin-top: 16px;
             }
 
-            /* 3. Make the hero images responsive and centered */
             .hero-content img {
                 width: 100%;
                 height: auto;
                 margin: 0 auto;
             }
 
-            /* 4. Ensure content does not exceed the viewport width */
             .px-12 {
                 padding-left: 16px;
                 padding-right: 16px;
             }
 
-            /* 5. Center content in the hero section */
             .hero-content {
                 display: flex;
                 flex-direction: column;
@@ -55,7 +49,6 @@
             html, body {
                 overflow-x: hidden;
             }
-
         }
     </style>
 

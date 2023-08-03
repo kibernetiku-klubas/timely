@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Meeting;
 
+
 class DateController extends Controller
 {
 
@@ -16,38 +17,28 @@ class DateController extends Controller
         $validatedData = $request->validated();
         $meetingId = $request->input('meeting_id');
 
-        $existingDatesCount = Date::where('meeting_id', $meetingId)->count();
-        if ($existingDatesCount < 20) {
-            $date = new Date;
-            $date->meeting_id = $meetingId;
-            $date->date_and_time = $validatedData['new_time'];
-            $date->save();
-        }
+        $date = new Date;
+        $date->meeting_id = $meetingId;
+        $date->date_and_time = $validatedData['new_time'];
+        $date->save();
 
         return redirect("/meetings/$meetingId")->with('success', 'Date saved.');
     }
 
-    public function update(StoreDate $request, $id): RedirectResponse
+    private function isUserMeetingCreator(string $meetingId): bool
     {
-        $validatedData = $request->validated();
-        $date = Date::findOrFail($id);
-        $meetingId = $date->meeting_id;
-        if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
-            $date->date_and_time = $validatedData['new_time'];
-            $date->save();
-        }
-
-        return redirect("/meetings/$meetingId")->with('success', 'Date updated.');
+        return Meeting::where('id', $meetingId)
+            ->where('user_id', Auth::user()->id)
+            ->exists();
     }
 
     public function destroy($id): RedirectResponse
     {
         $date = Date::findOrFail($id);
-        if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
-            $meetingId = $date->meeting_id;
-
+        if ($this->isUserMeetingCreator($date->meeting_id)) {
             $date->delete();
+            return redirect()->back()->with('success', 'Date deleted successfully.');
         }
-        return redirect("/meetings/$meetingId")->with('error', 'Date deleted.');
+        return redirect()->back()->with('error', 'Not authorized to delete this date.');
     }
 }

@@ -16,7 +16,8 @@
                     @endif
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
-                        <form id="deleteForm" method="POST" action="{{ route('dates.destroy', ['id' => $date->id]) }}">
+                        <form id="deleteForm{{ $date->id }}" method="POST"
+                              action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                             @csrf
                             @method('DELETE')
                             <div class="dropdown">
@@ -98,3 +99,34 @@
         @endforeach
     </ul>
 @endforeach
+
+<script>
+    let openButtons = document.querySelectorAll('.openDialog');
+    let dialog = document.getElementById('dialog');
+    let closeButton = document.getElementById('closeDialog');
+    let overlay = document.getElementById('overlay');
+
+    let currentForm;
+
+    function openModal(event) {
+        event.preventDefault();
+        dialog.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+        currentForm = event.target.closest('form');
+    }
+
+    function closeModal() {
+        dialog.classList.add('hidden');
+        overlay.classList.add('hidden');
+    }
+
+    function confirmDelete() {
+        if (currentForm) {
+            currentForm.submit();
+        }
+    }
+
+    openButtons.forEach(button => {
+        button.addEventListener('click', openModal);
+    });
+</script>
