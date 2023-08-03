@@ -22,7 +22,7 @@ class MeetingController extends Controller
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
         $meeting->delete();
 
-        return redirect('/dashboard')->with('error', $message ?? 'Meeting deleted.');
+        return redirect('/dashboard')->with('error', 'Meeting deleted.');
     }
 
     public function displayEdit($id)
@@ -45,14 +45,7 @@ class MeetingController extends Controller
     public function show($id)
     {
         $meeting = Meeting::with('dates.votes')->findOrFail($id);
-
-        $datesGroupedByYear = $meeting->dates->map(function ($date) {
-            $carbonDate = Carbon::parse($date->date_and_time);
-            $date->date_and_time = $carbonDate; // Replace the original string with a Carbon instance
-            return $date;
-        })->groupBy(function ($date) {
-            return $date->date_and_time->format('Y');
-        });
+        $datesGroupedByYear = $this->getDatesGroupedByYear($meeting);
 
         return view('meetings.meeting', [
             'user' => Auth::user(),
@@ -62,12 +55,21 @@ class MeetingController extends Controller
         ]);
     }
 
+    private function getDatesGroupedByYear($meeting)
+    {
+        return $meeting->dates->map(function ($date) {
+            $carbonDate = Carbon::parse($date->date_and_time);
+            $date->date_and_time = $carbonDate;
+            return $date;
+        })->groupBy(function ($date) {
+            return $date->date_and_time->format('Y');
+        });
+    }
+
     public function showDashboard()
     {
-        $meetings = Meeting::where('user_id', Auth::user()->id)->simplePaginate(12);
-
         return view('dashboard', [
-            'meetings' => $meetings,
+            'meetings' => Meeting::where('user_id', Auth::user()->id)->simplePaginate(12),
         ]);
     }
 
