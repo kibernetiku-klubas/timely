@@ -6,11 +6,20 @@ use App\Models\Meeting;
 use App\Models\Vote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VoteController extends Controller
 {
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'voted_by' => 'max:50',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Maximum length exceeded.');
+        }
+      
         $votedBy = $request->input('voted_by');
         $dateIds = $request->input('date_ids', []);
         $votes = $request->input('votes', []);

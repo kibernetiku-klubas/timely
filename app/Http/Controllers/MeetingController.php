@@ -89,6 +89,7 @@ class MeetingController extends Controller
         $meeting->timezone = $validated['timezone'];
         $meeting->duration = $validated['duration'];
         $meeting->delete_after = $validated['delete_after'];
+        $meeting->is1v1 = $validated['is1v1'];
         $meeting->save();
 
         return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully.');
