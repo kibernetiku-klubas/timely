@@ -7,7 +7,7 @@ use App\Models\Date;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Meeting;
-
+use \Illuminate\Http\Request;
 class DateController extends Controller
 {
 
@@ -29,11 +29,11 @@ class DateController extends Controller
 
     public function update(StoreDate $request, $id): RedirectResponse
     {
-        $validatedData = $request->validated();
         $date = Date::findOrFail($id);
         $meetingId = $date->meeting_id;
         if (Auth::check() && Meeting::where('user_id', Auth::user()->id)->exists($date->meeting_id)) {
-            $date->date_and_time = $validatedData['new_time'];
+            Date::where('meeting_id', $meetingId)->update(['selected' => 0]);
+            $date->selected = 1;
             $date->save();
         }
 
@@ -50,17 +50,4 @@ class DateController extends Controller
         }
         return redirect("/meetings/$meetingId")->with('error', 'Date deleted.');
     }
-    public function select($id)
-{
-    $date = Date::findOrFail($id);
-
-    // Get the meeting associated with the date
-    $meeting = $date->meeting;
-
-    // Update the selected value for all dates associated with the meeting
-    $meeting->dates()->update(['selected' => 0]);
-    $date->update(['selected' => 1]);
-
-    return response()->json(['message' => 'Date selected successfully']);
-}
 }

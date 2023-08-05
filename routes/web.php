@@ -28,7 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
-    Route::post('/dates/{id}/select', [DateController::class, 'select'])->name('dates.select');
     Route::view('/pr', 'pr-egg');
 });
 

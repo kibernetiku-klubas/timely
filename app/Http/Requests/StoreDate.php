@@ -23,31 +23,36 @@ class StoreDate extends FormRequest
      * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
-    {
-        $meetingId = $this->input('meeting_id');
-        $existingDatesCount = Date::where('meeting_id', $meetingId)->count();
+{
+    $meetingId = $this->input('meeting_id');
+    $existingDatesCount = Date::where('meeting_id', $meetingId)->count();
 
-        return [
-            'new_time' => [
-                'required',
-                function ($attribute, $value, $fail) use ($meetingId) {
-                    // checks if the date is equal in the same meeting
-                    $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
-                    if ($this->getMethod() === 'PUT') { // excludes updated date from being checked (for when date is kept as before)
-                        $date->where('id', '!=', $this->route('date'));
-                    }
-                    if ($date->count() > 0) {
-                        $fail('The selected date already exists for this meeting.');
-                    }
-                },
-                function ($attribute, $value, $fail) use ($existingDatesCount) {
-                    if ($existingDatesCount >= 20) {
-                        $fail('The maximum number of dates (20) has been reached for this meeting.');
-                    }
-                },
-            ],
+    $rules = [];
+
+    // Only apply the new_time validation if it's present in the request
+    if ($this->has('new_time')) {
+        $rules['new_time'] = [
+            'required',
+            function ($attribute, $value, $fail) use ($meetingId) {
+                // checks if the date is equal in the same meeting
+                $date = Date::where('meeting_id', $meetingId)->where('date_and_time', $value);
+                if ($this->getMethod() === 'PUT') { // excludes updated date from being checked (for when date is kept as before)
+                    $date->where('id', '!=', $this->route('date'));
+                }
+                if ($date->count() > 0) {
+                    $fail('The selected date already exists for this meeting.');
+                }
+            },
+            function ($attribute, $value, $fail) use ($existingDatesCount) {
+                if ($existingDatesCount >= 20) {
+                    $fail('The maximum number of dates (20) has been reached for this meeting.');
+                }
+            },
         ];
     }
+
+    return $rules;
+}
 
     public function messages(): array
     {

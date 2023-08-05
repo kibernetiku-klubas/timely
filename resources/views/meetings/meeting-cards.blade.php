@@ -7,11 +7,12 @@
     <ul class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-2">
         @foreach($dates as $date)
         <li class="p-6 shadow-xl rounded-lg" data-date-id="{{ $date->id }}">
-            <form id="dateForm-{{ $date->id }}" method="POST" action="{{ route('dates.select', ['id' => $date->id]) }}">
-            </form>
-         
+            <form class="selected-date-form" method="POST" action="{{ route('dates.update', ['id' => $date->id]) }}">
                 @csrf
-                <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
+                @method('PUT')
+                <input type="hidden" name="selected_date_id" class="selected-date-id-input">
+                <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+            </form>
                 <div class="flex justify-between">
                     @if($date->selected === 1)
                         <div class="badge badge-outline text-red-500 outline-red-500 mt-3">Selected</div>
@@ -38,7 +39,7 @@
                             </label>
                             <ul tabindex="0" class="dropdown-content bg-gray-100 rounded-box p-4 hover:bg-gray-200">
                                 <li><a href="#" id="openDialog" class="" onclick="openModal(event)">Delete</a></li>
-                                <button type="submit" class="assign-selected" data-date-id="{{ $date->id }}">Finalize</button>
+                                <button type="submit" class="assign-selected" data-date-id="{{ $date->id }}" form="selected-date-form">Finalize</button>
 
                             </ul>    
                         </div>
@@ -98,41 +99,70 @@
     </ul>
 @endforeach
 <script>
-    function finalizeDate(event) {
-    const dateId = event.target.dataset.dateId;
-    const dateElement = document.querySelector(`.p-6[data-date-id="${dateId}"]`);
+    document.addEventListener('DOMContentLoaded', function() {
+    // Function to check if a date is selected and add a "Selected" badge
+    function checkAndAssignSelectedBadge() {
+        const dateElements = document.querySelectorAll('.p-6');
+        dateElements.forEach(dateElement => {
+            const isSelected = dateElement.getAttribute('data-selected') === '1';
+            const selectedBadgeElement = dateElement.querySelector('.selected-badge');
 
-    // Gets the previously selected date element, if any
-    const previousSelectedElement = document.querySelector('.p-6[data-selected="1"]');
-    if (previousSelectedElement) {
-        // Sets the selected attribute of the previous date element to 0
-        previousSelectedElement.setAttribute('data-selected', '0');
-
-        // Removes the selected badge from the previous date element
-        const selectedBadge = previousSelectedElement.querySelector('.selected-badge');
-        if (selectedBadge) {
-            selectedBadge.remove();
-        }
+            if (isSelected && !selectedBadgeElement) {
+                const badgeElement = document.createElement('div');
+                badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
+                badgeElement.innerText = 'Selected';
+                dateElement.appendChild(badgeElement);
+            }
+        });
     }
 
-    // Sets the selected attribute of the current date element to 1
-    dateElement.setAttribute('data-selected', '1');
+    // Call the function to check and assign selected badges
+    checkAndAssignSelectedBadge();
 
-    // Checks if the selected badge already exists
-    const selectedBadgeElement = dateElement.querySelector('.selected-badge');
-    if (!selectedBadgeElement) {
-        // Creates and appends the "Selected" badge
-        const badgeElement = document.createElement('div');
-        badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
-        badgeElement.innerText = 'Selected';
-        dateElement.appendChild(badgeElement);
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
     const finalizeButtons = document.querySelectorAll('.assign-selected');
     finalizeButtons.forEach(function(button) {
         button.addEventListener('click', finalizeDate);
     });
 });
-</script>
 
+function finalizeDate(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    const dateId = event.target.dataset.dateId;
+    const dateElement = document.querySelector(`.p-6[data-date-id="${dateId}"]`);
+
+    const allDateElements = document.querySelectorAll('.p-6');
+    allDateElements.forEach((element) => {
+        const selectedBadge = element.querySelector('.selected-badge');
+        if (selectedBadge) {
+            selectedBadge.remove();
+        }
+        element.removeAttribute('data-selected');
+    });
+
+    dateElement.setAttribute('data-selected', '1');
+    const badgeElement = document.createElement('div');
+    badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
+    badgeElement.innerText = 'Selected';
+    dateElement.querySelector('.flex').prepend(badgeElement);
+
+    // Set the selected date ID in the hidden input field of the form
+    const selectedDateIdInput = dateElement.querySelector('.selected-date-id-input');
+    if (selectedDateIdInput) {
+        selectedDateIdInput.value = dateId;
+    }
+
+    // Set the "selected" value in the hidden input field
+    const selectedInput = dateElement.querySelector('.selected-input');
+    if (selectedInput) {
+        selectedInput.value = '1'; // Set to 1 to indicate selected
+    }
+
+    // Submit the form
+    const selectedDateForm = dateElement.querySelector('.selected-date-form');
+    if (selectedDateForm) {
+        selectedDateForm.submit();
+    }
+}
+
+</script>
