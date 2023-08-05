@@ -100,69 +100,49 @@
 @endforeach
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    // Function to check if a date is selected and add a "Selected" badge
-    function checkAndAssignSelectedBadge() {
-        const dateElements = document.querySelectorAll('.p-6');
-        dateElements.forEach(dateElement => {
-            const isSelected = dateElement.getAttribute('data-selected') === '1';
-            const selectedBadgeElement = dateElement.querySelector('.selected-badge');
-
-            if (isSelected && !selectedBadgeElement) {
-                const badgeElement = document.createElement('div');
-                badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
-                badgeElement.innerText = 'Selected';
-                dateElement.appendChild(badgeElement);
-            }
+        const finalizeButtons = document.querySelectorAll('.assign-selected');
+        finalizeButtons.forEach(button => {
+            button.addEventListener('click', finalizeDate);
         });
-    }
-
-    // Call the function to check and assign selected badges
-    checkAndAssignSelectedBadge();
-
-    const finalizeButtons = document.querySelectorAll('.assign-selected');
-    finalizeButtons.forEach(function(button) {
-        button.addEventListener('click', finalizeDate);
     });
-});
 
-function finalizeDate(event) {
-    event.preventDefault(); // Prevent the form from submitting
+    function finalizeDate(event) {
+        event.preventDefault();
 
-    const dateId = event.target.dataset.dateId;
-    const dateElement = document.querySelector(`.p-6[data-date-id="${dateId}"]`);
+        const dateId = event.target.dataset.dateId;
+        const dateElement = document.querySelector(`.p-6[data-date-id="${dateId}"]`);
+        const isSelected = dateElement.getAttribute('data-selected') === '1';
 
-    const allDateElements = document.querySelectorAll('.p-6');
-    allDateElements.forEach((element) => {
-        const selectedBadge = element.querySelector('.selected-badge');
-        if (selectedBadge) {
-            selectedBadge.remove();
+        const allDateElements = document.querySelectorAll('.p-6');
+        allDateElements.forEach(element => {
+            const selectedBadge = element.querySelector('.selected-badge');
+            if (selectedBadge) {
+                selectedBadge.remove();
+            }
+            element.removeAttribute('data-selected');
+        });
+
+        dateElement.setAttribute('data-selected', '1');
+        if (!isSelected) {
+            const badgeElement = document.createElement('div');
+            badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
+            badgeElement.innerText = 'Selected';
+            dateElement.querySelector('.flex').prepend(badgeElement);
         }
-        element.removeAttribute('data-selected');
-    });
 
-    dateElement.setAttribute('data-selected', '1');
-    const badgeElement = document.createElement('div');
-    badgeElement.classList.add('badge', 'badge-outline', 'text-red-500', 'outline-red-500', 'mt-3', 'selected-badge');
-    badgeElement.innerText = 'Selected';
-    dateElement.querySelector('.flex').prepend(badgeElement);
+        const selectedDateIdInput = dateElement.querySelector('.selected-date-id-input');
+        if (selectedDateIdInput) {
+            selectedDateIdInput.value = dateId;
+        }
 
-    // Set the selected date ID in the hidden input field of the form
-    const selectedDateIdInput = dateElement.querySelector('.selected-date-id-input');
-    if (selectedDateIdInput) {
-        selectedDateIdInput.value = dateId;
+        const selectedInput = dateElement.querySelector('.selected-input');
+        if (selectedInput) {
+            selectedInput.value = '1';
+        }
+
+        const selectedDateForm = dateElement.querySelector('.selected-date-form');
+        if (selectedDateForm) {
+            selectedDateForm.submit();
+        }
     }
-
-    // Set the "selected" value in the hidden input field
-    const selectedInput = dateElement.querySelector('.selected-input');
-    if (selectedInput) {
-        selectedInput.value = '1'; // Set to 1 to indicate selected
-    }
-
-    // Submit the form
-    const selectedDateForm = dateElement.querySelector('.selected-date-form');
-    if (selectedDateForm) {
-        selectedDateForm.submit();
-    }
-}
-
 </script>
