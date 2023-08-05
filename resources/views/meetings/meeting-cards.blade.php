@@ -74,7 +74,17 @@
                         </div>
                     </div>
                 </div>
-
+            
+                <div class="font-bold text-xl flex justify-center mt-4"></div>
+                <div class="flex justify-center text-black text-3xl font-bold">
+                    @if ($meeting->is1v1 === 0)
+                        Votes: {{ $date->votes->count() }}
+                    @elseif ($meeting->is1v1 === 1 && $isDateTaken)
+                        TAKEN.
+                    @else
+                        FREE.
+                    @endif
+                </div>
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">Votes: {{ $date->votes->count() }}</div>
                 <div class="flex justify-center">
