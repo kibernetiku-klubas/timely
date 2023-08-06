@@ -1,26 +1,19 @@
 <details class="collapse bg-white">
-    <summary class="collapse-title text-xl text-black font-bold uppercase hover:bg-gray-300">
-        Click here to edit votes
+    <summary class="collapse-title text-xl text-black font-bold uppercase hover:bg-gray-300">Click here to edit votes
     </summary>
+    @if($meeting->dates->isNotEmpty())
     <div class="collapse-content">
         <div class="uppercase font-bold text-black my-4">Select a time to edit votes:</div>
 
-        @if($meeting->dates->isEmpty())
-            <p class=" font-bold text-red-500 my-4">No dates in this meeting.</p>
-        @else
-            @foreach($meeting->dates as $date)
-                @if($date->votes->isEmpty())
-                    <details class="collapse bg-white hover:bg-gray-200">
-                        <summary class="collapse-title text-xl text-black font-medium">
-                            Date and Time: <div>{{ $date->date_and_time }}</div>
-                        </summary>
-                        <div class="collapse-content">
-                            <p class="font-bold text-red-500 my-4">No votes for this date.</p>
-                        </div>
-                    </details>
-                @else
-                    <details class="collapse bg-white hover:bg-gray-200">
-                        @foreach($date->votes as $vote)
+        @foreach($meeting->dates as $date)
+            <details class="collapse bg-white hover:bg-gray-200">
+                <summary class="collapse-title text-xl text-black font-medium">Date and Time:
+                    <div>{{ $date->date_and_time }}</div>
+                </summary>
+
+                @if($date->votes->isNotEmpty())
+                <div class="collapse-content">
+                    @foreach($date->votes as $vote)
                         <div class="mb-4 shadow-xl p-6 rounded-lg">
                             <form method="post" action="{{ route('vote.update', $vote->id) }}"
                                   class="flex items-center">
@@ -44,12 +37,18 @@
                                 <x-danger-button type="submit">Delete vote</x-danger-button>
                             </form>
                         </div>
-                    </details>
-                        @endforeach
+                    @endforeach
+                </div>
+                @else
+                    <div class="text-md font-bold text-red-600 flex justify-center uppercase">No votes on this date</div>
                 @endif
-            @endforeach
-        @endif
+
+
+            </details>
+
+        @endforeach
     </div>
+    @else
+    <div class="text-lg font-bold text-red-600 flex justify-center uppercase">No dates exist for this meeting</div>
+    @endif
 </details>
-
-
