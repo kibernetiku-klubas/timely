@@ -29,7 +29,7 @@
             </div>
 
             <div>
-                @if (Auth::check())
+                @if (Auth::check() && Auth::user()->id == $meeting->user_id)
                     @include ('meetings.edit-times')
                 @else
                     <div class="flex justify-center my-8">
