@@ -1,0 +1,4 @@
+Contact: mailto:security@timely.lt
+Expires: 2277-01-01T10:21:00.000Z
+Preferred-Languages: en,lt
+Canonical: https://timely.lt/.well-known/security.txt
