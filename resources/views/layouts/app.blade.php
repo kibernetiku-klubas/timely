@@ -21,5 +21,11 @@
                 {{ $slot }}
             </main>
         </div>
+        <footer class="footer footer-center p-4 bg-white text-black">
+            <div>
+                <p>Timely, a meeting scheduling and time managing web app
+                    Copyright (C) 2023 Kibernetiku klubas | v1.1.0-beta</p>
+            </div>
+        </footer>
     </body>
 </html>

@@ -58,7 +58,7 @@
 <body class="antialiased">
 <div class="relative bg-white">
     <div class="flex justify-between items-center p-6">
-        <a class="text-2xl text-black font-bold btn-ghost rounded-xl" href="/">Timely</a>
+        <a class="text-2xl text-black font-bold btn-ghost rounded-xl" href="/">Timely <span class="text-sm">Beta</span> </a>
         @if (Route::has('login'))
             <div class="text-right">
                 @auth
@@ -193,7 +193,7 @@
 <footer class="footer footer-center p-4 bg-white text-black">
     <div>
         <p>Timely, a meeting scheduling and time managing web app
-            Copyright (C) 2023 Kibernetiku klubas</p>
+            Copyright (C) 2023 Kibernetiku klubas | v1.1.0-beta</p>
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
