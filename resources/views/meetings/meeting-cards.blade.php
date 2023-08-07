@@ -68,6 +68,10 @@
                     </div>
                 </div>
 
+                <a href="{{ route('export.ics', $date) }}"
+                   class="text-black flex justify-center hover:bg-gray-300 mt-2 btn btn-ghost">
+                    Export to calendar
+                </a>
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">
                     @if ($meeting->is1v1 === 0)

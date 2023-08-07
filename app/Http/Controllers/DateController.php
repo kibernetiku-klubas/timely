@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDate;
 use App\Models\Date;
+use DateInterval;
+use DateTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Meeting;
@@ -40,5 +42,29 @@ class DateController extends Controller
             return redirect()->back()->with('success', 'Date deleted successfully.');
         }
         return redirect()->back()->with('error', 'Not authorized to delete this date.');
+    }
+
+    public function exportToICalendar($id)
+    {
+        $date = Date::findOrFail($id);
+        $meeting = Meeting::findOrFail($date->meeting_id);
+
+        $icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n";
+
+        $startDate = new DateTime($date->date_and_time);
+        $endDate = clone $startDate;
+        $endDate->add(new DateInterval('PT' . $meeting->duration . 'M'));
+
+        $icsContent .= "BEGIN:VEVENT\r\n";
+        $icsContent .= "DTSTART:" . $startDate->format('Ymd\THis') . "\r\n";
+        $icsContent .= "DTEND:" . $endDate->format('Ymd\THis') . "\r\n";
+        $icsContent .= "SUMMARY:" . $meeting->title . "\r\n";
+        $icsContent .= "DESCRIPTION:" . $meeting->description . "\r\n";
+        $icsContent .= "LOCATION:" . $meeting->location . "\r\n";
+        $icsContent .= "END:VEVENT\r\n";
+
+        $icsContent .= "END:VCALENDAR";
+
+        return response($icsContent)->header('Content-Type', 'text/calendar');
     }
 }
