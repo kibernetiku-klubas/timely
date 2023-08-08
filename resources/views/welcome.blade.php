@@ -193,7 +193,7 @@
 <footer class="footer footer-center p-4 bg-white text-black">
     <div>
         <p>Timely, a meeting scheduling and time managing web app
-            Copyright (C) 2023 Kibernetiku klubas | v1.1.0-beta</p>
+            Copyright (C) 2023 Kibernetiku klubas | v1.1.1-beta</p>
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
