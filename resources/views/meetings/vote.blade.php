@@ -39,12 +39,18 @@
                 VOTING</p>
         @endif
         @if (count($meeting->dates) > 0)
-            <div>
-                <x-input-label for="voted_by" :value="__('YOUR NAME')"/>
-                <x-text-input id="voted_by" class="block mt-1 w-full text-black" type="text" name="voted_by"
-                              :value="old('voted_by')" required autofocus maxlength="50"/>
-                <x-input-error :messages="$errors->get('votes')" class="mt-2 text-red-700"/>
-            </div>
+            <x-input-label for="voted_by" :value="__('YOUR NAME')"/>
+            <x-text-input
+                id="voted_by"
+                class="block mt-1 w-full text-black"
+                type="text"
+                name="voted_by"
+                value="{{ Auth::check() ? Auth::user()->name : '' }}"
+                required
+                autofocus
+                maxlength="50"
+            />
+            <x-input-error :messages="$errors->get('votes')" class="mt-2 text-red-700"/>
             @foreach($meeting->dates as $date)
                 <input type="hidden" name="date_ids[]" value="{{ $date->id }}">
                 <div class="form-control">
