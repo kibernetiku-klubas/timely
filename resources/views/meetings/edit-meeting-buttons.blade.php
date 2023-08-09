@@ -1,6 +1,6 @@
 @if (Auth::check() && $meeting->user_id == Auth::User()->id)
     <a href='{{ route('meetings.show-finalize-date', $meeting->id) }}'>
-        <x-secondary-button>Finalize date</x-secondary-button>
+        <x-secondary-button>Finalize a time</x-secondary-button>
     </a>
 
     <a href='/meeting/{{ $meeting->id }}/edit'>

@@ -13,7 +13,7 @@
                         <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">Most voted</div>
                     @endif
                     @if ($date->selected === 1)
-                        <div class="badge badge-outline text-red-500 outline-red-500 mt-3 selected-badge">Selected</div>
+                        <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
                     @endif
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
