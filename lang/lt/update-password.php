@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Update-Profile Page Language lines
+    | Update-Password Page Language lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the paginator library to build
