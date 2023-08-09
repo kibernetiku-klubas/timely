@@ -10,16 +10,15 @@
 
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
-            <div class="fill-current text-black text-4xl font-bold">YOUR</div>
-            <div class="fill-current text-black text-4xl font-bold mb-8">MEETINGS.</div>
+            <div class="fill-current text-black text-4xl font-bold uppercase">{{ __('dashboard.your') }}</div>
+            <div class="fill-current text-black text-4xl font-bold uppercase mb-8">{{ __('dashboard.meetings') }}.</div>
         </div>
     </div>
     @if($meetings->isEmpty())
         <div class="flex justify-center items-center h-full">
-            <h2 class="text-2xl text-black font-bold">NO MEETINGS YET</h2>
+            <h2 class="text-2xl text-black font-bold uppercase">{{ __('dashboard.nomeetingsyet') }}</h2>
         </div>
-        <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">Create your first meeting
-            by pressing "Create a meeting" button</p>
+        <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">{{ __('dashboard.createfirstmeet') }}</p>
     @endif
     <div class="flex justify-center">
         <div
