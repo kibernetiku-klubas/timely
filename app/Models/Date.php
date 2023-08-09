@@ -13,7 +13,7 @@ class Date extends Model
 
     protected $table = 'dates';
 
-    protected $fillable = ['date_and_time', 'voted_by'];
+    protected $fillable = ['date_and_time', 'voted_by', 'selected'];
 
     public function meeting(): BelongsTo
     {
