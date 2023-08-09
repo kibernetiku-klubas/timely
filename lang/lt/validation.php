@@ -181,7 +181,8 @@ return [
     */
 
     'attributes' => [
-        'password' => 'Slaptažodis',
+        'password' => 'Slaptažodio',
+        'current_password' => 'Dabartinio slaptažodžio'
     ],
 
 ];

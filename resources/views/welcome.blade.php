@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome! • Timely</title>
+    <body data-page-title={{ __('welcome.welcome_tab') }}></body>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -74,7 +74,7 @@
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                           class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Register</a>
+                           class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.register') }}</a>
                     @endif
                 @endauth
             </div>
@@ -87,22 +87,21 @@
 
         <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
             <div class="mb-16">
-                <div class="fill-current text-black text-4xl">WELCOME TO</div>
+                <div class="fill-current text-black text-4xl uppercase">{{ __('welcome.welcometo') }}</div>
                 <div class="fill-current text-black text-8xl font-bold">Timely.</div>
             </div>
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
-                <span>Scheduling your</span> <span
-                    class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-purple-950 to-purple-400 lg:inline">meetings</span>
-                <span>made easy.</span>
+                <span>{{ __('welcome.schedulingyour') }}</span> <span
+                    class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-purple-950 to-purple-400 lg:inline">{{ __('welcome.meetings') }}</span>
+                <span>{{ __('welcome.madeeasy') }}</span>
             </h1>
             <p class="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
-                Having trouble finding the meeting time that suits everyone? Look no further than your free,
-                open-source and privacy respecting solution - Timely
+                {{ __('welcome.timelydesc') }}
             </p>
             <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
                 <a href="{{ route('dashboard') }}"
                    class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 btn btn-primary bg-purple-500 border-purple-500 sm:w-auto sm:mb-0">
-                    Create your first meeting
+                   {{ __('welcome.createfirst') }}
                     <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                          fill="currentColor">
                         <path fill-rule="evenodd"
@@ -147,13 +146,8 @@
             </div>
         </div>
         <div class="mt-28">
-            <h1 class="text-5xl font-bold text-black" data-aos="fade-left">Simple Meeting Page: Info, Times, and Easy
-                Voting.</h1>
-            <p class="py-6 text-black" data-aos="fade-up">Simplify your meetings with our user-friendly Meeting Page!
-                Find essential
-                details, including purpose, location, and duration. Send the meeting link to all your partners. Discover
-                available time slots and vote on your preferred time, bidding farewell to scheduling headaches!
-            </p>
+            <h1 class="text-5xl font-bold text-black" data-aos="fade-left">{{ __('welcome.meetingheader') }}</h1>
+            <p class="py-6 text-black" data-aos="fade-up">{{ __('welcome.meetingdesc') }}</p>
         </div>
     </div>
 </div>
@@ -163,13 +157,8 @@
         <img src="{{ asset('img/addtimes.png') }}" class="max-w-2xl rounded-lg shadow-2xl"
              alt="Meeting page" data-aos="fade-left"/>
         <div>
-            <h1 class="text-5xl font-bold text-black" data-aos="fade-right">Effortless Date and Time Selection with
-                Simple Calendar.</h1>
-            <p class="py-6 text-black" data-aos="fade-up">Our simple calendar feature is designed to take the hassle out
-                of date and time
-                selection, making scheduling a breeze. We believe that managing your time should be easy and
-                stress-free, and that's why our user-friendly interface provides a seamless experience for all your
-                scheduling needs.</p>
+            <h1 class="text-5xl font-bold text-black" data-aos="fade-right">{{ __('welcome.calendarheader') }}</h1>
+            <p class="py-6 text-black" data-aos="fade-up">{{ __('welcome.calendardesc') }}</p>
         </div>
     </div>
 </div>
@@ -180,16 +169,16 @@
 
         <div class="flex flex-col sm:justify-center items-center mt-8" data-aos="zoom-in">
             <div>
-                <div class="fill-current text-white text-6xl font-bold">WASTE</div>
-                <div class="fill-current text-white text-6xl font-bold mb-8">NO MORE TIME.</div>
+                <div class="fill-current text-white text-6xl font-bold uppercase">{{ __('welcome.waste') }}</div>
+                <div class="fill-current text-white text-6xl font-bold uppercase mb-8">{{ __('welcome.nomoretime') }}</div>
             </div>
         </div>
         <div class="max-w-md" data-aos="fade-left">
-            <p class="text-xl">Just like our minimalist dashboard doesn't waste your time.</p>
-            <p class="mb-5 text-2xl font-bold">Make your step to effortless meeting scheduling.</p>
+            <p class="text-xl">{{ __('welcome.waste_upper') }}</p>
+            <p class="mb-5 text-2xl font-bold">{{ __('welcome.waste_lower') }}</p>
             <div>
                 <a href="{{ route('dashboard') }}">
-                    <button class="btn btn-primary bg-purple-500 border-purple-500" data-aos="zoom-in">Get Started.</button>
+                    <button class="btn btn-primary bg-purple-500 border-purple-500" data-aos="zoom-in">{{ __('welcome.getstarted') }}</button>
                 </a>
             </div>
         </div>
