@@ -5,11 +5,11 @@
 @if (!$hasVoted)
     <button
         class="btn btn-outline border-none text-black text-xl shadow-lg hover:shadow-none"
-        onclick="votesModal.showModal()">ADD YOUR VOTES
+        onclick="votesModal.showModal()">{{ __('vote.addvotes') }}
     </button>
 @else
     <button class="btn btn-outline border-none text-black text-xl shadow-2xl" disabled="disabled">
-        <div class="text-gray-700">You have already voted</div>
+        <div class="text-gray-700">{{ __('vote.havevoted') }}</div>
     </button>
 @endif
 
@@ -26,20 +26,18 @@
         <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
         <div class="flex flex-col sm:justify-center items-center">
             <div>
-                <div class="fill-current text-black text-4xl font-bold">VOTE ON ALL THE</div>
-                <div class="fill-current text-black text-4xl font-bold mb-4">TIMES THAT SUIT YOU.</div>
+                <div class="fill-current text-black text-4xl font-bold">{{ __('vote.voteonall') }}</div>
+                <div class="fill-current text-black text-4xl font-bold mb-4">{{ __('vote.timesthat') }}</div>
             </div>
         </div>
-        <h3 class="font-bold text-lg text-black">Check every time you want to vote on and enter your name to
-            save your votes</h3>
-        <p class="py-4 text-black">Note: Name will be visible to everyone viewing this meeting.<br>
-            It is also recommended to use your real name so that meeting creator knows who voted.</p>
+        <h3 class="font-bold text-lg text-black">{{ __('vote.header') }}</h3>
+        <p class="py-4 text-black">{{ __('vote.desctop') }}<br>
+            {{ __('vote.descbot') }}</p>
         @if (count($meeting->dates) === 0)
-            <p class="text-red-700 text-xl font-bold flex justify-center mt-4">NO DATES AVAILABLE FOR
-                VOTING</p>
+            <p class="text-red-700 text-xl font-bold flex justify-center mt-4">{{ __('vote.unavailable') }}</p>
         @endif
         @if (count($meeting->dates) > 0)
-            <x-input-label for="voted_by" :value="__('YOUR NAME')"/>
+            <x-input-label for="voted_by" :value="__('vote.yourname')"/>
             <x-text-input
                 id="voted_by"
                 class="block mt-1 w-full text-black"
@@ -56,7 +54,7 @@
                 <div class="form-control">
                     <label class="label cursor-pointer">
                             <span
-                                class="label-text text-lg text-black font-bold">VOTE ON: {{$date->date_and_time}}</span>
+                                class="label-text text-lg text-black font-bold">{{ __('vote.voteon') }} {{$date->date_and_time}}</span>
                         <div class="shadow-xl">
                             @php
                                 $isDateTaken = \App\Models\Vote::where('date_id', $date->id)->exists();
@@ -75,7 +73,7 @@
             @endforeach
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button type="submit" class="ml-4">
-                    {{ __('Save votes') }}
+                    {{ __('vote.savevotes') }}
                 </x-primary-button>
             </div>
         @endif
