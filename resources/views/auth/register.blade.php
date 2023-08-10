@@ -42,9 +42,9 @@
 
                 <div class="ml-2">
                     I agree to the
-                    <a target="_blank" href="/" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
+                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
                     and
-                    <a target="_blank" href="/" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
                 </div>
             </div>
         </div>
