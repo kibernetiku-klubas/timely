@@ -1,16 +1,16 @@
 PRIVACY POLICY
 
-Last updated August 03, 2023
+Last updated August 10, 2023
 
 
 
-This privacy notice for Timely ("Company," "we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
+This privacy notice for Timely ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
 
     Visit our website at timely.lt, or any website of ours that links to this privacy notice
 
     Engage with us in other related ways, including any sales, marketing, or events
 
-Questions or concerns? Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at REPLACETHIS@REPLACETHIS.com.
+Questions or concerns? Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at support@timely.lt.
 
 
 SUMMARY OF KEY POINTS
@@ -23,15 +23,15 @@ Do we process any sensitive personal information? We do not process sensitive pe
 
 Do we receive any information from third parties? We do not receive any information from third parties.
 
-How do we process your information? We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about how we process your information.
+How do we process your information? We process your information to provide, improve, and administer our Services, for security and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so.
 
-In what situations and with which parties do we share personal information? We may share information in specific situations and with specific third parties. Learn more about when and with whom we share your personal information.
+In what situations and with which parties do we share personal information? We may share information only if contacted by law enforcement.
 
-How do we keep your information safe? We have organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about how we keep your information safe.
+How do we keep your information safe? We have organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information.
 
-What are your rights? Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about your privacy rights.
+What are your rights? Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information.
 
-How do you exercise your rights? The easiest way to exercise your rights is by submitting a data subject access request, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.
+How do you exercise your rights? The easiest way to exercise your rights is by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.
 
 Want to learn more about what Timely does with any information we collect? Review the privacy notice in full.
 
@@ -70,11 +70,9 @@ Personal Information Provided by You. The personal information that we collect d
 
 Sensitive Information. We do not process sensitive information.
 
-All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.
-
 2. HOW DO WE PROCESS YOUR INFORMATION?
 
-In Short: We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent.
+In Short: We process your information to provide, improve, and administer our Services, for security and to comply with law. We may also process your information for other purposes with your consent.
 
 We process your personal information for a variety of reasons, depending on how you interact with our Services, including:
 
@@ -85,7 +83,7 @@ We process your personal information for a variety of reasons, depending on how 
 
 3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?
 
-In Short: We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, to protect your rights, or to fulfill our legitimate business interests.
+In Short: We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, to protect your rights.
 
 If you are located in the EU or UK, this section applies to you.
 
@@ -106,23 +104,11 @@ In some exceptional cases, we may be legally permitted under applicable law to p
 
     If collection is clearly in the interests of an individual and consent cannot be obtained in a timely way
 
-    For investigations and fraud detection and prevention
-
-    For business transactions provided certain conditions are met
-
     If it is contained in a witness statement and the collection is necessary to assess, process, or settle an insurance claim
-
-    For identifying injured, ill, or deceased persons and communicating with next of kin
-
-    If we have reasonable grounds to believe an individual has been, is, or may be victim of financial abuse
 
     If it is reasonable to expect collection and use with consent would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada or a province
 
     If disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records
-
-    If it was produced by an individual in the course of their employment, business, or profession and the collection is consistent with the purposes for which the information was produced
-
-    If the collection is solely for journalistic, artistic, or literary purposes
 
     If the information is publicly available and is specified by the regulations
 
@@ -131,18 +117,13 @@ In some exceptional cases, we may be legally permitted under applicable law to p
 
 In Short: We may share information in specific situations described in this section and/or with the following third parties.
 
-We may need to share your personal information in the following situations:
-
-    Business Transfers. We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.
-
+We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.
 
 5. HOW LONG DO WE KEEP YOUR INFORMATION?
 
 In Short: We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law.
 
 We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements). No purpose in this notice will require us keeping your personal information for longer than the period of time in which users have an account with us.
-
-When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.
 
 6. HOW DO WE KEEP YOUR INFORMATION SAFE?
 
@@ -154,7 +135,7 @@ We have implemented appropriate and reasonable technical and organizational secu
 
 In Short: We do not knowingly collect data from or market to children under 18 years of age.
 
-We do not knowingly solicit data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at REPLACETHIS@REPLACETHIS.com.
+We do not knowingly solicit data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at support@timely.lt.
 
 8. WHAT ARE YOUR PRIVACY RIGHTS?
 
@@ -174,13 +155,15 @@ However, please note that this will not affect the lawfulness of the processing 
 
 Account Information
 
+All collected account data is visible on the dashboard and in the account settings. No data, that is invisible to the user, is collected.
+
 If you would at any time like to review or change the information in your account or terminate your account, you can:
 
     Log in to your account settings and update your user account.
 
-Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.
+Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.
 
-If you have questions or comments about your privacy rights, you may email us at REPLACETHIS@REPLACETHIS.com.
+If you have questions or comments about your privacy rights, you may email us at support@timely.lt.
 
 9. CONTROLS FOR DO-NOT-TRACK FEATURES
 
@@ -293,25 +276,19 @@ NO
 
 We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:
 
-    Receiving help through our customer support channels;
-
-    Participation in customer surveys or contests; and
-
     Facilitation in the delivery of our Services and to respond to your inquiries.
 
 How do we use and share your personal information?
 
 More information about our data collection and sharing practices can be found in this privacy notice.
 
-You may contact us by email at REPLACETHIS@REPLACETHIS.COM, or by referring to the contact details at the bottom of this document.
+You may contact us by email at support@timely.lt, or by referring to the contact details at the bottom of this document.
 
 If you are using an authorized agent to exercise your right to opt out we may deny a request if the authorized agent does not submit proof that they have been validly authorized to act on your behalf.
 
 Will your information be shared with anyone else?
 
 We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Each service provider is a for-profit entity that processes the information on our behalf, following the same strict privacy protection obligations mandated by the CCPA.
-
-We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be "selling" of your personal information.
 
 Timely has not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. Timely will not sell or share personal information in the future belonging to website visitors, users, and other consumers.
 
@@ -353,7 +330,7 @@ We do not process consumer's sensitive personal information.
 
 Verification process
 
-Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. These verification efforts require us to ask you to provide information so that we can match it with information you have previously provided us. For instance, depending on the type of request you submit, we may ask you to provide certain information so that we can match the information you provide with the information we already have on file, or we may contact you through a communication method (e.g., phone or email) that you have previously provided to us. We may also use other verification methods as the circumstances dictate.
+Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. These verification efforts require us to ask you to provide information so that we can match it with information you have previously provided us. For instance, depending on the type of request you submit, we may ask you to provide certain information so that we can match the information you provide with the information we already have on file. We may also use other verification methods as the circumstances dictate.
 
 We will only use personal information provided in your request to verify your identity or authority to make the request. To the extent possible, we will avoid requesting additional information from you for the purposes of verification. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes. We will delete such additionally provided information as soon as we finish verifying you.
 
@@ -367,7 +344,7 @@ Other privacy rights
 
     You may request to opt out from future selling or sharing of your personal information to third parties. Upon receiving an opt-out request, we will act upon the request as soon as feasibly possible, but no later than fifteen (15) days from the date of the request submission.
 
-To exercise these rights, you can contact us by email at REPLACETHIS@REPLACETHIS.COM, or by referring to the contact details at the bottom of this document. If you have a complaint about how we handle your data, we would like to hear from you.
+To exercise these rights, you can contact us by email at support@timely.lt, or by referring to the contact details at the bottom of this document. If you have a complaint about how we handle your data, we would like to hear from you.
 
 11. DO VIRGINIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
 
@@ -385,35 +362,13 @@ Under the Virginia Consumer Data Protection Act (CDPA):
 
 If this definition "consumer" applies to you, we must adhere to certain rights and obligations regarding your personal data.
 
-The information we collect, use, and disclose about you will vary depending on how you interact with Timely and our Services. To find out more, please visit the following links:
-
-    Personal data we collect
-
-    How we use your personal data
-
-    When and with whom we share your personal data
-
-Your rights with respect to your personal data
-
-    Right to be informed whether or not we are processing your personal data
-
-    Right to access your personal data
-
-    Right to correct inaccuracies in your personal data
-
-    Right to request deletion of your personal data
-
-    Right to obtain a copy of the personal data you previously shared with us
-
-    Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ("profiling")
-
 Timely has not sold any personal data to third parties for business or commercial purposes. Timely will not sell personal data in the future belonging to website visitors, users, and other consumers.
 
 Exercise your rights provided under the Virginia CDPA
 
 More information about our data collection and sharing practices can be found in this privacy notice.
 
-You may contact us by email at REPLACETHIS@REPLACETHIS.com, by submitting a data subject access request, or by referring to the contact details at the bottom of this document.
+You may contact us by email at support@timely.lt, by submitting a data subject access request, or by referring to the contact details at the bottom of this document.
 
 If you are using an authorized agent to exercise your rights, we may deny a request if the authorized agent does not submit proof that they have been validly authorized to act on your behalf.
 
@@ -425,7 +380,7 @@ Upon receiving your request, we will respond without undue delay, but in all cas
 
 Right to appeal
 
-If we decline to take action regarding your request, we will inform you of our decision and reasoning behind it. If you wish to appeal our decision, please email us at REPLACETHIS@REPLACETHIS.com. Within sixty (60) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal if denied, you may contact the Attorney General to submit a complaint.
+If we decline to take action regarding your request, we will inform you of our decision and reasoning behind it. If you wish to appeal our decision, please email us at support@timely.lt. Within sixty (60) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal if denied, you may contact the Attorney General to submit a complaint.
 
 12. DO WE MAKE UPDATES TO THIS NOTICE?
 
@@ -435,11 +390,8 @@ We may update this privacy notice from time to time. The updated version will be
 
 13. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
 
-If you have questions or comments about this notice, you may email us at REPLACETHIS@REPLACETHIS.com
+If you have questions or comments about this notice, you may email us at support@timely.lt
 
 14. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?
 
 Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it. To request to review, update, or delete your personal information, please fill out and submit a data subject access request.
-
-This privacy policy was created using Termly's Privacy Policy Generator.
-
