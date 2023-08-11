@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Register Language Lines
+    | Login Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the paginator library to build
@@ -13,10 +13,11 @@ return [
     |
     */
 
+    'tab' => 'Login',
     'name' => 'USERNAME',
     'passwd' => 'PASSWORD',
-    'confirm' => 'CONFIRM PASSWORD',
-    'registered' => 'Already registered?',
-    'register' => 'Register',
+    'remember' => 'Remember me',
+    'noacc' => 'Don\'t have an account yet?',
+    'login' => 'Log in',
     
 ];

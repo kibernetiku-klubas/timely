@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Reset-password Language Lines
+    | Register Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the paginator library to build
