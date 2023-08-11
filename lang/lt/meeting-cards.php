@@ -19,14 +19,14 @@ return [
     'confirm_message' => 'Are you sure you want to delete this date?',
     'cancel' => 'Cancel',
     'confirmdelete' => 'Confirm Delete',
-    'export' => 'Export to calendar',
+    'export' => 'Export selected time to calendar',
     'votes' => 'Votes:',
     'taken' => 'TAKEN.',
     'free' => 'FREE.',
     'seewho' => 'CLICK TO SEE WHO VOTED',
     'novotes' => 'NO VOTES ON THIS DATE',
     'whovoted' => 'PEOPLE WHO VOTED:',
-    
-    
-    
+
+
+
 ];
