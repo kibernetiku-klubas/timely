@@ -15,4 +15,5 @@ return [
 
     'edit' => 'Edit meeting and votes',
     'delete' => 'Delete meeting',
+    'finalize' => 'Finalize a time',
 ];
