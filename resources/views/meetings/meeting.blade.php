@@ -11,7 +11,7 @@
 
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
-            <div class="fill-current text-black text-4xl font-bold">MEETING.</div>
+            <div class="fill-current text-black text-4xl font-bold">{{ __('meeting.meeting') }}</div>
         </div>
     </div>
 
@@ -21,10 +21,10 @@
             @include('meetings.meeting-info')
 
 
-            <div class="flex justify-center text-xl font-bold"> DATES AND TIMES FOR THE MEETING:</div>
+            <div class="flex justify-center text-xl font-bold"> {{ __('meeting.dates') }}</div>
             <div class="flex justify-center text-xl mt-4">
                 @if($meeting->is1v1 == 1)
-                    Note: This meeting is 1 on 1, so only one vote per date is allowed.
+                    {{ __('meeting.1v1') }}
                 @endif
             </div>
 
@@ -39,16 +39,15 @@
             </div>
 
             <div class="flex justify-center items-center text-lg">
-                All times are in "{{$meeting->timezone}}" timezone
+                {{ __('meeting.timesarein') }} "{{$meeting->timezone}}" {{ __('meeting.timezone') }}
             </div>
 
             @if($meeting->dates->isEmpty())
                 <div class="flex justify-center items-center h-full mt-4">
-                    <h2 class="text-lg text-black font-bold">NO DATES YET</h2>
+                    <h2 class="text-lg text-black font-bold">{{ __('meeting.nodates') }}</h2>
                 </div>
                 @if(Auth::check())
-                    <p class="flex justify-center items-center h-full text-md mt-1 text-black font-bold">Add dates by
-                        using date selector above</p>
+                    <p class="flex justify-center items-center h-full text-md mt-1 text-black font-bold">{{ __('meeting.adddates') }}</p>
                 @endif
             @endif
 

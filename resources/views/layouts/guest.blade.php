@@ -21,7 +21,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/">
-                    <div class="fill-current text-black text-4xl">WELCOME TO</div>
+                    <div class="fill-current text-black text-4xl">{{ __('guest.welcome') }}</div>
                     <div class="fill-current text-black text-8xl font-bold">Timely.</div>
                 </a>
             </div>

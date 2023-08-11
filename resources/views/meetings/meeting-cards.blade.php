@@ -10,7 +10,7 @@
                 <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
                 <div class="flex justify-between">
                     @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
-                        <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">Most voted</div>
+                        <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
                     @endif
                     @if ($date->selected === 1)
                         <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
@@ -32,7 +32,7 @@
                                 <a id="openDialog" class="" onclick="openModal(event)">
                                     <ul tabindex="0"
                                         class="dropdown-content bg-gray-100 rounded-box p-4 hover:bg-gray-200">
-                                        Delete
+                                        {{ __('meeting-cards.delete') }}
                                     </ul>
                                 </a>
                             </div>
@@ -41,12 +41,12 @@
                              class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
                         <div id="dialog"
                              class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
-                            <h1 class="text-2xl font-bold uppercase">Confirm Deletion.</h1>
-                            <p class="text-red-700">Are you sure you want to delete this date?</p>
+                            <h1 class="text-2xl font-bold uppercase">{{ __('meeting-cards.confirm') }}</h1>
+                            <p class="text-red-700">{{ __('meeting-cards.confirm_message') }}</p>
                             <div class="flex justify-end">
-                                <x-secondary-button class="m-1" id="closeDialog" onclick="closeModal()">Cancel
+                                <x-secondary-button class="m-1" id="closeDialog" onclick="closeModal()">{{ __('meeting-cards.cancel') }}
                                 </x-secondary-button>
-                                <x-danger-button class="m-1" onclick="confirmDelete()">Confirm Delete</x-danger-button>
+                                <x-danger-button class="m-1" onclick="confirmDelete()">{{ __('meeting-cards.confirmdelete') }}</x-danger-button>
                             </div>
                         </div>
                     @endif
@@ -71,27 +71,27 @@
 
                 <a href="{{ route('export.ics', $date) }}"
                    class="text-black flex justify-center hover:bg-gray-300 mt-2 btn btn-ghost">
-                    Export to calendar
+                   {{ __('meeting-cards.export') }}
                 </a>
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">
                     @if ($meeting->is1v1 === 0)
-                        Votes: {{ $date->votes->count() }}
+                    {{ __('meeting-cards.votes') }} {{ $date->votes->count() }}
                     @elseif ($meeting->is1v1 === 1 && $isDateTaken)
-                        TAKEN.
+                    {{ __('meeting-cards.taken') }}
                     @else
-                        FREE.
+                    {{ __('meeting-cards.free') }}
                     @endif
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-center">
                         <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
-                            <summary class="collapse-title text-md font-bold">CLICK TO SEE WHO VOTED</summary>
+                            <summary class="collapse-title text-md font-bold">{{ __('meeting-cards.seewho') }}</summary>
                             <div class="collapse-content px-4 md:px-6">
                                 @if ($date->votes->isEmpty())
-                                    <div class="font-bold">NO VOTES ON THIS DATE</div>
+                                    <div class="font-bold">{{ __('meeting-cards.novotes') }}</div>
                                 @else
-                                    <div class="font-bold mb-2 md:mb-4">PEOPLE WHO VOTED:</div>
+                                    <div class="font-bold mb-2 md:mb-4">{{ __('meeting-cards.whovoted') }}</div>
                                     @foreach ($date->votes as $vote)
                                         <div class="mb-1">{{ $vote->voted_by }}</div>
                                     @endforeach

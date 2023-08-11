@@ -1,6 +1,6 @@
 <div class="bg-white p-4">
     <div class="text-3xl font-bold text-black uppercase mb-4">{{ $meeting->title }}</div>
-    <div class="text-lg font-bold text-black uppercase mb-4">Meeting created by {{$creator->name}}</div>
+    <div class="text-lg font-bold text-black uppercase mb-4">{{ __('meeting-info.createdby') }} {{$creator->name}}</div>
 
     <div class="flex items-center mb-4">
         <div class="svg-container">
@@ -31,12 +31,12 @@
                     stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
-        <div>{{ $meeting->duration }} minutes</div>
+        <div>{{ $meeting->duration }} {{ __('meeting-info.minutes') }}</div>
     </div>
 
-    <div class="font-bold pr-2 uppercase flex justify-center">Link to meeting:</div>
+    <div class="font-bold pr-2 uppercase flex justify-center">{{ __('meeting-info.link') }}</div>
     <div class="flex justify-center items-center mb-6">
-        <div class="tooltip mb-2" data-tip="Press the icon on the right to copy">
+        <div class="tooltip mb-2" data-tip="{{ __('meeting-info.data-tip') }}">
             <a class="link" id="link">https://timely.lt/meetings/{{ $meeting->id }}</a>
         </div>
         <a id="copyLink" class="btn-ghost rounded-lg">

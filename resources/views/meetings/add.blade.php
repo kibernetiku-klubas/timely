@@ -8,39 +8,37 @@
 
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
-            <div class="fill-current text-black text-4xl font-bold">CREATE A</div>
-            <div class="fill-current text-black text-4xl font-bold">NEW MEETING.</div>
+            <div class="fill-current text-black text-4xl font-bold">{{ __('add.create') }}</div>
+            <div class="fill-current text-black text-4xl font-bold">{{ __('add.new') }}</div>
         </div>
     </div>
-    <body data-page-title="Create a meeting"></body>
+    <body data-page-title="{{ __('add.tab_name') }}"></body>
     <x-slot name="header">
         <h2 class="text-xl text-black leading-tight">
-            Create a meeting
+            {{ __('add.tab_name') }}
         </h2>
     </x-slot>
     <x-meet-form-layout>
         <dialog id="my_modal_1" class="modal">
             <form method="dialog" class="modal-box bg-white shadow-xl">
                 <div class="modal-content">
-                    <h3 class="font-bold text-lg text-black flex justify-center mb-8">Which meeting type is right for
-                        me?</h3>
+                    <h3 class="font-bold text-lg text-black flex justify-center mb-8">{{ __('add.which') }}</h3>
                     <div class="flex flex-col lg:flex-col">
                         <div class="flex-1 text-black">
-                            <div class="font-bold text-xl uppercase">Group meeting.</div>
-                            <p>Choose group meeting if you need to find the meeting time that suits the most people</p>
+                            <div class="font-bold text-xl uppercase">{{ __('add.group') }}</div>
+                            <p>{{ __('add.group_expl') }}</p>
                         </div>
                         <div class="divider text-black flex items-center justify-center flex-1">
-                            OR
+                            {{ __('add.or') }}
                         </div>
                         <div class="flex-1 text-black">
-                            <div class="font-bold text-xl uppercase">1 on 1 meeting.</div>
-                            <p>Choose multiple times and allow participants to book the slot that best suits their
-                                schedule.</p>
+                            <div class="font-bold text-xl uppercase">{{ __('add.1v1') }}</div>
+                            <p>{{ __('add.1v1_expl') }}</p>
                         </div>
                     </div>
                     <div class="modal-action flex justify-center mt-4">
                         <button>
-                            <x-primary-button>Got it!</x-primary-button>
+                            <x-primary-button>{{ __('add.ok') }}</x-primary-button>
                         </button>
                     </div>
                 </div>
@@ -52,7 +50,7 @@
             @csrf
 
             <div class="tooltip tooltip-right" data-tip="Which to choose?">
-                <div class="font-bold text-md text-gray-700 inline-flex items-center">SELECT MEETING TYPE
+                <div class="font-bold text-md text-gray-700 inline-flex items-center">{{ __('add.select') }}
                     <span class="btn btn-ghost" onclick="my_modal_1.showModal()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +76,7 @@
                                     d="M 28.0000 27.1257 C 31.1936 27.1257 33.9415 24.2737 33.9415 20.5602 C 33.9415 16.8912 31.1787 14.1729 28.0000 14.1729 C 24.8213 14.1729 22.0584 16.9506 22.0584 20.5898 C 22.0584 24.2737 24.8064 27.1257 28.0000 27.1257 Z M 10.9029 27.4673 C 13.6658 27.4673 16.0722 24.9718 16.0722 21.7485 C 16.0722 18.5548 13.6509 16.1930 10.9029 16.1930 C 8.1401 16.1930 5.7040 18.6143 5.7188 21.7782 C 5.7188 24.9718 8.1252 27.4673 10.9029 27.4673 Z M 45.0970 27.4673 C 47.8748 27.4673 50.2811 24.9718 50.2811 21.7782 C 50.2811 18.6143 47.8599 16.1930 45.0970 16.1930 C 42.3491 16.1930 39.9278 18.5548 39.9278 21.7485 C 39.9278 24.9718 42.3342 27.4673 45.0970 27.4673 Z M 2.6143 40.8806 L 13.9035 40.8806 C 12.3586 38.6376 14.2451 34.1220 17.4387 31.6562 C 15.7899 30.5570 13.6658 29.7400 10.8881 29.7400 C 4.1889 29.7400 0 34.6864 0 38.8010 C 0 40.1379 .7427 40.8806 2.6143 40.8806 Z M 53.3856 40.8806 C 55.2723 40.8806 56 40.1379 56 38.8010 C 56 34.6864 51.8113 29.7400 45.1119 29.7400 C 42.3342 29.7400 40.2102 30.5570 38.5613 31.6562 C 41.7549 34.1220 43.6414 38.6376 42.0966 40.8806 Z M 18.6568 40.8806 L 37.3283 40.8806 C 39.6604 40.8806 40.4925 40.2122 40.4925 38.9050 C 40.4925 35.0726 35.6944 29.7845 27.9851 29.7845 C 20.2907 29.7845 15.4928 35.0726 15.4928 38.9050 C 15.4928 40.2122 16.3247 40.8806 18.6568 40.8806 Z"/>
                             </svg>
                         </div>
-                        <div class="card-title">GROUP MEETING.</div>
+                        <div class="card-title uppercase">{{ __('add.group') }}</div>
                     </div>
                 </label>
                 <label class="card bg-white shadow-xl m-2 radio-label">
@@ -92,7 +90,7 @@
                                     d="M 28.0117 27.3672 C 33.0508 27.3672 37.3867 22.8672 37.3867 17.0078 C 37.3867 11.2187 33.0274 6.9297 28.0117 6.9297 C 22.9961 6.9297 18.6367 11.3125 18.6367 17.0547 C 18.6367 22.8672 22.9961 27.3672 28.0117 27.3672 Z M 13.2930 49.0703 L 42.7305 49.0703 C 46.4101 49.0703 47.7226 48.0156 47.7226 45.9531 C 47.7226 39.9062 40.1523 31.5625 28.0117 31.5625 C 15.8477 31.5625 8.2774 39.9062 8.2774 45.9531 C 8.2774 48.0156 9.5898 49.0703 13.2930 49.0703 Z"/>
                             </svg>
                         </div>
-                        <div class="card-title">1 ON 1 MEETING.</div>
+                        <div class="card-title uppercase">{{ __('add.1v1') }}</div>
                     </div>
                 </label>
             </div>
@@ -114,15 +112,15 @@
 
             <!-- Title -->
             <div>
-                <x-input-label for="title" :value="__('TITLE')"/>
+                <x-input-label for="title" :value="__('add.title')"/>
                 <x-text-input id="title" class="block mt-1 w-full text-black" type="text" name="title"
                               :value="old('title')"
-                              required autofocus autocomplete="title" maxlength="46" placeholder="Meeting Title"/>
+                              required autofocus autocomplete="title" maxlength="46" placeholder="{{ __('add.title_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('title')" class="mt-2"/>
             </div>
             <!-- Description -->
             <div>
-                <x-input-label for="description" :value="__('DESCRIPTION')"/>
+                <x-input-label for="description" :value="__('add.desc')"/>
                 <x-textarea type="textarea" id="description" required autofocus autocomplete="description"
                             placeholder="Briefly describe what the meeting is about..." maxlength="1000"
                             name="description" class="text-black w-full">{{old('description')}}</x-textarea>
@@ -130,11 +128,11 @@
             </div>
             <!-- Location -->
             <div>
-                <x-input-label for="location" :value="__('LOCATION')"/>
+                <x-input-label for="location" :value="__('add.location')"/>
                 <x-text-input id="location"
                               class="block mt-1 w-full text-black"
                               type="text" name="location" :value="old('location')" required autofocus
-                              autocomplete="location" placeholder="Meeting Location (e.g., Conference Room A, Online)"
+                              autocomplete="location" placeholder="{{ __('add.location_placeholder') }}"
                               maxlength="50"/>
                 <x-input-error :messages="$errors->get('location')" class="mt-2"/>
             </div>
@@ -143,10 +141,10 @@
                 @php
                     $timezones = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
                 @endphp
-                <x-input-label for="timezone" :value="__('TIMEZONE')"/>
+                <x-input-label for="timezone" :value="__('add.timezone')"/>
                 <select name="timezone" id="timezone" type="string"
                         class="border border-gray-300 text-black rounded-lg w-full mt-1 bg-white text-md focus:border-purple-500 focus:purple-500">
-                    <option value="default">Please select a timezone</option>
+                    <option value="default">{{ __('add.selecttimezone') }}</option>
                     @foreach($timezones as $timezone)
                         <option value="{{ $timezone }}">
                             {{ $timezone }}
@@ -159,31 +157,31 @@
             </div>
             <!-- Duration -->
             <div>
-                <x-input-label for="duration" :value="__('MEETING DURATION (MIN):')"/>
+                <x-input-label for="duration" :value="__('add.duration')"/>
                 <x-text-input type="smallInteger" id="duration"
                               class="block mt-1 w-full border border-gray-300 focus:border-purple-500 focus:purple-500 bg-white p-2 text-black"
                               type="string" name="duration" :value="old('duration')" required autofocus
-                              autocomplete="duration" placeholder="Estimated Meeting Duration"/>
+                              autocomplete="duration" placeholder="{{ __('add.duration_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('duration')" class="mt-2"/>
             </div>
             <!-- Delete_after -->
             <div>
-                <x-input-label for="delete_after" :value="__('DELETE AFTER (DAYS) FROM CREATION:')"/>
+                <x-input-label for="delete_after" :value="__('add.delete_after')"/>
                 <x-text-input type="integer" id="delete_after"
                               class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
                               type="string" name="delete_after" :value="old('delete_after')" required autofocus
-                              autocomplete="delete_after" placeholder="Choose time until deletion"/>
+                              autocomplete="delete_after" placeholder="{{ __('add.deletion_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('delete_after')" class="mt-2"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a href="{{ route('dashboard') }}" tabindex="-1">
                     <x-secondary-button class="ml-4">
-                        Cancel
+                        {{ __('add.cancel') }}
                     </x-secondary-button>
                 </a>
                 <x-primary-button type="submit" class="ml-4">
-                    Create meeting
+                    {{ __('add.confirm') }}
                 </x-primary-button>
             </div>
     </x-meet-form-layout>
