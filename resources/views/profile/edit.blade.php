@@ -1,13 +1,13 @@
 <x-app-layout>
     <div class="flex flex-col sm:justify-center items-center mt-8">
         <div>
-            <div class="fill-current text-black text-4xl font-bold">PROFILE.</div>
+            <div class="fill-current text-black text-4xl font-bold uppercase"><h1>{{ __('edit.profile') }}</h1></div>
         </div>
     </div>
-    <body data-page-title="Profile"></body>
+    <body data-page-title={{ __('edit.profile_tab') }}></body>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('edit.profile') }}
         </h2>
     </x-slot>
 

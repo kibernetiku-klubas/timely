@@ -1,20 +1,20 @@
 <x-guest-layout>
-    <body data-page-title="Register"></body>
+    <body data-page-title="{{ __('register.tab') }}"></body>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('USERNAME')"/>
-            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')"
-                          required autofocus autocomplete="username"/>
-            <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+            <x-input-label for="name" :value="__('register.name')" />
+            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')" 
+                          required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('PASSWORD')"/>
+            <x-input-label for="password" :value="__('register.passwd')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                           type="password"
@@ -26,7 +26,7 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('CONFIRM PASSWORD')"/>
+            <x-input-label for="password_confirmation" :value="__('register.confirm')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                           type="password"
@@ -41,21 +41,21 @@
                 <input type="checkbox" class="checkbox" name="terms" id="terms" required>
 
                 <div class="ml-2">
-                    I agree to the
-                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
-                    and
-                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                    {{ __('register.agree') }}
+                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.tos') }}</a>
+                    {{ __('register.and') }}
+                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.policy') }}</a>
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-               href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" 
+                href="{{ route('login') }}">
+                {{ __('register.registered') }}
             </a>
 
             <x-primary-button class="ml-4">
-                {{ __('Register') }}
+                {{ __('register.register') }}
             </x-primary-button>
         </div>
     </form>
