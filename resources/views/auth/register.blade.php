@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <body data-page-title="Register"></body>
+    <body data-page-title="{{ __('register.tab') }}"></body>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -41,10 +41,10 @@
                 <input type="checkbox" class="checkbox" name="terms" id="terms" required>
 
                 <div class="ml-2">
-                    I agree to the
-                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
-                    and
-                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                    {{ __('register.agree') }}
+                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.tos') }}</a>
+                    {{ __('register.and') }}
+                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.policy') }}</a>
                 </div>
             </div>
         </div>
