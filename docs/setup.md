@@ -1,7 +1,6 @@
 # Setting up this project locally
 
 Make sure that your system has [PHP](https://www.php.net/manual/en/install.php), [Composer](https://getcomposer.org/) and [node with npm](https://nodejs.org/en).
-For local development we will be using sqlite database. More about this project database [here](database.md)
 
 - Clone the repository
   ```
@@ -43,9 +42,9 @@ For local development we will be using sqlite database. More about this project 
   ```
   php artisan migrate
   ```
-- npm (Which to choose? If you want to develop use npm run dev (this gives auto-reload on save). For production use npm run production, to build use npm run build)
+- npm run
   ```
-  npm run build or npm run dev or npm run production
+  npm run dev
   ```
 - Start project
   ```
