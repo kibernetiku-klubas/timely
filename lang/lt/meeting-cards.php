@@ -13,19 +13,19 @@ return [
     |
     */
 
-    'mostvoted' => 'Most voted',
-    'delete' => 'Delete',
-    'confirm' => 'Confirm Deletion.',
-    'confirm_message' => 'Are you sure you want to delete this date?',
-    'cancel' => 'Cancel',
-    'confirmdelete' => 'Confirm Delete',
-    'export' => 'Export to calendar',
-    'votes' => 'Votes:',
-    'taken' => 'TAKEN.',
-    'free' => 'FREE.',
-    'seewho' => 'CLICK TO SEE WHO VOTED',
-    'novotes' => 'NO VOTES ON THIS DATE',
-    'whovoted' => 'PEOPLE WHO VOTED:',
+    'mostvoted' => 'Populiariausias',
+    'delete' => 'Ištrinti',
+    'confirm' => 'Patvirtinti ištrynimą.',
+    'confirm_message' => 'Ar jūs tikrai norite ištrinti šią datą?',
+    'cancel' => 'Atšaukti',
+    'confirmdelete' => 'Patvirtinti ištrynimą',
+    'export' => 'Eksportuoti į kalendorių',
+    'votes' => 'Balsai:',
+    'taken' => 'UŽIMTA.',
+    'free' => 'LAISVA.',
+    'seewho' => 'PASPAUSKITE KAD MATYTI BALSAVUSIUS',
+    'novotes' => 'NIEKAS UŽ ŠIĄ DATĄ NEBALSAVO',
+    'whovoted' => 'ASMENYS, KURIE BALSAVO:',
     
     
     

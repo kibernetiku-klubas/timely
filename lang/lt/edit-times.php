@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'times' => 'ADD TIMES',
-    'select' => 'SELECT A NEW TIME',
-    'addtime' => 'Add time',
+    'times' => 'PRIDĖTI LAIKUS',
+    'select' => 'PASIRINKITE NAUJĄ LAIKĄ',
+    'addtime' => 'Pridėti laiką',
 ];
