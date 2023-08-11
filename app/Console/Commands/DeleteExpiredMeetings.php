@@ -15,7 +15,8 @@ class DeleteExpiredMeetings extends Command
     public function handle(): void
     {
         $now = now()->addDay();
-        Meeting::where(DB::raw("DATE(created_at, '+' || delete_after || ' day')"), '<', $now)->delete();
+        Meeting::where('created_at', '<', $now->subDays(DB::table('meetings')->value('delete_after')))
+           ->delete();
         $this->info('Expired meetings deleted successfully.');
     }
 }
