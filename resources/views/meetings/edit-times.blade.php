@@ -2,7 +2,7 @@
     <details class="collapse bg-white mb-6">
         <summary class="collapse-title text-xl font-bold text-center">
             <div class="flex items-center justify-center">
-                <div class="btn btn-ghost text-xl font-bold shadow-lg">ADD TIMES
+                <div class="btn btn-ghost text-xl font-bold shadow-lg">{{ __('edit-times.times') }}
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                          class="bi bi-plus" viewBox="0 0 16 16">
                         <path
@@ -19,14 +19,14 @@
                 <input type='hidden' name='meeting_id' value='{{$meeting->id}}'>
                 <div class="mt-4 flex items-center space-x-2">
                     <div class="mb-2">
-                        <x-input-label for="new_time" :value="__('SELECT A NEW TIME')"/>
+                        <x-input-label for="new_time" :value="__('edit-times.select')"/>
                         <x-flatpickr name='new_time' show-time :min-date="now()->addMinutes(30)"
                                      :max-date="today()->addDays(90)" required/>
                         <x-input-error :messages="$errors->get('new_time')" class="mt-2"/>
                     </div>
                     <div class="mt-2.5">
                         <x-primary-button>
-                            {{ __('Add time') }}
+                            {{ __('edit-times.addtime') }}
                         </x-primary-button>
                     </div>
                 </div>
