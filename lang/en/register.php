@@ -13,10 +13,15 @@ return [
     |
     */
 
+    'tab' => 'Register',
     'name' => 'USERNAME',
     'passwd' => 'PASSWORD',
     'confirm' => 'CONFIRM PASSWORD',
     'registered' => 'Already registered?',
     'register' => 'Register',
+    'agree' => 'I agree to the',
+    'tos' => 'Terms of Service',
+    'and' => 'and',
+    'policy' => 'Privacy Policy',
     
 ];
