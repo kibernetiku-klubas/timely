@@ -46,7 +46,9 @@ class MeetingController extends Controller
 
     public function show($id)
     {
-        $meeting = Meeting::with('dates.votes')->findOrFail($id);
+        $meeting = Meeting::with(['dates' => function ($query) {
+            $query->orderBy('date_and_time', 'asc');
+        }, 'dates.votes'])->findOrFail($id);
         $datesGroupedByYear = $this->getDatesGroupedByYear($meeting);
 
         return view('meetings.meeting', [
