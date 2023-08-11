@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Edit-times page Language Lines
+    | Edit-meeting-buttons page Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the paginator library to build
@@ -13,7 +13,6 @@ return [
     |
     */
 
-    'times' => 'ADD TIMES',
-    'select' => 'SELECT A NEW TIME',
-    'addtime' => 'Add time',
+    'edit' => 'Edit meeting and votes',
+    'delete' => 'Delete meeting',
 ];

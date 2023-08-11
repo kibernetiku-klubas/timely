@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Edit-votes page Language Lines
+    | Edit-times page Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the paginator library to build
