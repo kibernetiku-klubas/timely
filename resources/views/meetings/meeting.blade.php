@@ -42,6 +42,10 @@
                 {{ __('meeting.timesarein') }} "{{$meeting->timezone}}" {{ __('meeting.timezone') }}
             </div>
 
+            <div class="flex justify-center my-8">
+                @include('meetings.export-time')
+            </div>
+
             @if($meeting->dates->isEmpty())
                 <div class="flex justify-center items-center h-full mt-4">
                     <h2 class="text-lg text-black font-bold">{{ __('meeting.nodates') }}</h2>

@@ -10,10 +10,12 @@
                 <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
                 <div class="flex justify-between">
                     @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
-                        <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
+                        <div
+                            class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
                     @endif
                     @if ($date->selected === 1)
-                        <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
+                        <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected
+                        </div>
                     @endif
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
@@ -44,9 +46,11 @@
                             <h1 class="text-2xl font-bold uppercase">{{ __('meeting-cards.confirm') }}</h1>
                             <p class="text-red-700">{{ __('meeting-cards.confirm_message') }}</p>
                             <div class="flex justify-end">
-                                <x-secondary-button class="m-1" id="closeDialog" onclick="closeModal()">{{ __('meeting-cards.cancel') }}
+                                <x-secondary-button class="m-1" id="closeDialog"
+                                                    onclick="closeModal()">{{ __('meeting-cards.cancel') }}
                                 </x-secondary-button>
-                                <x-danger-button class="m-1" onclick="confirmDelete()">{{ __('meeting-cards.confirmdelete') }}</x-danger-button>
+                                <x-danger-button class="m-1"
+                                                 onclick="confirmDelete()">{{ __('meeting-cards.confirmdelete') }}</x-danger-button>
                             </div>
                         </div>
                     @endif
@@ -69,18 +73,14 @@
                     </div>
                 </div>
 
-                <a href="{{ route('export.ics', $date) }}"
-                   class="text-black flex justify-center hover:bg-gray-300 mt-2 btn btn-ghost">
-                   {{ __('meeting-cards.export') }}
-                </a>
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">
                     @if ($meeting->is1v1 === 0)
-                    {{ __('meeting-cards.votes') }} {{ $date->votes->count() }}
+                        {{ __('meeting-cards.votes') }} {{ $date->votes->count() }}
                     @elseif ($meeting->is1v1 === 1 && $isDateTaken)
-                    {{ __('meeting-cards.taken') }}
+                        {{ __('meeting-cards.taken') }}
                     @else
-                    {{ __('meeting-cards.free') }}
+                        {{ __('meeting-cards.free') }}
                     @endif
                 </div>
                 <div class="flex justify-center">
