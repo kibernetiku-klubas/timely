@@ -9,14 +9,14 @@
             <li class="p-6 shadow-xl rounded-lg">
                 <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
                 <div class="flex justify-between">
-                    @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
-                        <div
-                            class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
-                    @endif
-                    @if ($date->selected === 1)
-                        <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected
-                        </div>
-                    @endif
+                    <div class="flex space-x-3 my-2">
+                        @if ($date->selected === 1)
+                            <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
+                        @endif
+                        @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
+                            <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
+                        @endif
+                    </div>
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
                         <form id="deleteForm{{ $date->id }}" method="POST"
