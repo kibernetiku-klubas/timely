@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDate;
 use App\Http\Requests\StoreMeeting;
+use App\Models\Date;
 use App\Models\Meeting;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -94,4 +96,35 @@ class MeetingController extends Controller
 
         return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully.');
     }
+
+    public function showFinalizeDate($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+
+        return view('meetings.finalize-date', compact('meeting'));
+    }
+
+    public function finalizeDate(StoreDate $request, $id)
+    {
+        $meeting = Meeting::findOrFail($id);
+
+        if ($meeting->user_id !== Auth::user()->id) {
+            return redirect()->back()->with('error', 'Not authorized to finalize this date.');
+        }
+
+        $selectedDateId = $request->input('selected_date');
+        $meeting->dates()->update(['selected' => 0]);
+
+
+        $selectedDate = Date::where('id', $selectedDateId)
+            ->where('meeting_id', $meeting->id)
+            ->firstOrFail();
+
+        $selectedDate->selected = 1;
+        $selectedDate->save();
+
+        return redirect()->route('meeting.show', $meeting->id)->with('success', 'Date finalized successfully.');
+    }
+
+
 }

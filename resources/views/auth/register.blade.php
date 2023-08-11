@@ -6,7 +6,8 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('register.name')" />
-            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')" required autofocus autocomplete="username" />
+            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')" 
+                          required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -16,11 +17,11 @@
             <x-input-label for="password" :value="__('register.passwd')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                          type="password"
+                          name="password"
+                          required autocomplete="new-password"/>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
         </div>
 
         <!-- Confirm Password -->
@@ -28,14 +29,28 @@
             <x-input-label for="password_confirmation" :value="__('register.confirm')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                          type="password"
+                          name="password_confirmation" required autocomplete="new-password"/>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
         </div>
 
+
+        <div class="mt-4">
+            <div class="flex items-center">
+                <input type="checkbox" class="checkbox" name="terms" id="terms" required>
+
+                <div class="ml-2">
+                    I agree to the
+                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a>
+                    and
+                    <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" 
+                href="{{ route('login') }}">
                 {{ __('register.registered') }}
             </a>
 

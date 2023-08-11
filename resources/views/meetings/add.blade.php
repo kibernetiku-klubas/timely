@@ -66,7 +66,8 @@
 
             <div class="flex justify-center">
             <label class="card bg-white shadow-xl m-2 radio-label">
-                <input type="radio" name="is1v1" value="0" required class="radio-input" />
+                <input type="radio" name="is1v1" value="0" required class="radio-input" 
+                {{ old('is1v1') === '0' ? 'checked' : '' }} />
                 <div class="card-body text-black">
                     <div class="flex justify-center">
                             <svg fill="#000000" width="45" height="45" viewBox="0 0 56 56"
@@ -79,7 +80,8 @@
                     </div>
                 </label>
                 <label class="card bg-white shadow-xl m-2 radio-label">
-                    <input type="radio" name="is1v1" value="1" required class="radio-input" />
+                    <input type="radio" name="is1v1" value="1" required class="radio-input" 
+                    {{ old('is1v1') === '1' ? 'checked' : '' }}/>
                     <div class="card-body text-black">
                         <div class="flex justify-center">
                             <svg fill="#000000" width="40" height="40" viewBox="0 0 56 56"

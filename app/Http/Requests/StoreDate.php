@@ -27,15 +27,21 @@ class StoreDate extends FormRequest
     public function rules(): array
     {
         $meetingId = $this->input('meeting_id');
-        $existingDatesCount = $this->getExistingDatesCount($meetingId);
+        $action = $this->route()->getActionMethod();
 
-        return [
-            'new_time' => [
-                'required',
-                $this->ruleUniqueDate($meetingId),
-                $this->ruleMaxDates($existingDatesCount),
-            ],
-        ];
+        if ($action === 'finalizeDate') {
+            return [];
+        }
+
+    $existingDatesCount = $this->getExistingDatesCount($meetingId);
+
+    return [
+        'new_time' => [
+            'required',
+            $this->ruleUniqueDate($meetingId),
+            $this->ruleMaxDates($existingDatesCount),
+        ],
+    ];
     }
 
     private function getExistingDatesCount($meetingId): int

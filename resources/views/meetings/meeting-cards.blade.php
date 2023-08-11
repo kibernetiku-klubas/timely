@@ -11,8 +11,9 @@
                 <div class="flex justify-between">
                     @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
                         <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
-                    @else
-                        <div class="badge badge-outline outline-none border-none mt-3"></div>
+                    @endif
+                    @if ($date->selected === 1)
+                        <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
                     @endif
 
                     @if (Auth::check() && $user->id == $meeting->user_id)
