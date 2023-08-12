@@ -166,8 +166,8 @@
                         <li>
                             {{ __('privacy-policy.li27') }}
                         </li>
-                            {{ __('privacy-policy.li28') }}
                         <li>
+                            {{ __('privacy-policy.li28') }}
                         </li>
                         <li>
                             {{ __('privacy-policy.li29') }}
