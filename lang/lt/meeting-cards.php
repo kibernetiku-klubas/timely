@@ -26,4 +26,5 @@ return [
     'seewho' => 'PASPAUSKITE KAD MATYTI BALSAVUSIUS',
     'novotes' => 'NIEKAS UŽ ŠIĄ DATĄ NEBALSAVO',
     'whovoted' => 'ASMENYS, KURIE BALSAVO:',
+    'selected' => 'Pasirinkta',
 ];
