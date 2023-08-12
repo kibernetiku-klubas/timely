@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\DateController;
