@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -27,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
     Route::post('/meeting/{id}/finalize-date', [MeetingController::class, 'finalizeDate'])->name('meetings.finalize-date');
     Route::get('/meeting/{id}/finalize-date', [MeetingController::class, 'showFinalizeDate'])->name('meetings.show-finalize-date');
+
+    Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+
 
     Route::view('/add-meeting', 'meetings.add');
 

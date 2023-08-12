@@ -26,4 +26,5 @@ return [
     'seewho' => 'CLICK TO SEE WHO VOTED',
     'novotes' => 'NO VOTES ON THIS DATE',
     'whovoted' => 'PEOPLE WHO VOTED:',
+    'selected' => 'Selected',
 ];
