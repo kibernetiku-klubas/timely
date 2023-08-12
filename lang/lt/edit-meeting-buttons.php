@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'edit' => 'Edit meeting and votes',
-    'delete' => 'Delete meeting',
-    'finalize' => 'Finalize a time',
+    'edit' => 'Redaguoti susitikimą ir balsus',
+    'delete' => 'Ištrinti susitikimą',
+    'finalize' => 'Nuspręsti laiką',
 ];

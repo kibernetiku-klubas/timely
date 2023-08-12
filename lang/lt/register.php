@@ -13,14 +13,14 @@ return [
     |
     */
 
-    'tab' => 'Register',
-    'name' => 'USERNAME',
-    'passwd' => 'PASSWORD',
-    'confirm' => 'CONFIRM PASSWORD',
-    'registered' => 'Already registered?',
-    'register' => 'Register',
-    'agree' => 'I agree to the',
-    'tos' => 'Terms of Service',
-    'and' => 'and',
-    'policy' => 'Privacy Policy',
+    'tab' => 'Registracija',
+    'name' => 'VARTOTOJO VARDAS',
+    'passwd' => 'SLAPTAŽODIS',
+    'confirm' => 'PAKARTOKITE SLAPTAŽODĮ',
+    'registered' => 'Jau esate užsiregistravę?',
+    'register' => 'Registruotis',
+    'agree' => 'Aš sutinku su',
+    'tos' => 'paslaugų tiekimo sąlygomis',
+    'and' => 'ir',
+    'policy' => 'privatumo politika',
 ];

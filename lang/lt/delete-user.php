@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'deleteacc' => 'Delete Account',
-    'deletewarning' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
-    'deleteareyousure' => 'Are you sure you want to delete your account?',
-    'deleteconfirmwarn' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
-    'password' => 'Password',
-    'cancel' => 'Cancel',
+    'deleteacc' => 'Ištrinti paskyrą',
+    'deletewarning' => 'Ištrynus Jūsų paskyrą, visi su ja susiję resursai ir duomenys bus amžinai ištrinti. Prieš ištrinant savo paskyrą, parsisiųskite visus duomenis, kuriuos norėtumėte išlaikyti.',
+    'deleteareyousure' => 'Ar Jūs tikrai norite ištrinti savo paskyrą?',
+    'deleteconfirmwarn' => 'Ištrynus Jūsų paskyrą, visi su ja susiję resursai ir duomenys bus amžinai ištrinti. Įveskite slaptažodį, jei norėtumėte patvirtinti savo paskyros ištrynimą.',
+    'password' => 'Slaptažodis',
+    'cancel' => 'Atšaukti',
 ];

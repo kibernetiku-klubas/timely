@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'warning' => 'This is a secure area of the application. 
-    Please confirm your password before continuing.',
-    'passwd' => 'Password',
-    'confirm' => 'Confirm',
+    'warning' => 'Ši aplikacijos vieta yra apsaugota. Prašome įvesti savo slaptažodį,
+    norint tęsti toliau.',
+    'passwd' => 'Slaptažodis',
+    'confirm' => 'Patvirtinti',
     
 ];

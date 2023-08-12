@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'your' => 'your',
-    'meetings' => 'meetings',
-    'nomeetingsyet' => 'No meetings yet',
-    'createfirstmeet' => 'Create your first meeting by pressing "Create a meeting" button',
+    'your' => 'jūsų',
+    'meetings' => 'susitikimai',
+    'nomeetingsyet' => 'Kol kas jokių susitikimų',
+    'createfirstmeet' => 'Sukurkite savo pirmąjį susitikimą paspaudę "Sukurti susitikimą" mygtuką',
     
 ];

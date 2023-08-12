@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'create' => 'CREATE A MEETING',
-    'profile' => 'Profile',
-    'logout' => 'Log Out',
+    'create' => 'SUKURTI SUSITIKIMĄ',
+    'profile' => 'Profilis',
+    'logout' => 'Atsijungti',
 ];
