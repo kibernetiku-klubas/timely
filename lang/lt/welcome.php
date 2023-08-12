@@ -36,4 +36,9 @@ return [
     'waste_upper' => "Kaip ir mūsų minimalistiškas vartotojo skydelis nešvaisto Jūsų laiko.",
     'waste_lower' => "Pradėkite pirmąjį žingsnį susitikimų planavime be pastangų.",
     'getstarted' => 'Pradėti.',
+    'login' => 'Prisijungti',
+    'dash' => 'Vartotojo skydelis',
+    'privacy' => 'Privatumo politika',
+    'terms' => 'Paslaugų teikimo sąlygos',
+    'report' => 'Pranešti pažeidžiamumą',
 ];

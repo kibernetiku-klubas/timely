@@ -35,9 +35,9 @@
             <div><a href="mailto:support@timely.lt" class="p-2 rounded-lg btn-ghost">support@timely.lt</a></div>
         </div>
         <div class="flex items-center space-x-2 mt-2">
-            <div>| <a href="/privacy-policy" target="_blank" class="p-2 rounded-lg btn-ghost">Privacy Policy</a> |</div>
-            <div><a href="/terms-of-service" target="_blank" class="p-2 rounded-lg btn-ghost">Terms of Service</a> |</div>
-            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank" class="p-2 rounded-lg btn-ghost">Report a Vulnerability</a> |</div>
+            <div>| <a href="/privacy-policy" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('app.privacy') }}</a> |</div>
+            <div><a href="/terms-of-service" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('app.terms') }}</a> |</div>
+            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('app.report') }}</a> |</div>
         </div>
     </div>
 </footer>
