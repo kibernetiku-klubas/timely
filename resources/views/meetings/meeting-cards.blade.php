@@ -11,7 +11,7 @@
                 <div class="flex justify-between">
                     <div class="flex space-x-3 my-2">
                         @if ($date->selected === 1)
-                            <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">Selected</div>
+                            <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">{{ __('meeting-cards.selected') }}</div>
                         @endif
                         @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
                             <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
