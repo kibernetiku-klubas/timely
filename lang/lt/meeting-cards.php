@@ -12,7 +12,7 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-
+  
     'mostvoted' => 'Populiariausias',
     'delete' => 'Ištrinti',
     'confirm' => 'Patvirtinti ištrynimą.',
@@ -26,7 +26,4 @@ return [
     'seewho' => 'PASPAUSKITE KAD MATYTI BALSAVUSIUS',
     'novotes' => 'NIEKAS UŽ ŠIĄ DATĄ NEBALSAVO',
     'whovoted' => 'ASMENYS, KURIE BALSAVO:',
-    
-    
-    
 ];

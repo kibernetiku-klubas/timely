@@ -1,27 +1,57 @@
-# Guide of this project's managing.
+# Project Management Guide
 
-I've set up a GitHub project for this repo instead of jira. It will work fine and has everything we need to manage.
+Welcome to the project management guide for this repository. We'll be using GitHub's project management features to efficiently track and manage our tasks. Below are the steps and guidelines to effectively utilize this system.
 
-To go to project's board. In GitHub open this repo and select projects tab. Or [click here](https://github.com/orgs/kibernetiniu-gudruoliu-bendruomene/projects/2)
+## Table of Contents
+- [Accessing the Project Board](#accessing-the-project-board)
+- [Kanban Board Setup](#kanban-board-setup)
+- [Adding Tasks to the Board](#adding-tasks-to-the-board)
+- [Task Assignment](#task-assignment)
+- [Task Progress](#task-progress)
+- [Creating New Issues](#creating-new-issues)
 
-In there we have a kanban board with 3 columns. You can click add item and enter all the details about a feature or a bug.
+## Accessing the Project Board
 
-When new item is created it will be created as draft. We should press the 3 dots and choose convert to issue.
-Now we can add an even more detailed description, or in bug's case - steps to reproduce
+1. Open the GitHub repository for this project.
+2. Click on the "Projects" tab in the repository's navigation menu.
 
-We should convert every todo task to issue, unless it is very minor.
+## Kanban Board Setup
 
-If you want to take a task just:
-Click on a task's name and in assignees select yourself.
+Our project board uses a Kanban-style approach to manage tasks. It consists of these columns:
+1. **Bonus todo** - Tasks that are not required for the project to be completed, but would be nice to have.
+2. **To Do:** Tasks that are yet to be started.
+3. **In Progress:** Tasks that are actively being worked on.
+4. **Verification:** Tasks that have been completed and are awaiting review.
+5. **Done:** Tasks that have been completed and reviewed.
+6. **Idea** Tasks that are not yet ready to be worked on.
 
-Now when we have tasks we will have two ways of taking tasks:
-1. Reserve it (Reserving is asigning a task to yourself but not moving it to In progress tab).
-2. Work on a task (To work on a task move the task to In progress tab).
-Note: Reserve a task if you will want to do it. Move a task to In progress only if you are actively working on that task
-and have a branch created for that task (More on branches in [here](github.md)).
+## Adding Tasks to the Board
 
-Make sure to check assignees and don't take tasks that are already reserved or being worked on.
+1. To add a new feature or bug to the board, click on "Add item" in the "To Do" column.
+2. Fill in all the necessary details about the task.
+3. Once added, the task will be in draft mode.
+4. To finalize the task, click the three dots on the task card and select "Convert to Issue."
+5. Add a more detailed description, and in the case of bugs, provide steps to reproduce the issue.
 
-Before moving a task to Done tab, the branch's pull request should be merged.
+## Task Assignment
 
-You can create an issue straight from issues tab.
+1. All to-do tasks should be converted to issues, unless they are very minor.
+2. To take ownership of a task, follow these steps:
+    - Click on the task's name.
+    - In the "Assignees" section, select yourself from the list.
+
+## Task Progress
+
+1. There are two ways to engage with tasks:
+    - **Reserve:** Assign a task to yourself without moving it to the "In Progress" column. This indicates your intention to work on the task.
+    - **Work on a Task:** Move a task to the "In Progress" column only when you're actively working on it and have created a dedicated branch for it. More information about creating branches can be found [here](github.md).
+
+2. Prior to moving a task to the "Done" column, ensure that the associated branch's pull request has been successfully merged.
+
+## Creating New Issues
+
+You also have the option to create issues directly from the "Issues" tab.
+
+Following these guidelines will help us effectively manage the project and keep everyone aligned. If you have any questions or need further assistance, don't hesitate to ask.
+
+Thank you for your dedication to the project's success!
