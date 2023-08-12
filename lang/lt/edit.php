@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'profile' => 'Profile.',
-    'profile_tab' => 'Profile',
+    'profile' => 'Profilis.',
+    'profile_tab' => 'Profilis',
 
 ];

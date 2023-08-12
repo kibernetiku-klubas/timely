@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'createdby' => 'Meeting created by',
-    'minutes' => 'minutes',
-    'link' => 'Link to meeting:',
-    'data-tip' => 'Press the icon on the right to copy',
+    'createdby' => 'Susitikimą sukūrė:',
+    'minutes' => 'minutes/minučių',
+    'link' => 'Nuoroda į susitikimą:',
+    'data-tip' => 'Paspauskite ikoną dešinėje kad nukopijuoti',
     
     
 ];

@@ -13,12 +13,12 @@ return [
     |
     */
 
-    'meeting' => 'MEETING.',
-    'dates' => 'DATES AND TIMES FOR THE MEETING:',
-    '1v1' => 'Note: This meeting is 1 on 1, so only one vote per date is allowed.',
-    'timesarein' => 'All times are in',
-    'timezone' => 'timezone',
-    'nodates' => 'NO DATES YET',
-    'adddates' => 'Add dates by using the date selector above',
+    'meeting' => 'SUSITIKIMAS.',
+    'dates' => 'DATOS IR LAIKAI ŠIAM SUSITIKIMUI:',
+    '1v1' => 'Priminimas: šis susitikimas yra 1 su 1, tad vienai datai leidžiamas vienas balsas.',
+    'timesarein' => 'Visi laikai yra',
+    'timezone' => 'laiko zonoje',
+    'nodates' => 'KOL KAS NĖRA DATŲ',
+    'adddates' => 'Pridėkite datas naudojant datų parinktuvą viršuje',
     
 ];

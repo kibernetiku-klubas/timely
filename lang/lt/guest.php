@@ -13,5 +13,5 @@ return [
     |
     */
 
-    'welcome' => 'WELCOME TO',
+    'welcome' => 'SVEIKI ATVYKĘ Į',
 ];

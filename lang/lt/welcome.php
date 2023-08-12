@@ -13,27 +13,27 @@ return [
     |
     */
 
-    'welcome_tab' => 'Welcome! • Timely',
-    'register' => 'Register',
-    'welcometo' => 'Welcome to',
-    'schedulingyour' => 'Scheduling your',
-    'meetings' => 'meetings',
-    'madeeasy' => 'made easy.',
-    'timelydesc' => 'Having trouble finding the meeting time that suits everyone? Look no further than your free,
-    open-source and privacy respecting solution - Timely',
-    'createfirst' => 'Create your first meeting',
-    'meetingheader' => 'Simple Meeting Page: Info, Times, and Easy Voting.',
-    'meetingdesc' => 'Simplify your meetings with our user-friendly Meeting Page! Find essential
-    details, including purpose, location, and duration. Send the meeting link to all your partners. Discover
-    available time slots and vote on your preferred time, bidding farewell to scheduling headaches!',
-    'calendarheader' => 'Effortless Date and Time Selection with Simple Calendar.',
-    'calendardesc' => "Our simple calendar feature is designed to take the hassle out of date and time
-    selection, making scheduling a breeze. We believe that managing your time should be easy and
-    stress-free, and that's why our user-friendly interface provides a seamless experience for all your
-    scheduling needs.",
-    'waste' => 'Waste',
-    'nomoretime' => 'No more time.',
-    'waste_upper' => "Just like our minimalist dashboard doesn't waste your time.",
-    'waste_lower' => "Make your step to effortless meeting scheduling.",
-    'getstarted' => 'Get started.',
+    'welcome_tab' => 'Sveiki! • Timely',
+    'register' => 'Registruotis',
+    'welcometo' => 'Sveiki atvykę į',
+    'schedulingyour' => 'Planavimas Jūsų',
+    'meetings' => 'susitikimų',
+    'madeeasy' => 'padarytas lengvu.',
+    'timelydesc' => 'Kyla bėdų ieškant susitikimo laiko, tinkančio visiems? Sveiki atvykę į
+    nemokamą, atvirojo kodo bei privatumą gerbiantį sprendimą - Timely',
+    'createfirst' => 'Sukurkite savo pirmąjį susitikimą',
+    'meetingheader' => 'Paprastas susitikimų puslapis: Informacija, laikai ir lengvas balsavimas.',
+    'meetingdesc' => 'Supaprastinkite savo susitikimus su mūsų draugišku vartotojui susitikimų puslapiu!
+    Raskite būtinas detales, įskaitant tikslą, vietą, bei trukmę. Siųskite susitikimo nuorodą visiems savo partneriams.
+    Atraskite prieinamus laikus ir balsuokite už jums tinkamiausią laiką, atsisveikinant su įprasto planavimo galvos skausmais!',
+    'calendarheader' => 'Bevargis datų ir laikų pasirinkimas su paprastu kalendoriumi.',
+    'calendardesc' => "Mūsų paprasto kalendoriaus funkcija sukurta pašalinti rūpesčius, kylančius
+    su datų bei laikų pasirinkimu. Mes tikime, jog savo laiko valdymas turėtų būti lengvas ir
+    nekeliantis streso. Būtent dėl to mūsų draugiška vartotojo sąsaja suteikia vientisą patirtį
+    visiems Jūsų planavimo poreikiams.",
+    'waste' => 'Nebešvaistykite',
+    'nomoretime' => 'Daugiau laiko.',
+    'waste_upper' => "Kaip ir mūsų minimalistiškas vartotojo skydelis nešvaisto Jūsų laiko.",
+    'waste_lower' => "Pradėkite pirmąjį žingsnį susitikimų planavime be pastangų.",
+    'getstarted' => 'Pradėti.',
 ];

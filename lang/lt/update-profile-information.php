@@ -13,13 +13,13 @@ return [
     |
     */
 
-    'profileinfo' => 'Profile Information',
-    'updateinfo' => "Update your account's profile information and email address.",
-    'profilename' => 'Name',
-    'profilemail' => 'Email',
-    'adressunverified' => 'Your email address is unverified.',
-    'resendmail' => 'Click here to re-send the verification email.',
-    'sendreset' => 'A new verification link has been sent to your email address.',
-    'save' => 'Save',
-    'saved' => 'Saved',
+    'profileinfo' => 'Profilio informacija',
+    'updateinfo' => "Atnaujinkite savo profilio informaciją ir el. paštą.",
+    'profilename' => 'Vardas',
+    'profilemail' => 'El. paštas',
+    'adressunverified' => 'Jūsų el. paštas yra nepatvirtintas.',
+    'resendmail' => 'Spauskite čia, kad išsiųsti patvirtinimo laišką iš naujo.',
+    'sendreset' => 'Nauja patvirtinimo nuoroda buvo išsiųsta.',
+    'save' => 'Išsaugoti',
+    'saved' => 'Išsaugota',
 ];

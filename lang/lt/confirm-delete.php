@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'delete' => 'DELETE',
-    'meeting' => 'MEETING.',
-    'confirm' => 'Are you sure you want to delete this meeting?',
-    'cancel' => 'Cancel',
-    'confirm-delete' => 'Confirm deletion',
+    'delete' => 'IŠTRINTI',
+    'meeting' => 'SUSITIKIMĄ.',
+    'confirm' => 'Ar Jūs tikrai norite ištrinti šį susitikimą?',
+    'cancel' => 'Atšaukti',
+    'confirm-delete' => 'Patvirtinti ištrynimą',
 ];
