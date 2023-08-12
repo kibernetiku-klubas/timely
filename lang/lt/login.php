@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'tab' => 'Login',
-    'name' => 'USERNAME',
-    'passwd' => 'PASSWORD',
-    'remember' => 'Remember me',
-    'noacc' => 'Don\'t have an account yet?',
-    'login' => 'Log in',
+    'tab' => 'Prisijungti',
+    'name' => 'VARTOTOJO VARDAS',
+    'passwd' => 'SLAPTAŽODIS',
+    'remember' => 'Prisiminti mane',
+    'noacc' => 'Dar neturite paskyros?',
+    'login' => 'Prisijungti',
     
 ];

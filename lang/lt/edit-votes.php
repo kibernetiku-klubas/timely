@@ -13,13 +13,13 @@ return [
     |
     */
 
-    'clickhere' => 'Click here to edit votes',
-    'select' => 'Select a time to edit votes:',
-    'date' => 'Date and Time:',
-    'editname' => 'EDIT VOTE NAME',
-    'save' => 'Save',
-    'delete' => 'Delete vote',
-    'novotes' => 'No votes on this date',
-    'nodates' => 'No dates exist for this meeting',
+    'clickhere' => 'Spauskite čia, kad redaguoti balsus',
+    'select' => 'Pasirinkite laiką balsų redagavimui:',
+    'date' => 'Data ir laikas:',
+    'editname' => 'REDAGUOTI BALSO VARDĄ',
+    'save' => 'Išsaugoti',
+    'delete' => 'Ištrinti balsą',
+    'novotes' => 'Šioje datoje nėra balsų',
+    'nodates' => 'Šiame susitikime nėra datų',
     
 ];

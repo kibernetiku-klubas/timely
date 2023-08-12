@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'signup' => "Thanks for signing up! Before getting started, could you verify your 
-    email address by clicking on the link we just emailed to you? 
-    If you didn\'t receive the email, we will gladly send you another.",
-    'verlink' => 'A new verification link has been sent to the 
-    email address you provided during registration.',
-    'resend' => 'Resend Verification Email',
-    'logout' => 'Log Out',
+    'signup' => "Ačiū kad užsiregistravote! Prieš pradedant, gal galėtumėte patvirtinti
+    savo el. paštą paspaudę ant mūsų Jums išsiųstos nuorodos? Jei negavote laiško,
+    mes Jums jį mielai išsiųsime dąkart.",
+    'verlink' => 'Nauja patvirtinimo nuoroda buvo išsiųsta registracijos metu
+    nurodytu paštu.',
+    'resend' => 'Išsiųsti naują patvirtinimo laišką',
+    'logout' => 'Atsijungti',
 ];

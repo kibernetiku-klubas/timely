@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'updatepas' => 'Update Password',
-    'ensure' => 'Ensure your account is using a long, random password to stay secure.',
-    'curpassword' => 'CURRENT PASSWORD',
-    'newpassword' => 'NEW PASSWORD',
-    'confirmpassword' => 'CONFIRM PASSWORD',
+    'updatepas' => 'Atnaujinti slaptažodį',
+    'ensure' => 'Užtikrinkite, kad Jūsų slaptažodis yra ilgas ir nenuspėjamas.',
+    'curpassword' => 'DABARTINIS SLAPTAŽODIS',
+    'newpassword' => 'NAUJAS SLAPTAŽODIS',
+    'confirmpassword' => 'PAKARTOKITE SLAPTAŽODĮ',
     
 ];

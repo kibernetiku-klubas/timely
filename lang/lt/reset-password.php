@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'email' => 'Email',
-    'passwd' => 'Password',
-    'confirm' => 'Confirm Password',
-    'reset' => 'Reset Password',
+    'email' => 'El. paštas',
+    'passwd' => 'Slaptažodis',
+    'confirm' => 'Patvirtinti slaptažodį',
+    'reset' => 'Atstatyti slaptažodį',
     
 ];
