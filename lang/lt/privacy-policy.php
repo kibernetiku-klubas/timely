@@ -143,7 +143,7 @@ return [
     išskyrus atvejus, kai įstatymai reikalauja arba leidžia ilgesnį saugojimo laikotarpį. 
     (pvz., mokesčių, apskaitos ar kiti teisiniai reikalavimai). Nė vienam šioje politikoje nurodytam tikslui nebus 
     reikalaujama mums saugoti Jūsų asmeninę informaciją ilgiau nei laikotarpį, per kurį naudotojai turi paskyrą su mumis.',
-    'h17' => '6.KAIP SAUGOME JŪSŲ INFORMACIJĄ?',
+    'h17' => '6. KAIP SAUGOME JŪSŲ INFORMACIJĄ?',
     'p32' => 'Trumpai: siekiame apsaugoti Jūsų asmeninę informaciją naudodami organizacines ir technines saugumo priemones.',
     'p33' => 'Įgyvendinome tinkamas ir pagrįstas technines ir organizacines saugumo priemones, skirtas apsaugoti bet kokios 
     mūsų tvarkomos asmeninės informacijos saugumą. Tačiau, nepaisant mūsų apsaugos priemonių bei pastangų apsaugoti 
@@ -326,7 +326,7 @@ return [
     'p74' => 'To exercise these rights, you can contact us by email at ',
     'p75' => 'pasinaudodami duomenimis, esančiais šio dokumento apačioje. 
     Jei turite nusiskundimų dėl to, kaip tvarkome Jūsų duomenis, norėtume iš Jūsų tai išgirsti.',
-    'h33' => 'AR VIRDŽINIJOS GYVENTOJAI TURI SPECIALIAS PRIVATUMO TEISES?',
+    'h33' => '11. AR VIRDŽINIJOS GYVENTOJAI TURI SPECIALIAS PRIVATUMO TEISES?',
     'p76' => 'Trumpai:',
     'p77' => 'Taip, jei esate Virdžinijos gyventojas, jums gali būti suteiktos konkrečios teisės, 
     susijusios su prieiga prie Jūsų asmeninės informacijos ir jos naudojimu.',
