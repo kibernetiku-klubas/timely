@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/meeting/{id}/finalize-date', [MeetingController::class, 'finalizeDate'])->name('meetings.finalize-date');
     Route::get('/meeting/{id}/finalize-date', [MeetingController::class, 'showFinalizeDate'])->name('meetings.show-finalize-date');
 
+    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
     Route::view('/add-meeting', 'meetings.add');
 
     Route::resource('dates', DateController::class);
