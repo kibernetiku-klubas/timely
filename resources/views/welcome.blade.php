@@ -91,7 +91,7 @@
                 <div class="fill-current text-black text-8xl font-bold">Timely.</div>
             </div>
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
-                <span>{{ __('welcome.schedulingyour') }}</span> <span
+                <span>{{ __('welcome.your') }}</span> <span
                     class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-purple-950 to-purple-400 lg:inline">{{ __('welcome.meetings') }}</span>
                 <span>{{ __('welcome.madeeasy') }}</span>
             </h1>

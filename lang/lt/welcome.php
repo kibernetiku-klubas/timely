@@ -13,12 +13,12 @@ return [
     |
     */
 
-    'welcome_tab' => 'Sveiki! • Timely',
+    'welcome_tab' => 'Sveiki!',
     'register' => 'Registruotis',
     'welcometo' => 'Sveiki atvykę į',
-    'schedulingyour' => 'Planavimas Jūsų',
+    'your' => 'Jūsų',
     'meetings' => 'susitikimų',
-    'madeeasy' => 'padarytas lengvu.',
+    'madeeasy' => 'planavimas padarytas lengvu.',
     'timelydesc' => 'Kyla bėdų ieškant susitikimo laiko, tinkančio visiems? Sveiki atvykę į
     nemokamą, atvirojo kodo bei privatumą gerbiantį sprendimą - Timely',
     'createfirst' => 'Sukurkite savo pirmąjį susitikimą',
