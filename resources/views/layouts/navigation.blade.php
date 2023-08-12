@@ -3,24 +3,8 @@
     <div class="navbar bg-white border-b-2 text-black flex flex-col sm:flex-row sm:justify-between w-full">
         <div class="flex-1 flex justify-center sm:justify-start">
             <a class="btn btn-ghost normal-case text-xl" href="{{ route('dashboard') }}">Timely <span class="text-sm mt-1.5">Beta</span></a>
-            <li class="nav-item dropdown ml-2">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="flag-icon flag-icon-{{ App::getLocale() }}"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @foreach (Config::get('languages') as $lang => $language)
-                        @if ($lang != App::getLocale())
-                            <li>
-                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                                    <span class="flag-icon flag-icon-{{ $lang }}"></span>
-                                </a>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </li>
         </div>
-        
+
         <div class="flex justify-center sm:justify-end">
             <a href="/add-meeting" class="font-bold btn btn-ghost mx-4 sm:mx-6 text-xl flex items-center">
                 {{ __('navigation.create') }}
@@ -46,6 +30,20 @@
                         </li>
                     </ul>
                 </form>
+            </div>
+            <div class="dropdown">
+                <label tabindex="0" class="btn bg-white border-none hover:bg-gray-200 mr-1"><span class="flag-icon flag-icon-{{ App::getLocale() }} mask mask-circle"></span></label>
+                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box">
+                    @foreach (Config::get('languages') as $lang => $language)
+                        @if ($lang != App::getLocale())
+                            <li>
+                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                    <span class="flag-icon flag-icon-{{ $lang }} mask mask-circle"></span>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
