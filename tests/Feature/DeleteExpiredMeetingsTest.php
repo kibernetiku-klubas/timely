@@ -13,6 +13,9 @@ class DeleteExpiredMeetingsTest extends TestCase
 {
     public function testExpiredMeetingsAreDeleted()
     {
+        // Sets the current time to a specific date and time
+        Date::setTestNow(now()->subDays(1)->startOfDay()->addHours(12));
+
         // Creates a meeting that SHOULD be deleted (delete_after = 5 days)
         Meeting::factory()->create([
             'created_at' => now()->subDays(7), // Created 7 days ago
@@ -24,9 +27,6 @@ class DeleteExpiredMeetingsTest extends TestCase
             'created_at' => now()->subDays(3), // Created 3 days ago
             'delete_after' => 10,
         ]);
-
-        // Sets the current time to a specific date and time
-        Date::setTestNow(now()->subDays(1)->startOfDay()->addHours(12));
 
         // Runs the scheduled task
         Artisan::call('meetings:delete-expired');

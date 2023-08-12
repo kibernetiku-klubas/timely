@@ -14,8 +14,18 @@ class DeleteExpiredMeetings extends Command
 
     public function handle(): void
     {
-        $now = now()->addDay();
-        Meeting::where(DB::raw("DATE(created_at, '+' || delete_after || ' day')"), '<', $now)->delete();
+        $now = Carbon::now();
+        $meetings = Meeting::all();
+
+        foreach ($meetings as $meeting) {
+            $expirationDate = $meeting->created_at->copy()->addDays($meeting->delete_after)->addDay();
+
+            if ($now->greaterThanOrEqualTo($expirationDate)) {
+                $meeting->delete();
+                $this->info("Meeting with ID {$meeting->id} deleted.");
+            }
+        }
+
         $this->info('Expired meetings deleted successfully.');
     }
 }
