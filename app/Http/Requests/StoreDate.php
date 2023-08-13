@@ -57,7 +57,7 @@ class StoreDate extends FormRequest
                 $date->where('id', '!=', $this->route('date'));
             }
             if ($date->count() > 0) {
-                $fail('The selected date already exists for this meeting.');
+                $fail(__('storeDate.unique'));
             }
         };
     }
@@ -66,7 +66,7 @@ class StoreDate extends FormRequest
     {
         return function ($attribute, $value, $fail) use ($existingDatesCount) {
             if ($existingDatesCount >= 20) {
-                $fail('The maximum number of dates (20) has been reached for this meeting.');
+                $fail(__('storeDate.max'));
             }
         };
     }
@@ -74,7 +74,7 @@ class StoreDate extends FormRequest
     public function messages(): array
     {
         return [
-            'new_time.required' => 'Please select a date and time.',
+            'new_time.required' => __('storeDate.select'),
         ];
     }
 

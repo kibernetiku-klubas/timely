@@ -24,7 +24,7 @@ class DateController extends Controller
         $date->date_and_time = $validatedData['new_time'];
         $date->save();
 
-        return redirect("/meetings/$meetingId")->with('success', 'Date saved.');
+        return redirect("/meetings/$meetingId")->with('success', __('DateController.saved'));
     }
 
     private function isUserMeetingCreator(string $meetingId): bool
@@ -39,9 +39,9 @@ class DateController extends Controller
         $date = Date::findOrFail($id);
         if ($this->isUserMeetingCreator($date->meeting_id)) {
             $date->delete();
-            return redirect()->back()->with('success', 'Date deleted successfully.');
+            return redirect()->back()->with('success', __('DateController.success'));
         }
-        return redirect()->back()->with('error', 'Not authorized to delete this date.');
+        return redirect()->back()->with('error', __('DateController.noauth'));
     }
 
     public function exportToICalendar($id)
