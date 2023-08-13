@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,6 +76,20 @@
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
                            class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.register') }}</a>
+                           <div class="dropdown">
+                            <label tabindex="0" class="btn bg-white border-none hover:bg-gray-200 mr-1"><span class="flag-icon flag-icon-{{ App::getLocale() }} mask mask-circle"></span></label>
+                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box">
+                                @foreach (Config::get('languages') as $lang => $language)
+                                    @if ($lang != App::getLocale())
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                                <span class="flag-icon flag-icon-{{ $lang }} mask mask-circle"></span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                 @endauth
             </div>
