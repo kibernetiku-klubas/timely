@@ -16,7 +16,7 @@ return [
     'welcome_tab' => 'Welcome! • Timely',
     'register' => 'Register',
     'welcometo' => 'Welcome to',
-    'schedulingyour' => 'Scheduling your',
+    'your' => 'Scheduling your',
     'meetings' => 'meetings',
     'madeeasy' => 'made easy.',
     'timelydesc' => 'Having trouble finding the meeting time that suits everyone? Look no further than your free,
