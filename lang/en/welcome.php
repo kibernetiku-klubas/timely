@@ -36,4 +36,9 @@ return [
     'waste_upper' => "Just like our minimalist dashboard doesn't waste your time.",
     'waste_lower' => "Make your step to effortless meeting scheduling.",
     'getstarted' => 'Get started.',
+    'login' => 'Login',
+    'dash' => 'Dashboard',
+    'privacy' => 'Privacy Policy',
+    'terms' => 'Terms of Service',
+    'report' => 'Report a Vulnerability',
 ];

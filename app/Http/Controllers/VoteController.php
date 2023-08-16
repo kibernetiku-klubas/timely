@@ -17,7 +17,7 @@ class VoteController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Maximum length exceeded.');
+            return redirect()->back()->with('error', __('VoteController.max'));
         }
       
         $votedBy = $request->input('voted_by');
@@ -26,15 +26,15 @@ class VoteController extends Controller
         $meeting = $this->getMeeting($request->input('meeting_id'));
 
         if (!$this->hasVotes($votes)) {
-            return $this->redirectWithErrorMessage('Please select at least one option.');
+            return $this->redirectWithErrorMessage(__('VoteController.select'));
         }
 
         if ($this->hasAlreadyVotedForThis($meeting->id)) {
-            return $this->redirectWithErrorMessage('You have already voted for this meeting.');
+            return $this->redirectWithErrorMessage(__('VoteController.voted'));
         }
 
         if ($this->hasMoreVotesThanAllowed($meeting, $votes)) {
-            return $this->redirectWithErrorMessage('You can only vote for one option for this meeting.');
+            return $this->redirectWithErrorMessage(__('VoteController.one'));
         }
 
         $this->registerVotes($meeting, $dateIds, $votes, $votedBy);
@@ -67,7 +67,7 @@ class VoteController extends Controller
         foreach ($dateIds as $dateId) {
             if (in_array($dateId, $votes)) {
                 if ($meeting->is1v1 == 1 && Vote::where('date_id', $dateId)->count() > 0) {
-                    $this->redirectWithErrorMessage('Someone has already voted for this date.');
+                    $this->redirectWithErrorMessage(__('VoteController.else'));
                     return;
                 }
 
@@ -98,7 +98,7 @@ class VoteController extends Controller
 
     private function redirectWithSuccessMessage($meetingId)
     {
-        return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', 'Votes saved successfully.');
+        return redirect()->route('meeting.show', ['id' => $meetingId])->with('success', __('VoteController.success'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -108,7 +108,7 @@ class VoteController extends Controller
         $vote->save();
 
         return redirect()->route('meeting.show', ['id' => $vote->date->meeting->id])
-            ->with('success', 'Vote updated successfully.');
+            ->with('success', __('VoteController.update'));
     }
 
     public function destroy($id): RedirectResponse
@@ -118,6 +118,6 @@ class VoteController extends Controller
         $vote->delete();
 
         return redirect()->route('meeting.show', ['id' => $meetingId])
-            ->with('error', 'Vote deleted successfully.');
+            ->with('error', __('VoteController.delete'));
     }
 }

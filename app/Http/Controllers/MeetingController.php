@@ -24,7 +24,7 @@ class MeetingController extends Controller
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
         $meeting->delete();
 
-        return redirect('/dashboard')->with('error', 'Meeting deleted.');
+        return redirect('/dashboard')->with('error', __('MeetingController.delete'));
     }
 
     public function displayEdit($id)
@@ -41,7 +41,7 @@ class MeetingController extends Controller
         $meeting = new Meeting;
         $meeting->user_id = Auth::user()->id;
 
-        return $this->assignMeetingData($meeting, $validated, '/dashboard', 'Meeting created successfully.');
+        return $this->assignMeetingData($meeting, $validated, '/dashboard', __('MeetingController.success'));
     }
 
     public function show($id)
@@ -96,7 +96,7 @@ class MeetingController extends Controller
         $meeting->is1v1 = $validated['is1v1'];
         $meeting->save();
 
-        return redirect($redirectUrl)->with('success', $message ?? 'Meeting saved successfully.');
+        return redirect($redirectUrl)->with('success', $message ?? __('MeetingController.saved'));
     }
 
     public function showFinalizeDate($id)
@@ -111,7 +111,7 @@ class MeetingController extends Controller
         $meeting = Meeting::findOrFail($id);
 
         if ($meeting->user_id !== Auth::user()->id) {
-            return redirect()->back()->with('error', 'Not authorized to finalize this date.');
+            return redirect()->back()->with('error', __('MeetingController.noauth'));
         }
 
         if ($meeting->dates->isEmpty()) {
@@ -129,7 +129,7 @@ class MeetingController extends Controller
         $selectedDate->selected = 1;
         $selectedDate->save();
 
-        return redirect()->route('meeting.show', $meeting->id)->with('success', 'Date finalized successfully.');
+        return redirect()->route('meeting.show', $meeting->id)->with('success', __('MeetingController.finalized'));
     }
 
 

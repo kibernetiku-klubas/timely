@@ -68,10 +68,9 @@
         @if (Route::has('login'))
             <div class="text-right">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.dash') }}</a>
                 @else
-                    <a href="{{ route('login') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">Log
-                        in</a>
+                    <a href="{{ route('login') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.login') }}</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
@@ -208,9 +207,9 @@
             <div><a href="mailto:support@timely.lt" class="p-2 rounded-lg btn-ghost">support@timely.lt</a></div>
         </div>
         <div class="flex items-center space-x-2 mt-2">
-            <div>| <a href="/privacy-policy" target="_blank" class="p-2 rounded-lg btn-ghost">Privacy Policy</a> |</div>
-            <div><a href="/terms-of-service" target="_blank" class="p-2 rounded-lg btn-ghost">Terms of Service</a> |</div>
-            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank" class="p-2 rounded-lg btn-ghost">Report a Vulnerability</a> |</div>
+            <div>| <a href="/privacy-policy" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.privacy') }}</a> |</div>
+            <div><a href="/terms-of-service" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.terms') }}</a> |</div>
+            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.report') }}</a> |</div>
         </div>
     </div>
 </footer>
