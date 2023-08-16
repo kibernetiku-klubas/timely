@@ -6,7 +6,7 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('register.name')" />
-            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')" 
+            <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')"
                           required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -42,14 +42,12 @@
 
                 <div class="ml-2">
                     {{ __('register.agree') }}
-                    <a target="_blank" href="/terms-of-service" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.tos') }}</a>
-                    {{ __('register.and') }}
                     <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.policy') }}</a>
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" 
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 href="{{ route('login') }}">
                 {{ __('register.registered') }}
             </a>

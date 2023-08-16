@@ -19,8 +19,6 @@ return [
     'confirm' => 'PAKARTOKITE SLAPTAŽODĮ',
     'registered' => 'Jau esate užsiregistravę?',
     'register' => 'Registruotis',
-    'agree' => 'Aš sutinku su',
-    'tos' => 'paslaugų tiekimo sąlygomis',
-    'and' => 'ir',
+    'agree' => 'Perskaičiau ir susipažinau su',
     'policy' => 'privatumo politika',
 ];
