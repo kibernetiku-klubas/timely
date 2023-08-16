@@ -19,9 +19,7 @@ return [
     'confirm' => 'CONFIRM PASSWORD',
     'registered' => 'Already registered?',
     'register' => 'Register',
-    'agree' => 'I agree to the',
-    'tos' => 'Terms of Service',
-    'and' => 'and',
+    'agree' => 'I have read and agree to the',
     'policy' => 'Privacy Policy',
-    
+
 ];
