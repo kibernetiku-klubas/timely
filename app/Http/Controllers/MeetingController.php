@@ -114,6 +114,10 @@ class MeetingController extends Controller
             return redirect()->back()->with('error', 'Not authorized to finalize this date.');
         }
 
+        if ($meeting->dates->isEmpty()) {
+        return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
+    }
+
         $selectedDateId = $request->input('selected_date');
         $meeting->dates()->update(['selected' => 0]);
 
