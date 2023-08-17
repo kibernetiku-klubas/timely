@@ -17,7 +17,7 @@
                 </ul>
 
                 <p class="mb-4">
-                    <li>{{ __('privacy-policy.p2') }} <a href="mailto:support@timely.lt" class="text-blue-500"> support@timely.lt</a></li> 
+                    {{ __('privacy-policy.p2') }} <a href="mailto:support@timely.lt" class="text-blue-500"> support@timely.lt</a>
                 </p>
 
 
