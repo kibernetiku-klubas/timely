@@ -19,7 +19,9 @@ class Meeting extends Model
         'location',
         'timezone_offset',
         'duration',
-        'delete_after'
+        'delete_after',
+        'is1v1',
+        'voter_invisible'
     ];
 
     protected $primaryKey = 'id';

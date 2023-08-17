@@ -23,6 +23,7 @@ class MeetingTest extends TestCase
             'duration' => 60,
             'delete_after' => 30,
             'is1v1' => 0,
+            'voter_invisible' => 0,
         ];
 
         $response = $this->actingAs($user)->post(route('meetings.store'), $formData);
