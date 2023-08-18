@@ -99,7 +99,7 @@ class MeetingController extends Controller
         });
     }
 
-    public function getHighestVoteCount($meeting)
+    private function getHighestVoteCount($meeting)
     {
         $highestVoteCount = 0;
 
