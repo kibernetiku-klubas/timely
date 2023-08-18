@@ -1,6 +1,7 @@
 <x-app-layout>
 
     <body data-page-title="{{$meeting->title}}"></body>
+
     @if (session()->has('error'))
         <x-notification type="error" message="{{ session('error') }}"/>
     @endif
@@ -20,16 +21,15 @@
             class="w-full max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl rounded-lg mb-16">
             @include('meetings.meeting-info')
 
-
             <div class="flex justify-center text-xl font-bold"> {{ __('meeting.dates') }}</div>
             <div class="flex justify-center text-xl mt-4">
-                @if($meeting->is1v1 == 1)
+                @if($is1v1)
                     {{ __('meeting.1v1') }}
                 @endif
             </div>
 
             <div>
-                @if (Auth::check() && Auth::user()->id == $meeting->user_id)
+                @if ($isUserCreator)
                     @include ('meetings.edit-times')
                 @else
                     <div class="flex justify-center my-8">
@@ -47,26 +47,13 @@
             </div>
 
             @if($meeting->dates->isEmpty())
-                <div class="flex justify-center items-center h-full mt-4">
+                <div class="flex justify-center items-center h-full">
                     <h2 class="text-lg text-black font-bold">{{ __('meeting.nodates') }}</h2>
                 </div>
-                @if(Auth::check())
-                    <p class="flex justify-center items-center h-full text-md mt-1 text-black font-bold">{{ __('meeting.adddates') }}</p>
+                @if($isUserCreator)
+                    <p class="flex justify-center items-center h-full text-md mb-16 text-black font-bold">{{ __('meeting.adddates') }}</p>
                 @endif
             @endif
-
-            @php
-                $highestVoteCount = 0;
-            @endphp
-
-            @foreach($meeting->dates as $date)
-                @php
-                    $voteCount = $date->votes->count();
-                    if ($voteCount > $highestVoteCount) {
-                        $highestVoteCount = $voteCount;
-                    }
-                @endphp
-            @endforeach
 
             @include('meetings.meeting-cards')
 
