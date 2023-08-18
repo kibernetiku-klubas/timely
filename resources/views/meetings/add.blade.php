@@ -65,11 +65,11 @@
             </div>
 
             <div class="flex justify-center">
-            <label class="card bg-white shadow-xl m-2 radio-label">
-                <input type="radio" name="is1v1" value="0" required class="radio-input" 
-                {{ old('is1v1') === '0' ? 'checked' : '' }} />
-                <div class="card-body text-black">
-                    <div class="flex justify-center">
+                <label class="card bg-white shadow-xl m-2 radio-label">
+                    <input type="radio" name="is1v1" value="0" required class="radio-input"
+                        {{ old('is1v1') === '0' ? 'checked' : '' }} />
+                    <div class="card-body text-black">
+                        <div class="flex justify-center">
                             <svg fill="#000000" width="45" height="45" viewBox="0 0 56 56"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -80,8 +80,8 @@
                     </div>
                 </label>
                 <label class="card bg-white shadow-xl m-2 radio-label">
-                    <input type="radio" name="is1v1" value="1" required class="radio-input" 
-                    {{ old('is1v1') === '1' ? 'checked' : '' }}/>
+                    <input type="radio" name="is1v1" value="1" required class="radio-input"
+                        {{ old('is1v1') === '1' ? 'checked' : '' }}/>
                     <div class="card-body text-black">
                         <div class="flex justify-center">
                             <svg fill="#000000" width="40" height="40" viewBox="0 0 56 56"
@@ -115,7 +115,8 @@
                 <x-input-label for="title" :value="__('add.title')"/>
                 <x-text-input id="title" class="block mt-1 w-full text-black" type="text" name="title"
                               :value="old('title')"
-                              required autofocus autocomplete="title" maxlength="46" placeholder="{{ __('add.title_placeholder') }}"/>
+                              required autofocus autocomplete="title" maxlength="46"
+                              placeholder="{{ __('add.title_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('title')" class="mt-2"/>
             </div>
             <!-- Description -->
