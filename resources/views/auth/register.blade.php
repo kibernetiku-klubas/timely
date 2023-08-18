@@ -7,7 +7,7 @@
         <div>
             <x-input-label for="name" :value="__('register.name')" />
             <x-text-input id="name" class="block mt-1 w-full lowercase" type="text" name="name" :value="old('name')"
-                          required autofocus autocomplete="username" />
+                          required autofocus autocomplete="username" maxlength="30" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
