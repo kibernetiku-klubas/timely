@@ -11,21 +11,13 @@
             <p class='text-black mt-2 font-medium'>{{ __('finalize-date.mark') }}</p>
             <p class='text-black font-bold text-xl uppercase mt-4'>{{ __('finalize-date.select') }}</p>
 
-            @php
-                $sortedDates = $meeting->dates->sortByDesc(function ($date) {
-                    return $date->votes->count();
-                });
-            @endphp
-
             <div class="mt-2">
                 @foreach($sortedDates as $index => $dateOption)
-                <label class="flex items-center mb-2">
-                    <input type="radio" name="selected_date" value="{{ $dateOption->id }}" class="mr-2 radio checked:bg-purple-500 radio-lg shadow-xl"
-                    {{ $index === 0 ? 'checked' : '' }}>
-                    <div class="text-black">{{ $dateOption->date_and_time }}</div>
-                    <div class="ml-2 text-black uppercase">{{ __('finalize-date.votes') }} {{ $dateOption->votes->count() }}</div>
-                </label>
-            @endforeach
+                    <x-datepicker-option
+                        :dateOption="$dateOption"
+                        :checked="$index === 0"
+                    />
+                @endforeach
             </div>
 
             <div class="mt-6">

@@ -142,7 +142,11 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
 
-        return view('meetings.finalize-date', compact('meeting'));
+        $sortedDates = $meeting->dates->sortByDesc(function ($date) {
+            return $date->votes->count();
+        });
+
+        return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
     }
 
     public function finalizeDate(StoreDate $request, $id)
