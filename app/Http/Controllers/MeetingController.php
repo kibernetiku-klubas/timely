@@ -56,6 +56,8 @@ class MeetingController extends Controller
 
         $highestVoteCount = $this->getHighestVoteCount($meeting);
 
+        $selectedDate = $meeting->dates->where('selected', 1)->first();
+
         return view('meetings.meeting', [
             'user' => Auth::check() ? auth()->user() : null,
             'creator' => $meeting->creator,
@@ -65,6 +67,7 @@ class MeetingController extends Controller
             'is1v1' => $meeting->is1v1 === 1,
             'isUserCreator' => $isUserCreator,
             'highestVoteCount' => $highestVoteCount,
+            'selectedDate' => $selectedDate,
         ]);
     }
 
