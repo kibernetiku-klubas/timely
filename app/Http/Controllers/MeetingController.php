@@ -74,13 +74,6 @@ class MeetingController extends Controller
         });
     }
 
-    public function showDashboard()
-    {
-        return view('dashboard', [
-            'meetings' => Meeting::where('user_id', Auth::user()->id)->simplePaginate(12),
-        ]);
-    }
-
     public function update(StoreMeeting $request, $id): RedirectResponse
     {
         $validated = $request->validated();
