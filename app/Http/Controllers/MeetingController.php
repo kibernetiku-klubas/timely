@@ -49,13 +49,17 @@ class MeetingController extends Controller
         $meeting = Meeting::with(['dates' => function ($query) {
             $query->orderBy('date_and_time', 'asc');
         }, 'dates.votes'])->findOrFail($id);
+
         $datesGroupedByYear = $this->getDatesGroupedByYear($meeting);
+
+        $meetingLink = "https://timely.lt/meetings/{$meeting->id}";
 
         return view('meetings.meeting', [
             'user' => Auth::user(),
             'creator' => $meeting->creator,
             'meeting' => $meeting,
             'datesGroupedByYear' => $datesGroupedByYear,
+            'meetingLink' => $meetingLink,
         ]);
     }
 
