@@ -48,32 +48,49 @@ class MeetingController extends Controller
     {
         $meeting = $this->getMeetingWithDates($id);
 
-        $datesGroupedByYear = $this->getDatesGroupedByYear($meeting);
-
-        $meetingLink = $this->getMeetingLink($meeting->id);
-
-        $isUserCreator = $this->isUserCreator($meeting);
-
-        $highestVoteCount = $this->getHighestVoteCount($meeting);
-
-        $selectedDate = $meeting->dates->where('selected', 1)->first();
-
-        $hasVoted = session()->has('voted_' . $meeting->id);
-
-        return view('meetings.meeting', [
-            'user' => Auth::check() ? auth()->user() : null,
-            'creator' => $meeting->creator,
-            'meeting' => $meeting,
-            'datesGroupedByYear' => $datesGroupedByYear,
-            'meetingLink' => $meetingLink,
-            'is1v1' => $meeting->is1v1 === 1,
-            'isUserCreator' => $isUserCreator,
-            'highestVoteCount' => $highestVoteCount,
-            'selectedDate' => $selectedDate,
-            'hasVoted' => $hasVoted,
-        ]);
+        return view('meetings.meeting', $this->getViewData($meeting));
     }
 
+    private function getViewData($meeting)
+    {
+        return [
+            'user'              => $this->getUser(),
+            'creator'           => $meeting->creator,
+            'meeting'           => $meeting,
+            'datesGroupedByYear'=> $this->getDatesGroupedByYear($meeting),
+            'meetingLink'       => $this->getMeetingLink($meeting->id),
+            'is1v1'             => $meeting->is1v1 === 1,
+            'isUserCreator'     => $this->isUserCreator($meeting),
+            'highestVoteCount'  => $this->getHighestVoteCount($meeting),
+            'selectedDate'      => $this->getSelectedDate($meeting),
+            'hasVoted'          => $this->hasUserVoted($meeting->id),
+            'highestVotedDates' => $this->getHighestVotedDates($meeting),
+        ];
+    }
+
+    private function getSelectedDate($meeting)
+    {
+        return $meeting->dates->where('selected', 1)->first();
+    }
+
+    private function hasUserVoted($meetingId)
+    {
+        return session()->has('voted_' . $meetingId);
+    }
+
+    private function getHighestVotedDates($meeting)
+    {
+        $highestVoteCount = $this->getHighestVoteCount($meeting);
+
+        return $meeting->dates->filter(function ($date) use ($highestVoteCount) {
+            return $date->votes->count() > 0 && $date->votes->count() === $highestVoteCount;
+        })->pluck('id');
+    }
+
+    private function getUser()
+    {
+        return Auth::check() ? auth()->user() : null;
+    }
     private function isUserCreator($meeting): bool
     {
         return Auth::check() && $meeting->user_id === Auth::user()->id;
@@ -109,7 +126,7 @@ class MeetingController extends Controller
     {
         $highestVoteCount = 0;
 
-        foreach($meeting->dates as $date) {
+        foreach ($meeting->dates as $date) {
             $voteCount = $date->votes->count();
             if ($voteCount > $highestVoteCount) {
                 $highestVoteCount = $voteCount;
