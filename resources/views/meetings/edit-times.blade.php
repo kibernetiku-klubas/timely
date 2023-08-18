@@ -1,4 +1,4 @@
-@if ($user->id == $meeting->user_id)
+@if ($isUserCreator)
     <details class="collapse bg-white mb-6">
         <summary class="collapse-title text-xl font-bold text-center">
             <div class="flex items-center justify-center">
