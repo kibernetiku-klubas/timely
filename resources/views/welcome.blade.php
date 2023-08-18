@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <body data-page-title={{ __('welcome.welcome_tab') }}></body>
+<body data-page-title={{ __('welcome.welcome_tab') }}></body>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        @media screen and (max-width: 640px) {
-            .relative.sm\:flex.sm\:justify {
-                flex-direction: column;
-                align-items: center;
-                padding-bottom: 16px;
-            }
-
-            .sm\:fixed.top-0.left-0.p-6.z-10.text-2xl.text-black.font-bold.btn-ghost.rounded-xl {
-                position: static;
-            }
-
-            .sm\:fixed.sm\:top-0.sm\:right-0.p-6.text-right.z-10 {
-                position: static;
-                margin-top: 16px;
-            }
-
-            .hero-content img {
-                width: 100%;
-                height: auto;
-                margin: 0 auto;
-            }
-
-            .px-12 {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-
-            .hero-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            html, body {
-                overflow-x: hidden;
-            }
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+<style>
+    @media screen and (max-width: 640px) {
+        .relative.sm\:flex.sm\:justify {
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 16px;
         }
-    </style>
+
+        .sm\:fixed.top-0.left-0.p-6.z-10.text-2xl.text-black.font-bold.btn-ghost.rounded-xl {
+            position: static;
+        }
+
+        .sm\:fixed.sm\:top-0.sm\:right-0.p-6.text-right.z-10 {
+            position: static;
+            margin-top: 16px;
+        }
+
+        .hero-content img {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .px-12 {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+    }
+</style>
 
 
 </head>
@@ -64,31 +64,22 @@
 <body class="antialiased">
 <div class="relative bg-white">
     <div class="flex justify-between items-center p-6">
-        <a class="text-2xl text-black font-bold btn-ghost rounded-xl" href="/">Timely <span class="text-sm">Beta</span> </a>
+        <a class="text-2xl text-black font-bold btn-ghost rounded-xl" href="/">Timely <span class="text-sm">Beta</span>
+        </a>
         @if (Route::has('login'))
             <div class="text-right">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.dash') }}</a>
+                    <a href="{{ url('/dashboard') }}"
+                       class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.dash') }}</a>
+                        <x-language-selector></x-language-selector>
                 @else
-                    <a href="{{ route('login') }}" class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.login') }}</a>
+                    <a href="{{ route('login') }}"
+                       class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.login') }}</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
                            class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.register') }}</a>
-                           <div class="dropdown">
-                            <label tabindex="0" class="btn bg-white border-none hover:bg-gray-200 mr-1"><span class="flag-icon flag-icon-{{ App::getLocale() }} mask mask-circle"></span></label>
-                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box">
-                                @foreach (Config::get('languages') as $lang => $language)
-                                    @if ($lang != App::getLocale())
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                                                <span class="flag-icon flag-icon-{{ $lang }} mask mask-circle"></span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
+                        <x-language-selector></x-language-selector>
                     @endif
                 @endauth
             </div>
@@ -115,7 +106,7 @@
             <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
                 <a href="{{ route('dashboard') }}"
                    class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 btn btn-primary bg-purple-500 border-purple-500 sm:w-auto sm:mb-0">
-                   {{ __('welcome.createfirst') }}
+                    {{ __('welcome.createfirst') }}
                     <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                          fill="currentColor">
                         <path fill-rule="evenodd"
@@ -184,7 +175,8 @@
         <div class="flex flex-col sm:justify-center items-center mt-8" data-aos="zoom-in">
             <div>
                 <div class="fill-current text-white text-6xl font-bold uppercase">{{ __('welcome.waste') }}</div>
-                <div class="fill-current text-white text-6xl font-bold uppercase mb-8">{{ __('welcome.nomoretime') }}</div>
+                <div
+                    class="fill-current text-white text-6xl font-bold uppercase mb-8">{{ __('welcome.nomoretime') }}</div>
             </div>
         </div>
         <div class="max-w-md" data-aos="fade-left">
@@ -192,7 +184,8 @@
             <p class="mb-5 text-2xl font-bold">{{ __('welcome.waste_lower') }}</p>
             <div>
                 <a href="{{ route('dashboard') }}">
-                    <button class="btn btn-primary bg-purple-500 border-purple-500" data-aos="zoom-in">{{ __('welcome.getstarted') }}</button>
+                    <button class="btn btn-primary bg-purple-500 border-purple-500"
+                            data-aos="zoom-in">{{ __('welcome.getstarted') }}</button>
                 </a>
             </div>
         </div>
@@ -207,9 +200,12 @@
             <div><a href="mailto:support@timely.lt" class="p-2 rounded-lg btn-ghost">support@timely.lt</a></div>
         </div>
         <div class="flex items-center space-x-2 mt-2">
-            <div>| <a href="/privacy-policy" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.privacy') }}</a> |</div>
-            <div><a href="/terms-of-service" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.terms') }}</a> |</div>
-            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank" class="p-2 rounded-lg btn-ghost">{{ __('welcome.report') }}</a> |</div>
+            <div>| <a href="/privacy-policy" target="_blank"
+                      class="p-2 rounded-lg btn-ghost">{{ __('welcome.privacy') }}</a> |
+            </div>
+            <div><a href="https://github.com/kibernetiku-klubas/timely/blob/main/SECURITY.md" target="_blank"
+                    class="p-2 rounded-lg btn-ghost">{{ __('welcome.report') }}</a> |
+            </div>
         </div>
     </div>
 </footer>
