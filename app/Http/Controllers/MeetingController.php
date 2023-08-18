@@ -94,12 +94,11 @@ class MeetingController extends Controller
         $meeting->duration = $validated['duration'];
         $meeting->delete_after = $validated['delete_after'];
         $meeting->is1v1 = $validated['is1v1'];
+        $meeting->voter_invisible = 0;
+        
+        if (isset($validated['voter_invisible']))
+        $meeting->voter_invisible = $validated['voter_invisible'];
 
-        if (isset($validated['voter_invisible'])) {
-            $meeting->voter_invisible = $validated['voter_invisible'];
-        } else {
-            $meeting->voter_invisible = 0;
-        }
         $meeting->save();
 
         return redirect($redirectUrl)->with('success', $message ?? __('MeetingController.saved'));

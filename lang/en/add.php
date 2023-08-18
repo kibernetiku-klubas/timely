@@ -40,4 +40,7 @@ return [
     'deletion_placeholder' => 'Choose time until deletion',
     'cancel' => 'Cancel',
     'confirm' => 'Create meeting',
+    'advanced' => 'Advanced Options',
+    'voteinvis' => 'Vote results invisible to participants',
+    
 ];

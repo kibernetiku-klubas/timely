@@ -152,7 +152,7 @@
                     @endforeach
                 </select>
                 @error('timezone')
-                <p class="text-red-500 text-sm">{{ "Timezone must be selected." }}</p>
+                <p class="text-red-500 text-sm">{{ __('add.mustselect') }}</p>
                 @enderror
             </div>
             <!-- Duration -->
@@ -178,20 +178,18 @@
                 <div class="font-bold text-md text-gray-700 inline-flex relative">
                     <div>
                         <x-input-label class="cursor-pointer mr-2" onclick="toggleCheckboxes()">
-                            Advanced Options
+                            {{ __('add.advanced') }}
                         </x-input-label>
                         <div id="checkboxes" class="bg-white shadow-md rounded-lg p-2 space-y-2 hidden mt-2">
                             <x-input-label class="flex items-center space-x-2">
                                 <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ old('voter_invisible') ? 'checked' : '' }}>
-                                <span>Vote results invisible to participants</span>
+                                <span>{{ __('add.voteinvis') }}</span>
                             </x-input-label>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-
+            <!-- Creation buttons -->
             <div class="flex items-center justify-end mt-4">
                 <a href="{{ route('dashboard') }}" tabindex="-1">
                     <x-secondary-button class="ml-4">

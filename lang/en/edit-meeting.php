@@ -29,4 +29,6 @@ return [
     'deletion_placeholder' => 'Choose time until deletion',
     'cancel' => 'Cancel',
     'update' => 'update meeting',
+    'advanced' => 'Advanced Options',
+    'voteinvis' => 'Vote results invisible to participants',
 ];
