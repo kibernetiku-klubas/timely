@@ -36,13 +36,22 @@ class MeetingController extends Controller
 
     public function store(StoreMeeting $request): RedirectResponse
     {
+        $user = Auth::user();
+
+        $userMeetingsCount = Meeting::where('user_id', $user->id)->count();
+
+        if ($userMeetingsCount >= 50) {
+            return redirect('/dashboard')->with('error', __('MeetingController.meetings_limit_reached'));
+        }
+
         $validated = $request->validated();
 
         $meeting = new Meeting;
-        $meeting->user_id = Auth::user()->id;
+        $meeting->user_id = $user->id;
 
         return $this->assignMeetingData($meeting, $validated, '/dashboard', __('MeetingController.success'));
     }
+
 
     public function show($id)
     {
