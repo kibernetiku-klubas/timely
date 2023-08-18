@@ -58,6 +58,8 @@ class MeetingController extends Controller
 
         $selectedDate = $meeting->dates->where('selected', 1)->first();
 
+        $hasVoted = session()->has('voted_' . $meeting->id);
+
         return view('meetings.meeting', [
             'user' => Auth::check() ? auth()->user() : null,
             'creator' => $meeting->creator,
@@ -68,6 +70,7 @@ class MeetingController extends Controller
             'isUserCreator' => $isUserCreator,
             'highestVoteCount' => $highestVoteCount,
             'selectedDate' => $selectedDate,
+            'hasVoted' => $hasVoted,
         ]);
     }
 
