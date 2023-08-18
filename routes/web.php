@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\DateController;
@@ -13,7 +14,6 @@ Route::get('meetings/{id}', [MeetingController::class, 'show'])->name('meeting.s
 Route::post('/votes', [VoteController::class, 'store'])->name('vote.store');
 Route::get('/export/{meeting_id}/ics', [DateController::class, 'exportToICalendar'])->name('export.ics');
 Route::view('/privacy-policy', 'legal.privacy-policy');
-Route::view('/terms-of-service', 'legal.terms-of-service');
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
 Route::middleware('auth')->group(function () {
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
 
-    Route::get('/dashboard', [MeetingController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::view('/pr', 'pr-egg');
 });
 

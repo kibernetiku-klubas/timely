@@ -31,4 +31,5 @@ return [
     'update' => 'update meeting',
     'advanced' => 'Advanced Options',
     'voteinvis' => 'Vote results invisible to participants',
+
 ];

@@ -36,27 +36,88 @@ class MeetingController extends Controller
 
     public function store(StoreMeeting $request): RedirectResponse
     {
+        $user = Auth::user();
+
+        $userMeetingsCount = Meeting::where('user_id', $user->id)->count();
+
+        if ($userMeetingsCount >= 50) {
+            return redirect('/dashboard')->with('error', __('MeetingController.meetings_limit_reached'));
+        }
+
         $validated = $request->validated();
 
         $meeting = new Meeting;
-        $meeting->user_id = Auth::user()->id;
+        $meeting->user_id = $user->id;
 
         return $this->assignMeetingData($meeting, $validated, '/dashboard', __('MeetingController.success'));
     }
 
+
     public function show($id)
     {
-        $meeting = Meeting::with(['dates' => function ($query) {
-            $query->orderBy('date_and_time', 'asc');
-        }, 'dates.votes'])->findOrFail($id);
-        $datesGroupedByYear = $this->getDatesGroupedByYear($meeting);
+        $meeting = $this->getMeetingWithDates($id);
 
-        return view('meetings.meeting', [
-            'user' => Auth::user(),
-            'creator' => $meeting->creator,
-            'meeting' => $meeting,
-            'datesGroupedByYear' => $datesGroupedByYear,
-        ]);
+        return view('meetings.meeting', $this->getViewData($meeting));
+    }
+
+    private function getViewData($meeting)
+    {
+        return [
+            'user'              => $this->getUser(),
+            'creator'           => $meeting->creator,
+            'meeting'           => $meeting,
+            'datesGroupedByYear'=> $this->getDatesGroupedByYear($meeting),
+            'meetingLink'       => $this->getMeetingLink($meeting->id),
+            'is1v1'             => $meeting->is1v1 === 1,
+            'isUserCreator'     => $this->isUserCreator($meeting),
+            'highestVoteCount'  => $this->getHighestVoteCount($meeting),
+            'selectedDate'      => $this->getSelectedDate($meeting),
+            'hasVoted'          => $this->hasUserVoted($meeting->id),
+            'highestVotedDates' => $this->getHighestVotedDates($meeting),
+        ];
+    }
+
+    private function getSelectedDate($meeting)
+    {
+        return $meeting->dates->where('selected', 1)->first();
+    }
+
+    private function hasUserVoted($meetingId)
+    {
+        return session()->has('voted_' . $meetingId);
+    }
+
+    private function getHighestVotedDates($meeting)
+    {
+        $highestVoteCount = $this->getHighestVoteCount($meeting);
+
+        return $meeting->dates->filter(function ($date) use ($highestVoteCount) {
+            return $date->votes->count() > 0 && $date->votes->count() === $highestVoteCount;
+        })->pluck('id');
+    }
+
+    private function getUser()
+    {
+        return Auth::check() ? auth()->user() : null;
+    }
+    private function isUserCreator($meeting): bool
+    {
+        return Auth::check() && $meeting->user_id === Auth::user()->id;
+    }
+
+    private function getMeetingWithDates($id): Meeting
+    {
+        return Meeting::with([
+            'dates' => function ($query) {
+                $query->orderBy('date_and_time', 'asc');
+            },
+            'dates.votes',
+        ])->findOrFail($id);
+    }
+
+    private function getMeetingLink($id): string
+    {
+        return "https://timely.lt/meetings/$id";
     }
 
     private function getDatesGroupedByYear($meeting)
@@ -70,11 +131,18 @@ class MeetingController extends Controller
         });
     }
 
-    public function showDashboard()
+    private function getHighestVoteCount($meeting)
     {
-        return view('dashboard', [
-            'meetings' => Meeting::where('user_id', Auth::user()->id)->simplePaginate(12),
-        ]);
+        $highestVoteCount = 0;
+
+        foreach ($meeting->dates as $date) {
+            $voteCount = $date->votes->count();
+            if ($voteCount > $highestVoteCount) {
+                $highestVoteCount = $voteCount;
+            }
+        }
+
+        return $highestVoteCount;
     }
 
     public function update(StoreMeeting $request, $id): RedirectResponse
@@ -108,7 +176,11 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
 
-        return view('meetings.finalize-date', compact('meeting'));
+        $sortedDates = $meeting->dates->sortByDesc(function ($date) {
+            return $date->votes->count();
+        });
+
+        return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
     }
 
     public function finalizeDate(StoreDate $request, $id)
@@ -120,8 +192,8 @@ class MeetingController extends Controller
         }
 
         if ($meeting->dates->isEmpty()) {
-        return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
-    }
+            return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
+        }
 
         $selectedDateId = $request->input('selected_date');
         $meeting->dates()->update(['selected' => 0]);
@@ -136,6 +208,5 @@ class MeetingController extends Controller
 
         return redirect()->route('meeting.show', $meeting->id)->with('success', __('MeetingController.finalized'));
     }
-
 
 }

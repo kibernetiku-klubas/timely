@@ -10,17 +10,17 @@
                 <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
                 <div class="flex justify-between">
                     <div class="flex space-x-3 my-2">
-                        @if ($date->selected === 1)
+                        @if ($selectedDate == $date)
                             <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">{{ __('meeting-cards.selected') }}</div>
                         @endif
-                        @if ($date->votes->count() > 0 && $date->votes->count() === $highestVoteCount)
-                            @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 && Auth::check() && $user->id == $meeting->user_id))
+                        @if ($highestVotedDates->contains($date->id))
+                            @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 && $isUserCreator)
                                 <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
                             @endif
                         @endif
                     </div>
                         
-                    @if (Auth::check() && $user->id == $meeting->user_id)
+                   @if ($isUserCreator)
                         <form id="deleteForm{{ $date->id }}" method="POST"
                               action="{{ route('dates.destroy', ['id' => $date->id]) }}">
                             @csrf
@@ -77,12 +77,11 @@
 
                 <div class="font-bold text-xl flex justify-center mt-4"></div>
                 <div class="flex justify-center text-black text-3xl font-bold">
-                    @if ($meeting->is1v1 === 0)
-                    @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 
-                    && Auth::check() && $user->id == $meeting->user_id))
+                    @if (!$is1v1)
+                      @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 && $isUserCreator))
                         {{ __('meeting-cards.votes') }} {{ $date->votes->count() }}
-                    @endif
-                    @elseif ($meeting->is1v1 === 1 && $isDateTaken)
+                      @endif
+                    @elseif ($isDateTaken)
                         {{ __('meeting-cards.taken') }}
                     @else
                         {{ __('meeting-cards.free') }} 

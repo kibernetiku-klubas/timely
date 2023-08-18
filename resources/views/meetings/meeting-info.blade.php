@@ -1,3 +1,5 @@
+@vite(['resources/js/copyLink.js'])
+
 <div class="bg-white p-4">
     <div class="text-3xl font-bold text-black uppercase mb-4">{{ $meeting->title }}</div>
     <div class="text-lg font-bold text-black uppercase mb-4">{{ __('meeting-info.createdby') }} {{$creator->name}}</div>
@@ -37,9 +39,9 @@
     <div class="font-bold pr-2 uppercase flex justify-center">{{ __('meeting-info.link') }}</div>
     <div class="flex justify-center items-center mb-6">
         <div class="tooltip mb-2" data-tip="{{ __('meeting-info.data-tip') }}">
-            <a class="link" id="link">https://timely.lt/meetings/{{ $meeting->id }}</a>
+            <a class="link" id="link" href="{{ $meetingLink }}">{{ $meetingLink }}</a>
         </div>
-        <a id="copyLink" class="btn-ghost rounded-lg">
+        <a id="copyLink" class="btn-ghost rounded-lg" data-meeting-id="{{ $meeting->id }}">
             <svg width="30" height="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -53,16 +55,3 @@
         </a>
     </div>
 </div>
-
-<script>
-    document.getElementById("copyLink").addEventListener("click", function () {
-        navigator.clipboard.writeText('https://timely.lt/meetings/{{ $meeting->id }}')
-            .then(() => console.log('Text copied to clipboard'))
-            .catch(err => console.log('Failed to copy text: ', err));
-        let linkElement = document.getElementById("link");
-        linkElement.innerText = "Link copied!";
-        setTimeout(function () {
-            linkElement.innerText = "https://timely.lt/meetings/{{ $meeting->id }}";
-        }, 2250);
-    });
-</script>

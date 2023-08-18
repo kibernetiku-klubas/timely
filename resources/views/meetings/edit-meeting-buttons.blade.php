@@ -1,4 +1,4 @@
-@if (Auth::check() && $meeting->user_id == Auth::User()->id)
+@if ($isUserCreator)
     <a href='{{ route('meetings.show-finalize-date', $meeting->id) }}'>
         <x-secondary-button>{{ __('edit-meeting-buttons.finalize') }}</x-secondary-button>
     </a>

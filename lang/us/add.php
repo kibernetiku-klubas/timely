@@ -42,5 +42,4 @@ return [
     'confirm' => 'Create meeting',
     'advanced' => 'Advanced Options',
     'voteinvis' => 'Vote results invisible to participants',
-    
 ];

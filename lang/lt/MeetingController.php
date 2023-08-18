@@ -18,4 +18,5 @@ return [
     'saved' => 'Susitikimas išsaugotas sėkmingai.',
     'noauth' => 'Neturite teisių paskirti šios datos.',
     'finalized' => 'Data paskirta sėkmingai.',
+    'meetings_limit_reached' => 'Pasiekėte maksimalų susitikimų skaičių.',
 ];
