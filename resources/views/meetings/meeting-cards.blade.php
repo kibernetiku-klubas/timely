@@ -14,7 +14,7 @@
                             <div class="badge badge-outline text-green-500 outline-green-500 mt-3 selected-badge">{{ __('meeting-cards.selected') }}</div>
                         @endif
                         @if ($highestVotedDates->contains($date->id))
-                            @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 && $isUserCreator)
+                            @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 && $isUserCreator))
                                 <div class="badge badge-outline text-purple-500 outline-purple-500 mt-3">{{ __('meeting-cards.mostvoted') }}</div>
                             @endif
                         @endif
