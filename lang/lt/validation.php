@@ -151,8 +151,6 @@ return [
     'url' => ':attribute laukelis privalo būti tinkamas URL.',
     'ulid' => ':attribute laukelis privalo būti tinkamas ULID.',
     'uuid' => ':attribute laukelis privalo būti tinkamas UUID.',
-    'recaptcha' => 'reCAPTCHA verifikacija nepavyko. Pabandykite iš naujo.',
-    'recaptcha_required' => 'Prašome pabaigti reCAPTCHA.',
 
     /*
     |--------------------------------------------------------------------------
