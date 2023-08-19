@@ -1,5 +1,3 @@
-@vite(['resources/js/copyLink.js'])
-
 <div class="bg-white p-4">
     <div class="text-3xl font-bold text-black uppercase mb-4">{{ $meeting->title }}</div>
     <div class="text-lg font-bold text-black uppercase mb-4">{{ __('meeting-info.createdby') }} {{$creator->name}}</div>
@@ -55,3 +53,22 @@
         </a>
     </div>
 </div>
+
+<script>
+    document.getElementById("copyLink").addEventListener("click", function () {
+        const meetingId = this.getAttribute('data-meeting-id');
+        const meetingLink = `https://timely.lt/meetings/${meetingId}`;
+
+        navigator.clipboard.writeText(meetingLink)
+            .then(() => console.log('Text copied to clipboard'))
+            .catch(err => console.log('Failed to copy text: ', err));
+
+        let linkElement = document.getElementById("link");
+        linkElement.innerText = "Link copied!";
+
+        setTimeout(function () {
+            linkElement.innerText = meetingLink;
+        }, 2250);
+    });
+
+</script>
