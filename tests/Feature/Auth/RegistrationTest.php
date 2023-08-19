@@ -19,14 +19,10 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
-
-        
         $response = $this->post('/register', [
-            $recaptchaResponse = 'valid-recaptcha-response',
             'name' => 'Test User',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'g-recaptcha-response' => $recaptchaResponse
         ]);
 
         $this->assertAuthenticated();
