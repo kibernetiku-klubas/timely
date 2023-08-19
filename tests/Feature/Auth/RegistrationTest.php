@@ -19,10 +19,13 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
+        $validCaptcha = 'mock_valid_captcha';
+
         $response = $this->post('/register', [
             'name' => 'Test User',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'captcha' => $validCaptcha, 
         ]);
 
         $this->assertAuthenticated();
