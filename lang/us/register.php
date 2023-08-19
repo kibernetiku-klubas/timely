@@ -21,5 +21,6 @@ return [
     'register' => 'Register',
     'agree' => 'I have read and agree to the',
     'policy' => 'Privacy Policy',
-
+    'local_captcha' => 'Enter Captcha',
+    'refresh' => 'Refresh'
 ];

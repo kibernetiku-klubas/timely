@@ -21,4 +21,6 @@ return [
     'register' => 'Registruotis',
     'agree' => 'Perskaičiau ir susipažinau su',
     'policy' => 'privatumo politika',
+    'local_captcha' => 'Įveskite nuotraukos tekstą',
+    'refresh' => 'Atnaujinti',
 ];
