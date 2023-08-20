@@ -151,7 +151,8 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
-
+    'captcha_required' => 'Captcha is required.',
+    'captcha_captcha' => 'Captcha failed, please try again.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -180,6 +181,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'captcha' => 'Captcha',
+    ],
 
 ];

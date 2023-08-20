@@ -151,7 +151,8 @@ return [
     'url' => ':attribute laukelis privalo būti tinkamas URL.',
     'ulid' => ':attribute laukelis privalo būti tinkamas ULID.',
     'uuid' => ':attribute laukelis privalo būti tinkamas UUID.',
-
+    'captcha_required' => 'Patvirtinimas yra privalomas.',
+    'captcha_captcha' => 'Patvirtinimas nepavyko, pabandykite iš naujo.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -182,7 +183,7 @@ return [
 
     'attributes' => [
         'password' => 'Slaptažodio',
-        'current_password' => 'Dabartinio slaptažodžio'
+        'current_password' => 'Dabartinio slaptažodžio',
     ],
 
 ];

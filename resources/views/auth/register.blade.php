@@ -46,6 +46,27 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-2">
+            <span class="captcha-image">
+                <img src="{{ captcha_src() }}" alt="Captcha" style="width: 245px; height: auto;">
+            </span>
+            <div class="captcha" style="display: flex; flex-direction: column;">
+                <div class="captcha-input mt-2">
+                    <x-text-input id="captcha" type="text" placeholder="{{ __('register.local_captcha') }}" name="captcha"/>
+                </div>
+                <div class="captcha-button mt-2">
+                    <x-primary-button type="button" id="refreshCaptcha">{{ __('register.refresh') }}</x-primary-button>
+                </div>
+            </div>
+            @if ($errors->has('captcha'))
+                <x-input-error :messages="$errors->first('captcha')" class="mt-2"/>
+            @endif
+        </div>
+        
+        
+        
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 href="{{ route('login') }}">
@@ -58,3 +79,8 @@
         </div>
     </form>
 </x-guest-layout>
+<script>
+    document.getElementById('refreshCaptcha').addEventListener('click', function () {
+        location.reload();
+    });
+</script>

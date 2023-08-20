@@ -33,7 +33,13 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:30', 'unique:users,name,' . strtolower($request->input('name'))],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            'captcha' => ['required', 'captcha']
+        ], [
+            'captcha.required'=>trans('validation.captcha_required'),
+            'captcha.captcha'=>trans('validation.captcha_captcha'),
+        ],
+        
+    );
 
         $lowercaseName = strtolower($request->input('name'));
 
@@ -51,5 +57,10 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+    public function refreshCaptcha()
+
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 }
