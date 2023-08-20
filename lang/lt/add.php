@@ -40,4 +40,6 @@ return [
     'deletion_placeholder' => 'Pasirinkite laiką iki ištrinimo',
     'cancel' => 'Atšaukti',
     'confirm' => 'Sukurti susitikimą',
+    'advanced' => 'Išplėstiniai nustatymai',
+    'voteinvis' => 'Balsavimo rezultatai nematomi dalyviams',
 ];
