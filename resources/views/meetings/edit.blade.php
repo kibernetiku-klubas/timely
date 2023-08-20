@@ -95,7 +95,7 @@
                         </x-input-label>
                         <div id="checkboxes" class="bg-white shadow-md rounded-lg p-2 space-y-2 hidden mt-2">
                             <x-input-label class="flex items-center space-x-2">
-                                <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ old('voter_invisible') ? 'checked' : '' }}>
+                                <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ $meeting->voter_invisible ? 'checked' : '' }}>
                                 <span>{{ __('edit-meeting.voteinvis') }}</span>
                             </x-input-label>
                         </div>
