@@ -1,5 +1,5 @@
 <div class="bg-white p-4">
-    <div class="text-3xl font-bold text-black uppercase mb-4">{{ $meeting->title }}</div>
+    <div class="text-3xl font-bold text-black uppercase mb-4 break-all">{{ $meeting->title }}</div>
     <div class="text-lg font-bold text-black uppercase mb-4">{{ __('meeting-info.createdby') }} {{$creator->name}}</div>
 
     <div class="flex items-center mb-4">
@@ -9,7 +9,7 @@
                     d="M0,462h256v-64H0V462z M0,355.3h512v-64H0V355.3z M256,184.7H0v64h256V184.7z M0,78v64h512V78H0z"/>
             </svg>
         </div>
-        <div>{{ $meeting->description }}</div>
+        <div class="break-all">{{ $meeting->description }}</div>
     </div>
 
     <div class="flex items-center mb-4">
@@ -20,7 +20,7 @@
             C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z"/>
             </svg>
         </div>
-        <div>{{ $meeting->location }}</div>
+        <div class="break-all">{{ $meeting->location }}</div>
     </div>
 
     <div class="flex items-center mb-4">
