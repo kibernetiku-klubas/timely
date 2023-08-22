@@ -19,6 +19,26 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <style>
     @media screen and (max-width: 640px) {
+
+        /* Center the "Timely Beta" text */
+        .text-black.text-2xl.text-center.font-bold.btn-ghost.rounded-xl {
+            text-align: center;
+        }
+
+        /* Rearrange the buttons and language selector */
+        .md\:ml-4 {
+            margin-left: 0;
+        }
+
+        .flex-col.md\:flex-row > * {
+            margin-top: 8px;
+            margin-left: 0;
+        }
+
+        .md\:mt-0 {
+            margin-top: 8px;
+        }
+
         .relative.sm\:flex.sm\:justify {
             flex-direction: column;
             align-items: center;
@@ -27,6 +47,9 @@
 
         .sm\:fixed.top-0.left-0.p-6.z-10.text-2xl.text-black.font-bold.btn-ghost.rounded-xl {
             position: static;
+            padding: 6px; /* Adjust padding for better visibility */
+            text-align: center; /* Center the text */
+            margin: 16px 0; /* Add margin for spacing */
         }
 
         .sm\:fixed.sm\:top-0.sm\:right-0.p-6.text-right.z-10 {
@@ -55,44 +78,63 @@
         html, body {
             overflow-x: hidden;
         }
+
+        .md\:flex-row {
+            flex-direction: row;
+        }
+
+        .md\:ml-4 {
+            margin-left: 0.5rem;
+        }
+
+        .mt-4.md\:mt-0 {
+            margin-top: 0;
+        }
+
+        .flex-col.md\:flex-row {
+            flex-direction: row;
+        }
+
+        .flex-col.md\:flex-row > * {
+            margin-top: 0;
+            margin-left: 0.5rem;
+        }
     }
 </style>
-
-
 </head>
 
 <body class="antialiased">
 <div class="relative bg-white">
-    <div class="flex justify-between items-center p-6">
-        <a class="text-2xl text-black font-bold btn-ghost rounded-xl" href="/">Timely <span class="text-sm">Beta</span>
-        </a>
+    <div class="flex flex-col sm:flex-row justify-between items-center px-6 pt-2">
+        <a class="text-2xl text-black font-bold btn-ghost rounded-xl p-2 md:p-6" href="/">Timely <span
+                class="text-sm md:inline">Beta</span></a>
         @if (Route::has('login'))
-            <div class="text-right">
+            <div class="flex flex-row sm:flex-row items-center">
                 @auth
                     <a href="{{ url('/dashboard') }}"
                        class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.dash') }}</a>
-                        <x-language-selector></x-language-selector>
                 @else
                     <a href="{{ route('login') }}"
-                       class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.login') }}</a>
-
+                       class="font-medium text-black uppercase btn-ghost p-4 rounded-xl">{{ __('welcome.login') }}</a>
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                           class="font-medium text-black uppercase btn-ghost p-6 rounded-xl">{{ __('welcome.register') }}</a>
-                        <x-language-selector></x-language-selector>
+                           class="font-medium text-black uppercase btn-ghost p-4 rounded-xl">{{ __('welcome.register') }}</a>
                     @endif
                 @endauth
+                    <x-language-selector></x-language-selector>
             </div>
         @endif
     </div>
 </div>
+
 
 <section class="pt-24 bg-white">
     <div class="px-12 mx-auto max-w-7xl">
 
         <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
             <div class="mb-16">
-                <div class="fill-current text-black text-4xl uppercase">{{ __('welcome.welcometo') }}</div>
+                <div
+                    class="fill-current text-black text-4xl uppercase">{{ __('welcome.welcometo') }}</div>
                 <div class="fill-current text-black text-8xl font-bold">Timely.</div>
             </div>
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
@@ -119,7 +161,8 @@
         <div class="w-full mx-auto mt-20 text-center md:w-10/12 shadow-xl">
             <div class="relative z-0 w-full mt-8">
                 <div class="relative overflow-hidden shadow-2xl">
-                    <div class="flex items-center flex-none px-4 bg-black rounded-b-none h-11 rounded-xl">
+                    <div
+                        class="flex items-center flex-none px-4 bg-black rounded-b-none h-11 rounded-xl">
                         <div class="flex space-x-1.5">
                             <div class="w-3 h-3 border-2 border-white rounded-full"></div>
                             <div class="w-3 h-3 border-2 border-white rounded-full"></div>
@@ -138,7 +181,8 @@
         <div class="w-full mx-auto mt-20 text-center md:w-10/12">
             <div class="relative z-0 w-full mt-8" data-aos="fade-right">
                 <div class="relative overflow-hidden shadow-2xl">
-                    <div class="flex items-center flex-none px-4 bg-black rounded-b-none h-11 rounded-xl">
+                    <div
+                        class="flex items-center flex-none px-4 bg-black rounded-b-none h-11 rounded-xl">
                         <div class="flex space-x-1.5">
                             <div class="w-3 h-3 border-2 border-white rounded-full"></div>
                             <div class="w-3 h-3 border-2 border-white rounded-full"></div>
@@ -151,7 +195,8 @@
             </div>
         </div>
         <div class="mt-28">
-            <h1 class="text-5xl font-bold text-black" data-aos="fade-left">{{ __('welcome.meetingheader') }}</h1>
+            <h1 class="text-5xl font-bold text-black"
+                data-aos="fade-left">{{ __('welcome.meetingheader') }}</h1>
             <p class="py-6 text-black" data-aos="fade-up">{{ __('welcome.meetingdesc') }}</p>
         </div>
     </div>
@@ -162,7 +207,8 @@
         <img src="{{ asset('img/addtimes.png') }}" class="max-w-2xl rounded-lg shadow-2xl"
              alt="Meeting page" data-aos="fade-left"/>
         <div>
-            <h1 class="text-5xl font-bold text-black" data-aos="fade-right">{{ __('welcome.calendarheader') }}</h1>
+            <h1 class="text-5xl font-bold text-black"
+                data-aos="fade-right">{{ __('welcome.calendarheader') }}</h1>
             <p class="py-6 text-black" data-aos="fade-up">{{ __('welcome.calendardesc') }}</p>
         </div>
     </div>
@@ -174,7 +220,8 @@
 
         <div class="flex flex-col sm:justify-center items-center mt-8" data-aos="zoom-in">
             <div>
-                <div class="fill-current text-white text-6xl font-bold uppercase">{{ __('welcome.waste') }}</div>
+                <div
+                    class="fill-current text-white text-6xl font-bold uppercase">{{ __('welcome.waste') }}</div>
                 <div
                     class="fill-current text-white text-6xl font-bold uppercase mb-8">{{ __('welcome.nomoretime') }}</div>
             </div>

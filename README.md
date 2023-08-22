@@ -56,6 +56,9 @@ Adding times:
 - [nitrogency](https://github.com/nitrogency)
 - [archlich03](https://github.com/archlich03)
 
+## Collaborators
+
+- [Laury8nas](https://github.com/Laury8nas) Discovered and Reported Security Issues
 
 ## Documentation
 

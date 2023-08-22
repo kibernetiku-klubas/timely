@@ -18,7 +18,7 @@
         <div class="flex justify-center items-center h-full">
             <h2 class="text-2xl text-black font-bold uppercase">{{ __('dashboard.nomeetingsyet') }}</h2>
         </div>
-        <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold">{{ __('dashboard.createfirstmeet') }}</p>
+        <p class="flex justify-center items-center h-full text-xl mt-1 text-black font-bold px-6">{{ __('dashboard.createfirstmeet') }}</p>
     @endif
     <div class="flex justify-center">
         <div
