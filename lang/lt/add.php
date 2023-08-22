@@ -42,4 +42,6 @@ return [
     'confirm' => 'Sukurti susitikimą',
     'advanced' => 'Išplėstiniai nustatymai',
     'voteinvis' => 'Balsavimo rezultatai nematomi dalyviams',
+    'voting_deadline' => 'Pasirinkite galutinį balsų pateikimo terminą (0 for none)',
+    'deadlinetext' => 'Dienos iki ištrynimo',
 ];

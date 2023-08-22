@@ -21,4 +21,5 @@ return [
     'success' => 'Balsai sėkmingai išsaugoti.',
     'update' => 'Balsas sėkmingas atnaujintas.',
     'delete' => 'Balsas sėkmingai ištrintas.',
+    'deadline' => 'Balsų pateikimai nebepriimami',
 ];

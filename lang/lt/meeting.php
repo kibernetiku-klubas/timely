@@ -20,5 +20,6 @@ return [
     'timezone' => 'laiko zonoje',
     'nodates' => 'KOL KAS NĖRA DATŲ',
     'adddates' => 'Pridėkite datas naudojant datų parinktuvą viršuje',
-    
+    'votingdeadline' => 'Balsai yra priimami iki',
+    'afterdeadline' => 'BALSAI NEBEPRIIMAMI',
 ];

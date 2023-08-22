@@ -24,6 +24,7 @@ class MeetingTest extends TestCase
             'delete_after' => 30,
             'is1v1' => 0,
             'voter_invisible' => 0,
+            'voting_deadline' => 5,
         ];
 
         $response = $this->actingAs($user)->post(route('meetings.store'), $formData);
@@ -37,6 +38,7 @@ class MeetingTest extends TestCase
             'timezone' => $formData['timezone'],
             'duration' => $formData['duration'],
             'delete_after' => $formData['delete_after'],
+            'voting_deadline' => $formData['voting_deadline'],
         ]);
     }
 
@@ -51,6 +53,7 @@ class MeetingTest extends TestCase
             'timezone' => 'Europe/Vilnius',
             'duration' => 60,
             'delete_after' => 30,
+            'voting_deadline' => 5,
         ];
 
         $this->actingAs($user)->post(route('meetings.store'), $formData)->assertStatus(302)->assertSessionHasErrors('title');

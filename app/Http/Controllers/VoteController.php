@@ -7,6 +7,7 @@ use App\Models\Vote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class VoteController extends Controller
 {
@@ -24,6 +25,12 @@ class VoteController extends Controller
         $dateIds = $request->input('date_ids', []);
         $votes = $request->input('votes', []);
         $meeting = $this->getMeeting($request->input('meeting_id'));
+
+        $now = Carbon::now();
+        $disallowVotes = $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline);
+        if ($now->greaterThanOrEqualTo($disallowVotes)) {
+            return $this->redirectWithErrorMessage(__('VoteController.deadline'));
+        }
 
         if (!$this->hasVotes($votes)) {
             return $this->redirectWithErrorMessage(__('VoteController.select'));

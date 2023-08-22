@@ -21,4 +21,5 @@ return [
     'success' => 'Votes saved successfully.',
     'update' => 'Vote updated successfully.',
     'delete' => 'Vote deleted successfully.',
+    'deadline' => 'Vote submissions are no longer being accepted',
 ];

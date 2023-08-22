@@ -186,6 +186,12 @@
                                 <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ old('voter_invisible') ? 'checked' : '' }}>
                                 <span>{{ __('add.voteinvis') }}</span>
                             </x-input-label>
+                            <x-input-label for="voting_deadline" :value="__('add.voting_deadline')"/>
+                            <x-text-input type="integer" id="voting_deadline"
+                                        class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
+                                        type="string" name="voting_deadline" :value="old('voting_deadline', 0)" required autofocus
+                                        autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>
+                            <x-input-error :messages="$errors->get('voting_deadline')" class="mt-2"/>
                         </div>
                     </div>
                 </div>

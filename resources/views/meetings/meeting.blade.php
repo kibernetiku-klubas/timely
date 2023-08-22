@@ -21,6 +21,7 @@
             class="w-full max-w-5xl mt-6 px-6 py-4 bg-white shadow-xl rounded-lg mb-16">
             @include('meetings.meeting-info')
 
+            @if (!$hasDeadlinePassed)
             <div class="flex justify-center text-xl font-bold"> {{ __('meeting.dates') }}</div>
             <div class="flex justify-center text-xl mt-4">
                 @if($is1v1)
@@ -29,15 +30,23 @@
             </div>
 
             <div>
-                @if ($isUserCreator)
-                    @include ('meetings.edit-times')
-                @else
-                    <div class="flex justify-center my-8">
-                        @include('meetings.vote')
-                    </div>
-                @endif
+                    @if ($isUserCreator)
+                        @include ('meetings.edit-times')
+                    @else
+                        <div class="flex justify-center my-8">
+                            @include('meetings.vote')
+                        </div>
+                    @endif
             </div>
+            @else
+                <div class="flex justify-center text-xl font-bold">{{ __('meeting.afterdeadline') }}</div>
+            @endif
 
+            @if ($meeting->voting_deadline > 0)
+            <div class="flex justify-center items-center text-lg">
+                {{ __('meeting.votingdeadline') }} {{$votingDeadline}}
+            </div>
+            @endif
             <div class="flex justify-center items-center text-lg">
                 {{ __('meeting.timesarein') }} "{{$meeting->timezone}}" {{ __('meeting.timezone') }}
             </div>

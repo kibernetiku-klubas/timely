@@ -23,6 +23,7 @@
                 $location = old('location') ?: $meeting->location;
                 $duration = old('duration') ?: $meeting->duration;
                 $delete_after = old('delete_after') ?: $meeting->delete_after;
+                $voting_deadline = old('voting_deadline') ?: $meeting->voting_deadline;
             @endphp
                 <!-- Title -->
             <div>
@@ -98,6 +99,12 @@
                                 <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ $meeting->voter_invisible ? 'checked' : '' }}>
                                 <span>{{ __('edit-meeting.voteinvis') }}</span>
                             </x-input-label>
+                            <x-input-label for="voting_deadline" :value="__('add.voting_deadline')"/>
+                            <x-text-input type="integer" id="voting_deadline"
+                                        class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
+                                        type="string" name="voting_deadline" :value="$voting_deadline" required autofocus
+                                        autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>
+                            <x-input-error :messages="$errors->get('voting_deadline')" class="mt-2"/>
                         </div>
                     </div>
                 </div>
