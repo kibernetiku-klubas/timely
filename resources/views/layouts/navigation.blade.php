@@ -19,28 +19,30 @@
             </a>
         </div>
         <div>
-            <div class="dropdown dropdown-end">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <label tabindex="0" class="btn btn-ghost">
-                        @if (Auth::check())
-                            {{ Str::limit(Auth::user()->name, 20) }}
-                        @endif
-                    </label>
+            @if (Auth::check())
+                <div class="dropdown dropdown-end">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <label tabindex="0" class="btn btn-ghost">
 
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-200 rounded-box w-36 sm:w-52 text-black">
-                        <li>
-                            <a href="{{ route('profile.edit') }}">{{ __('navigation.profile') }}</a>
-                        </li>
-                        <li>
-                            <button type="submit">{{ __('navigation.logout') }}</button>
-                        </li>
-                    </ul>
-                </form>
-            </div>
+                            {{ Str::limit(Auth::user()->name, 20) }}
+
+                        </label>
+
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-200 rounded-box w-36 sm:w-52 text-black">
+                            <li>
+                                <a href="{{ route('profile.edit') }}">{{ __('navigation.profile') }}</a>
+                            </li>
+                            <li>
+                                <button type="submit">{{ __('navigation.logout') }}</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            @endif
             <div class="lg:mr-6 md:mr-6">
-            <x-language-selector></x-language-selector>
+                <x-language-selector></x-language-selector>
             </div>
         </div>
     </div>
