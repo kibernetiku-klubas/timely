@@ -19,7 +19,7 @@
                             @endif
                         @endif
                     </div>
-                        
+
                    @if ($isUserCreator)
                         <form id="deleteForm{{ $date->id }}" method="POST"
                               action="{{ route('dates.destroy', ['id' => $date->id]) }}">
@@ -84,7 +84,7 @@
                     @elseif ($isDateTaken)
                         {{ __('meeting-cards.taken') }}
                     @else
-                        {{ __('meeting-cards.free') }} 
+                        {{ __('meeting-cards.free') }}
                     @endif
                 </div>
                 <div class="flex justify-center">
@@ -92,14 +92,14 @@
                         <details class="collapse collapse-arrow bg-white hover:bg-gray-300 my-2 md:my-0 md:w-1/2">
                             <summary class="collapse-title text-md font-bold">{{ __('meeting-cards.seewho') }}</summary>
                             <div class="collapse-content px-4 md:px-6">
-                                @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1 
+                                @if ($meeting->voter_invisible === 0 || ($meeting->voter_invisible === 1
                                 && Auth::check() && $user->id == $meeting->user_id))
                                     @if ($date->votes->isEmpty())
                                         <div class="font-bold">{{ __('meeting-cards.novotes') }}</div>
                                     @else
                                         <div class="font-bold mb-2 md:mb-4">{{ __('meeting-cards.whovoted') }}</div>
                                         @foreach ($date->votes as $vote)
-                                            <div class="mb-1">{{ $vote->voted_by }}</div>
+                                            <div class="mb-1">{{ Str::limit($vote->voted_by, 25) }}</div>
                                         @endforeach
                                     @endif
                                 @else
