@@ -20,5 +20,6 @@ return [
     'timezone' => 'timezone',
     'nodates' => 'NO DATES YET',
     'adddates' => 'Add dates by using the date selector above',
-    
+    'votingdeadline' => 'Votes are accepted till',
+    'afterdeadline' => 'VOTES ARE NO LONGER BEING ACCEPTED',
 ];

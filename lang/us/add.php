@@ -42,4 +42,6 @@ return [
     'confirm' => 'Create meeting',
     'advanced' => 'Advanced Options',
     'voteinvis' => 'Vote results invisible to participants',
+    'voting_deadline' => 'Choose a deadline for submitting votes (0 for none)',
+    'deadlinetext' => 'Days till deletion',
 ];

@@ -31,6 +31,7 @@ class StoreMeeting extends FormRequest
             'delete_after' => 'integer|max:180|gt:0',
             'is1v1' => 'required',
             'voter_invisible' => 'boolean',
+            'voting_deadline' => 'integer|max:180|gt:-1',
         ];
     }
 }

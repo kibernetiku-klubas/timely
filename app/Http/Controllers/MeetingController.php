@@ -74,7 +74,19 @@ class MeetingController extends Controller
             'selectedDate'      => $this->getSelectedDate($meeting),
             'hasVoted'          => $this->hasUserVoted($meeting->id),
             'highestVotedDates' => $this->getHighestVotedDates($meeting),
+            'hasDeadlinePassed' => $this->hasDeadlinePassed($meeting),
+            'votingDeadline'    => $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline),
         ];
+    }
+
+    private function hasDeadlinePassed($meeting)
+    {
+        if ($meeting->voting_deadline > 0) {
+            $now = Carbon::now();
+            $disallowVotes = $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline);
+            return ($now->greaterThanOrEqualTo($disallowVotes)) ? true : false;
+        } else
+            return false;
     }
 
     private function getSelectedDate($meeting)
@@ -163,9 +175,10 @@ class MeetingController extends Controller
         $meeting->delete_after = $validated['delete_after'];
         $meeting->is1v1 = $validated['is1v1'];
         $meeting->voter_invisible = 0;
+        $meeting->voting_deadline = $validated['voting_deadline'];
         
         if (isset($validated['voter_invisible']))
-        $meeting->voter_invisible = $validated['voter_invisible'];
+            $meeting->voter_invisible = $validated['voter_invisible'];
 
         $meeting->save();
 
