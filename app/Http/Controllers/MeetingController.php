@@ -46,6 +46,10 @@ class MeetingController extends Controller
 
         $validated = $request->validated();
 
+        if ($validated['delete_after'] < $validated['voting_deadline']) {
+            $validated['voting_deadline'] = 0;
+        }
+
         $meeting = new Meeting;
         $meeting->user_id = $user->id;
 
@@ -161,6 +165,10 @@ class MeetingController extends Controller
     {
         $validated = $request->validated();
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
+        
+        if ($validated['delete_after'] < $validated['voting_deadline']) {
+            $validated['voting_deadline'] = 0;
+        }
 
         return $this->assignMeetingData($meeting, $validated, "meetings/$meeting->id");
     }
