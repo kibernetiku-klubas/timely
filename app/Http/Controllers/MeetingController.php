@@ -64,22 +64,30 @@ class MeetingController extends Controller
         return view('meetings.meeting', $this->getViewData($meeting));
     }
 
+    public function showCustom($customUrl)
+    {
+        $meeting = Meeting::where('custom_url', $customUrl)->firstOrFail();
+        return view('meetings.meeting', $this->getViewData($meeting));
+    }
+
+
     private function getViewData($meeting)
     {
         return [
-            'user'              => $this->getUser(),
-            'creator'           => $meeting->creator,
-            'meeting'           => $meeting,
-            'datesGroupedByYear'=> $this->getDatesGroupedByYear($meeting),
-            'meetingLink'       => $this->getMeetingLink($meeting->id),
-            'is1v1'             => $meeting->is1v1 === 1,
-            'isUserCreator'     => $this->isUserCreator($meeting),
-            'highestVoteCount'  => $this->getHighestVoteCount($meeting),
-            'selectedDate'      => $this->getSelectedDate($meeting),
-            'hasVoted'          => $this->hasUserVoted($meeting->id),
+            'user' => $this->getUser(),
+            'creator' => $meeting->creator,
+            'meeting' => $meeting,
+            'datesGroupedByYear' => $this->getDatesGroupedByYear($meeting),
+            'meetingLink' => $this->getMeetingLink($meeting->id),
+            'is1v1' => $meeting->is1v1 === 1,
+            'isUserCreator' => $this->isUserCreator($meeting),
+            'highestVoteCount' => $this->getHighestVoteCount($meeting),
+            'selectedDate' => $this->getSelectedDate($meeting),
+            'hasVoted' => $this->hasUserVoted($meeting->id),
             'highestVotedDates' => $this->getHighestVotedDates($meeting),
             'hasDeadlinePassed' => $this->hasDeadlinePassed($meeting),
-            'votingDeadline'    => $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline),
+            'votingDeadline' => $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline),
+            'custom_url' => $meeting->custom_url,
         ];
     }
 
@@ -116,6 +124,7 @@ class MeetingController extends Controller
     {
         return Auth::check() ? auth()->user() : null;
     }
+
     private function isUserCreator($meeting): bool
     {
         return Auth::check() && $meeting->user_id === Auth::user()->id;
@@ -165,7 +174,7 @@ class MeetingController extends Controller
     {
         $validated = $request->validated();
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
-        
+
         if ($validated['delete_after'] < $validated['voting_deadline']) {
             $validated['voting_deadline'] = 0;
         }
@@ -184,7 +193,8 @@ class MeetingController extends Controller
         $meeting->is1v1 = $validated['is1v1'];
         $meeting->voter_invisible = 0;
         $meeting->voting_deadline = $validated['voting_deadline'];
-        
+        $meeting->custom_url = $validated['custom_url'];
+
         if (isset($validated['voter_invisible']))
             $meeting->voter_invisible = $validated['voter_invisible'];
 
