@@ -27,4 +27,6 @@ return [
     'novotes' => 'NO VOTES ON THIS DATE',
     'whovoted' => 'PEOPLE WHO VOTED:',
     'selected' => 'Selected',
+    'getics' => 'Download .ics file',
+    'cancelcalendar' => 'Press ESC key or click outside to close',
 ];
