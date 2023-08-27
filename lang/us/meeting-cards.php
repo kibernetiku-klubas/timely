@@ -29,4 +29,5 @@ return [
     'selected' => 'Selected',
     'getics' => 'Download .ics file',
     'cancelcalendar' => 'Press ESC key or click outside to close',
+    'calendartutorial' => 'Add the above link to your Google or Office 365 calendar',
 ];

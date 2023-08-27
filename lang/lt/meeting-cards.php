@@ -29,4 +29,5 @@ return [
     'selected' => 'Paskirtas',
     'getics' => 'Parsisiųsti .ics failą',
     'cancelcalendar' => 'Spauskite ESC klavišą arba paspauskite bet kur už lango, kad jį uždarytumėte',
+    'calendartutorial' => 'Pridėkite aukščiau esančią nuorodą prie jūsų Google ar Office 365 kalendoriaus',
 ];
