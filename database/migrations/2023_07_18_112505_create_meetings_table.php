@@ -28,6 +28,7 @@ return new class extends Migration
             $table->tinyInteger('is1v1')->default(0);
             $table->tinyInteger('voter_invisible')->default(0);
             $table->integer('voting_deadline')->default('0');
+            $table->string('custom_url')->nullable();
             $table->timestamps();
         });
     }

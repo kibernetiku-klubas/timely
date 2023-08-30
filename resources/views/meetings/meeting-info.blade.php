@@ -37,7 +37,15 @@
     <div class="font-bold pr-2 uppercase flex justify-center">{{ __('meeting-info.link') }}</div>
     <div class="flex justify-center items-center mb-6">
         <div class="tooltip mb-2" data-tip="{{ __('meeting-info.data-tip') }}">
-            <a class="link" id="link" href="{{ $meetingLink }}">{{ $meetingLink }}</a>
+            @if ($meeting->custom_url)
+                <a class="link" id="link" href="https://timely.lt/{{ $meeting->custom_url }}">
+                    https://timely.lt/{{ $meeting->custom_url }}
+                </a>
+            @else
+                <a class="link" id="link" href="https://timely.lt/meetings/{{ $meeting->id }}">
+                    https://timely.lt/meetings/{{ $meeting->id }}
+                </a>
+            @endif
         </div>
         <a id="copyLink" class="btn-ghost rounded-lg" data-meeting-id="{{ $meeting->id }}">
             <svg width="30" height="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +65,12 @@
 <script>
     document.getElementById("copyLink").addEventListener("click", function () {
         const meetingId = this.getAttribute('data-meeting-id');
-        const meetingLink = `https://timely.lt/meetings/${meetingId}`;
+        const meetingLink = `https://timely.lt/${meetingId}`;
 
-        navigator.clipboard.writeText(meetingLink)
+        let customUrl = '{{ $meeting->custom_url ?? '' }}';
+        let copiedLink = customUrl ? `https://timely.lt/${customUrl}` : meetingLink;
+
+        navigator.clipboard.writeText(copiedLink)
             .then(() => console.log('Text copied to clipboard'))
             .catch(err => console.log('Failed to copy text: ', err));
 
@@ -67,8 +78,9 @@
         linkElement.innerText = "Link copied!";
 
         setTimeout(function () {
-            linkElement.innerText = meetingLink;
+            linkElement.innerText = copiedLink;
         }, 2250);
     });
-
 </script>
+
+
