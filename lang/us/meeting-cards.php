@@ -27,4 +27,7 @@ return [
     'novotes' => 'NO VOTES ON THIS DATE',
     'whovoted' => 'PEOPLE WHO VOTED:',
     'selected' => 'Selected',
+    'getics' => 'Download .ics file',
+    'cancelcalendar' => 'Press ESC key or click outside to close',
+    'calendartutorial' => 'Add the above link to your Google or Office 365 calendar',
 ];
