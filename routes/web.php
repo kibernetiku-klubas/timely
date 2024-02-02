@@ -12,7 +12,7 @@ Route::view('/', 'welcome');
 
 Route::get('meetings/{id}', [MeetingController::class, 'show'])->name('meeting.show');
 Route::post('/votes', [VoteController::class, 'store'])->name('vote.store');
-Route::get('/export/{meeting_id}/ics', [DateController::class, 'exportToICalendar'])->name('export.ics');
+Route::get('/export/{meeting_id}/{date_id}/ics', [DateController::class, 'exportToICalendar'])->name('export.ics');
 Route::view('/privacy-policy', 'legal.privacy-policy');
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
