@@ -1,5 +1,6 @@
 @if ($meeting->custom_url)
-    <a href='/{{ $meeting->custom_url }}' class="flex items-center justify-center h-full">
+    <a href='{{ route('meeting.show.custom', ['creator' => $meeting->creator->name, 'custom_url' => $meeting->custom_url])}}'
+       class="flex items-center justify-center h-full">
         @else
             <a href='/meetings/{{ $meeting->id }}' class="flex items-center justify-center h-full">
                 @endif

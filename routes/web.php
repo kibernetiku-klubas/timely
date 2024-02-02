@@ -45,8 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::view('/pr', 'pr-egg');
 });
 
-Route::get('/{custom_url}', [MeetingController::class, 'showCustom'])->name('meeting.show.custom');
-
 require __DIR__ . '/auth.php';
 
+Route::get('/{creator}/{custom_url}', [MeetingController::class, 'showCustom'])->name('meeting.show.custom');
 

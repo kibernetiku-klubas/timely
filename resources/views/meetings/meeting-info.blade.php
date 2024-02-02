@@ -38,8 +38,8 @@
     <div class="flex justify-center items-center mb-6">
         <div class="tooltip mb-2" data-tip="{{ __('meeting-info.data-tip') }}">
             @if ($meeting->custom_url)
-                <a class="link" id="link" href="https://timely.lt/{{ $meeting->custom_url }}">
-                    https://timely.lt/{{ $meeting->custom_url }}
+                <a class="link" id="link" href="https://timely.lt/{{ $meeting->creator->name }}/{{ $meeting->custom_url }}">
+                    https://timely.lt/{{ $meeting->creator->name }}/{{ $meeting->custom_url }}
                 </a>
             @else
                 <a class="link" id="link" href="https://timely.lt/meetings/{{ $meeting->id }}">
