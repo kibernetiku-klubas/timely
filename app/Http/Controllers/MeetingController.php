@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDate;
 use App\Http\Requests\StoreMeeting;
 use App\Models\Date;
 use App\Models\Meeting;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -64,14 +65,16 @@ class MeetingController extends Controller
         return view('meetings.meeting', $this->getViewData($meeting));
     }
 
-    // Passing unused variable $creator because it does not work without it
     public function showCustom($creator, $customUrl)
     {
-        $meeting = Meeting::where('custom_url', $customUrl)->firstOrFail();
+        $user = User::where('name', $creator)->firstOrFail();
+
+        $meeting = Meeting::where('custom_url', $customUrl)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
         return view('meetings.meeting', $this->getViewData($meeting));
     }
-
-
 
     private function getViewData($meeting)
     {
@@ -98,7 +101,7 @@ class MeetingController extends Controller
         if ($meeting->voting_deadline > 0) {
             $now = Carbon::now();
             $disallowVotes = $meeting->created_at->copy()->addDays($meeting->delete_after - $meeting->voting_deadline);
-            return ($now->greaterThanOrEqualTo($disallowVotes)) ? true : false;
+            return $now->greaterThanOrEqualTo($disallowVotes);
         } else
             return false;
     }
