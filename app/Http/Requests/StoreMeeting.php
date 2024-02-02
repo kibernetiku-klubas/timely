@@ -32,7 +32,7 @@ class StoreMeeting extends FormRequest
             'is1v1' => 'required',
             'voter_invisible' => 'boolean',
             'voting_deadline' => 'integer|max:180|gt:-1',
-            'custom_url' => 'nullable|max:46|regex:/^[a-zA-Z0-9]*$/|unique:meetings'
+            'custom_url' => 'nullable|max:46|regex:/^[a-z0-9\-]*$/|unique:meetings',
         ];
     }
 }

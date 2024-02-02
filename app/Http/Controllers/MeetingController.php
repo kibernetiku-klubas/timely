@@ -64,11 +64,13 @@ class MeetingController extends Controller
         return view('meetings.meeting', $this->getViewData($meeting));
     }
 
-    public function showCustom($customUrl)
+    // Passing unused variable $creator because it does not work without it
+    public function showCustom($creator, $customUrl)
     {
         $meeting = Meeting::where('custom_url', $customUrl)->firstOrFail();
         return view('meetings.meeting', $this->getViewData($meeting));
     }
+
 
 
     private function getViewData($meeting)
