@@ -33,9 +33,6 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:30', 'unique:users,name,' . strtolower($request->input('name'))],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'g-recaptcha-response' => ['required']
-        ], [
-            'g-recaptcha-response.required' => trans('validation.recaptcha_required'),
         ]);
 
         $lowercaseName = strtolower($request->input('name'));

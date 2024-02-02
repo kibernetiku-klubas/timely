@@ -21,11 +21,9 @@ class RegistrationTest extends TestCase
     {
 
         $response = $this->post('/register', [
-            $recaptchaResponse = 'valid-recaptcha-response',
             'name' => 'Test User',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'g-recaptcha-response' => $recaptchaResponse
         ]);
 
         $this->assertAuthenticated();
