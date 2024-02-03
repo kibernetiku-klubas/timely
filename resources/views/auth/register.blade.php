@@ -1,10 +1,4 @@
 <x-guest-layout>
-    @if ( app()->getLocale()  == 'lt')
-        <script src="https://www.google.com/recaptcha/api.js?hl=lt"></script>
-    @else
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-    @endif
-
     <body data-page-title="{{ __('register.tab') }}"></body>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -51,17 +45,6 @@
                     <a target="_blank" href="/privacy-policy" class="underline text-sm text-gray-600 hover:text-gray-900">{{ __('register.policy') }}</a>
                 </div>
             </div>
-        </div>
-
-        <div class="mt-4 mb-4">
-            @if(config('services.recaptcha.key'))
-                <div class="g-recaptcha"
-                     data-sitekey="{{config('services.recaptcha.key')}}">
-                </div>
-            @endif
-            @error('g-recaptcha-response')
-            <span class="text-red-600">{{ $message }}</span>
-            @enderror
         </div>
 
         <div class="flex items-center justify-end mt-4">
