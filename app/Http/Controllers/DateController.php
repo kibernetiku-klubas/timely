@@ -44,10 +44,10 @@ class DateController extends Controller
         return redirect()->back()->with('error', __('DateController.noauth'));
     }
 
-    public function exportToICalendar($id)
+    public function exportToICalendar($meetingId, $dateId)
     {
-        $date = Date::findOrFail($id);
-        $meeting = Meeting::findOrFail($date->meeting_id);
+        $date = Date::findOrFail($dateId);
+        $meeting = Meeting::findOrFail($meetingId);
 
         $icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n";
 
