@@ -42,6 +42,7 @@ class StoreMeeting extends FormRequest
                 Rule::unique('meetings', 'custom_url')->where(function ($query) {
                     $query->where('user_id', auth()->id());
                 })->ignore($meetingId),
-            ],        ];
+            ]
+        ];
     }
 }

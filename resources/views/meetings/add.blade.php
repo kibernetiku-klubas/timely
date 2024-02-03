@@ -165,52 +165,58 @@
                               autocomplete="duration" placeholder="{{ __('add.duration_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('duration')" class="mt-2"/>
             </div>
-{{--            <!-- Delete_after -->--}}
-{{--            <div>--}}
-{{--                <x-input-label for="delete_after" :value="__('add.delete_after')"/>--}}
-{{--                <x-text-input type="integer" id="delete_after"--}}
-{{--                              class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"--}}
-{{--                              type="string" name="delete_after" :value="old('delete_after')" required autofocus--}}
-{{--                              autocomplete="delete_after" placeholder="{{ __('add.deletion_placeholder') }}"/>--}}
-{{--                <x-input-error :messages="$errors->get('delete_after')" class="mt-2"/>--}}
-{{--            </div>--}}
+            {{--            <!-- Delete_after -->--}}
+            {{--            <div>--}}
+            {{--                <x-input-label for="delete_after" :value="__('add.delete_after')"/>--}}
+            {{--                <x-text-input type="integer" id="delete_after"--}}
+            {{--                              class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"--}}
+            {{--                              type="string" name="delete_after" :value="old('delete_after')" required autofocus--}}
+            {{--                              autocomplete="delete_after" placeholder="{{ __('add.deletion_placeholder') }}"/>--}}
+            {{--                <x-input-error :messages="$errors->get('delete_after')" class="mt-2"/>--}}
+            {{--            </div>--}}
+
+
             <!-- Advanced options -->
+            <div class="divider"></div>
             <div>
-                <div class="font-bold text-md text-gray-700 inline-flex relative">
-                    <div>
-                        <x-input-label class="cursor-pointer mr-2" onclick="toggleCheckboxes()">
-                            {{ __('add.advanced') }}
-                        </x-input-label>
-                        <div id="checkboxes" class="bg-white shadow-md rounded-lg p-2 space-y-2 hidden mt-2">
-
-{{--                            Invisible voters--}}
-                            <x-input-label class="flex items-center space-x-2">
+                <details class="collapse collapse-arrow bg-white my-2 md:my-0 md:w-1/2">
+                    <summary
+                        class="collapse-title text-lg font-bold hover:bg-gray-300">{{ __('Additional options') }}</summary>
+                    <div class="collapse-content px-4 md:px-6">
+                        <div class="my-4">
+                            {{--Invisible voters--}}
+                            <x-input-label class="flex items-center justify-between space-x-2">
+                                <span
+                                    class="block font-bold text-md text-gray-700 uppercase">{{ __('add.voteinvis') }}</span>
                                 <input type="checkbox" name="voter_invisible" value="1"
-                                       class="form-checkbox text-purple-500" {{ old('voter_invisible') ? 'checked' : '' }}>
-                                <span>{{ __('add.voteinvis') }}</span>
+                                       class="checkbox checkbox-md" {{ old('voter_invisible') ? 'checked' : '' }}>
                             </x-input-label>
-
-{{--                            Voting Deadline--}}
-{{--                            <x-input-label for="voting_deadline" :value="__('add.voting_deadline')"/>--}}
-{{--                            <x-text-input type="integer" id="voting_deadline"--}}
-{{--                                          class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"--}}
-{{--                                          type="string" name="voting_deadline" :value="old('voting_deadline', 0)"--}}
-{{--                                          required autofocus--}}
-{{--                                          autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>--}}
-{{--                            <x-input-error :messages="$errors->get('voting_deadline')" class="mt-2"/>--}}
-
-{{--                            Custom link--}}
-                            <x-input-label for="custom_url"
-                                           :value="__('Enter a custom URL for a meeting (leave empty for default)')"/>
-                            <x-text-input type="text" id="custom_url"
-                                          class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
-                                          name="custom_url" :value="old('custom_url')"
-                                          placeholder="{{ __('Enter custom URL') }}" maxlength="46" />
+                        </div>
+                        <div>
+                            {{--Voting Deadline--}}
+                            {{--<x-input-label for="voting_deadline" :value="__('add.voting_deadline')"/>--}}
+                            {{--<x-text-input type="integer" id="voting_deadline"--}}
+                            {{--class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"--}}
+                            {{--type="string" name="voting_deadline" :value="old('voting_deadline', 0)"--}}
+                            {{--required autofocus--}}
+                            {{--autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>--}}
+                            {{--<x-input-error :messages="$errors->get('voting_deadline')" class="mt-2"/>--}}
+                        </div>
+                        <div class="my-4">
+                            {{--Custom link--}}
+                            <x-input-label for="custom_url" class="text-black text-md uppercase"
+                                           :value="__('Enter a custom link for a meeting (leave empty for default):')"/>
+                            <div class="flex items-center justify-between space-x-1">
+                                <span class="text-lg">{{ str_replace(' ', '-', Auth::user()->name) }}/</span>
+                                <x-text-input type="text" id="custom_url"
+                                              class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
+                                              name="custom_url" :value="old('custom_url')"
+                                              placeholder="{{ __('Enter Custom Link') }}" maxlength="46"/>
+                            </div>
                             <x-input-error :messages="$errors->get('custom_url')" class="mt-2"/>
-
                         </div>
                     </div>
-                </div>
+                </details>
             </div>
             <!-- Creation buttons -->
             <div class="flex items-center justify-end mt-4">

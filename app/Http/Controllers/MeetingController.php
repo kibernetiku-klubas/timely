@@ -190,6 +190,7 @@ class MeetingController extends Controller
 //            $validated['voting_deadline'] = 0;
 //        }
 
+        $validated['custom_url'] = $meeting->custom_url;
         return $this->assignMeetingData($meeting, $validated, "meetings/$meeting->id");
     }
 
