@@ -67,6 +67,10 @@ class MeetingController extends Controller
 
     public function showCustom($creator, $customUrl)
     {
+        // When passing data to route spaces are replaced with "-"
+        // So this is to replace them back to spaces
+        $creator = str_replace('-', ' ', $creator);
+
         $user = User::where('name', $creator)->firstOrFail();
 
         $meeting = Meeting::where('custom_url', $customUrl)
