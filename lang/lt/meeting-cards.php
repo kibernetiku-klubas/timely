@@ -12,7 +12,7 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-  
+
     'mostvoted' => 'Populiariausias',
     'delete' => 'Ištrinti',
     'confirm' => 'Patvirtinti ištrynimą.',
@@ -27,7 +27,9 @@ return [
     'novotes' => 'NIEKAS UŽ ŠIĄ DATĄ NEBALSAVO',
     'whovoted' => 'ASMENYS, KURIE BALSAVO:',
     'selected' => 'Paskirtas',
-    'getics' => 'Parsisiųsti .ics failą',
+    'modaltitleexport' => 'Eksportuoti',
+    'modaltitleselectedtime' => 'Paskirtą laiką.',
+    'getics' => 'Atsisiųsti .ics failą',
     'cancelcalendar' => 'Spauskite ESC klavišą arba paspauskite bet kur už lango, kad jį uždarytumėte',
-    'calendartutorial' => 'Pridėkite aukščiau esančią nuorodą prie jūsų Google ar Office 365 kalendoriaus',
+    'calendartutorial' => 'Pridėkite aukščiau esančią nuorodą prie jūsų Google ar Office 365 kalendoriaus arba atsisiųskite ICS failą:',
 ];
