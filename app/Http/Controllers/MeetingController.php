@@ -47,9 +47,11 @@ class MeetingController extends Controller
 
         $validated = $request->validated();
 
-        if ($validated['delete_after'] < $validated['voting_deadline']) {
-            $validated['voting_deadline'] = 0;
-        }
+//        $validated['delete_after'] = 90;
+//
+//        if ($validated['delete_after'] < $validated['voting_deadline']) {
+//            $validated['voting_deadline'] = 0;
+//        }
 
         $meeting = new Meeting;
         $meeting->user_id = $user->id;
@@ -184,9 +186,9 @@ class MeetingController extends Controller
         $validated = $request->validated();
         $meeting = Meeting::where('user_id', Auth::user()->id)->findOrFail($id);
 
-        if ($validated['delete_after'] < $validated['voting_deadline']) {
-            $validated['voting_deadline'] = 0;
-        }
+//        if ($validated['delete_after'] < $validated['voting_deadline']) {
+//            $validated['voting_deadline'] = 0;
+//        }
 
         return $this->assignMeetingData($meeting, $validated, "meetings/$meeting->id");
     }
@@ -198,10 +200,10 @@ class MeetingController extends Controller
         $meeting->location = $validated['location'];
         $meeting->timezone = $validated['timezone'];
         $meeting->duration = $validated['duration'];
-        $meeting->delete_after = $validated['delete_after'];
+//        $meeting->delete_after = $validated['delete_after'];
         $meeting->is1v1 = $validated['is1v1'];
         $meeting->voter_invisible = 0;
-        $meeting->voting_deadline = $validated['voting_deadline'];
+//        $meeting->voting_deadline = $validated['voting_deadline'];
         $meeting->custom_url = $validated['custom_url'];
 
         if (isset($validated['voter_invisible']))
