@@ -44,4 +44,7 @@ return [
     'voteinvis' => 'Balsavimo rezultatai nematomi dalyviams',
     'voting_deadline' => 'Pasirinkite galutinį balsų pateikimo terminą (0 for none)',
     'deadlinetext' => 'Dienos iki ištrynimo',
+    'additionaloptions' => 'Papildomos parinktys',
+    'customlinklabel' => 'Įveskite pasirinktinę susitikimo nuorodą (palikite tuščią kaip numatytąją):',
+    'entercustomurl' => 'Įveskite pasirinktinę nuorodą',
 ];
