@@ -22,7 +22,8 @@ class Meeting extends Model
         'delete_after',
         'is1v1',
         'voter_invisible',
-        'voting_deadline'
+        'voting_deadline',
+        'custom_url',
     ];
 
     protected $primaryKey = 'id';

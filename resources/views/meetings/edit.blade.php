@@ -24,13 +24,15 @@
                 $duration = old('duration') ?: $meeting->duration;
                 $delete_after = old('delete_after') ?: $meeting->delete_after;
                 $voting_deadline = old('voting_deadline') ?: $meeting->voting_deadline;
+                $custom_url = old('custom_url') ?: $meeting->custom_url;
             @endphp
                 <!-- Title -->
             <div>
                 <x-input-label for="title" :value="__('edit-meeting.title')"/>
                 <x-text-input id="title" class="block mt-1 w-full text-black" type="text" name="title"
                               :value="$title"
-                              required autofocus autocomplete="title" maxlength="46" placeholder="{{ __('edit-meeting.title_placeholder') }}"/>
+                              required autofocus autocomplete="title" maxlength="46"
+                              placeholder="{{ __('edit-meeting.title_placeholder') }}"/>
                 <x-input-error :messages="$errors->get('title')" class="mt-2"/>
             </div>
             <!-- Description -->
@@ -96,15 +98,25 @@
                         </x-input-label>
                         <div id="checkboxes" class="bg-white shadow-md rounded-lg p-2 space-y-2 hidden mt-2">
                             <x-input-label class="flex items-center space-x-2">
-                                <input type="checkbox" name="voter_invisible" value="1" class="form-checkbox text-purple-500" {{ $meeting->voter_invisible ? 'checked' : '' }}>
+                                <input type="checkbox" name="voter_invisible" value="1"
+                                       class="form-checkbox text-purple-500" {{ $meeting->voter_invisible ? 'checked' : '' }}>
                                 <span>{{ __('edit-meeting.voteinvis') }}</span>
                             </x-input-label>
                             <x-input-label for="voting_deadline" :value="__('add.voting_deadline')"/>
                             <x-text-input type="integer" id="voting_deadline"
-                                        class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
-                                        type="string" name="voting_deadline" :value="$voting_deadline" required autofocus
-                                        autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>
+                                          class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
+                                          type="string" name="voting_deadline" :value="$voting_deadline" required
+                                          autofocus
+                                          autocomplete="voting_deadline" placeholder="{{ __('add.deadlinetext') }}"/>
                             <x-input-error :messages="$errors->get('voting_deadline')" class="mt-2"/>
+
+                            <x-input-label for="custom_url"
+                                           :value="__('Enter a custom URL for a meeting (leave empty for default)')"/>
+                            <x-text-input type="text" id="custom_url"
+                                          class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
+                                          name="custom_url" :value="old('custom_url')" :value="$custom_url"
+                                          placeholder="{{ __('Enter custom URL') }}" maxlength="46"/>
+                            <x-input-error :messages="$errors->get('custom_url')" class="mt-2"/>
                         </div>
                     </div>
                 </div>
