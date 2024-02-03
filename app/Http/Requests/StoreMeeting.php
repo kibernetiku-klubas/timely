@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMeeting extends FormRequest
 {
@@ -22,6 +23,8 @@ class StoreMeeting extends FormRequest
      */
     public function rules(): array
     {
+        $meetingId = $this->route('meeting') ? $this->route('meeting')->id : null;
+
         return [
             'title' => 'required|string|max:64',
             'description' => 'max:255',
@@ -32,6 +35,13 @@ class StoreMeeting extends FormRequest
             'is1v1' => 'required',
             'voter_invisible' => 'boolean',
             'voting_deadline' => 'integer|max:180|gt:-1',
-        ];
+            'custom_url' => [
+                'nullable',
+                'max:46',
+                'regex:/^[a-z0-9\-]*$/',
+                Rule::unique('meetings', 'custom_url')->where(function ($query) {
+                    $query->where('user_id', auth()->id());
+                })->ignore($meetingId),
+            ],        ];
     }
 }

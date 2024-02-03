@@ -32,10 +32,22 @@
             <div>
                     @if ($isUserCreator)
                         @include ('meetings.edit-times')
-                    @else
-                        <div class="flex justify-center my-8">
-                            @include('meetings.vote')
-                        </div>
+                        @else
+                            @php
+                                $dateSelected = false;
+                                foreach ($meeting->dates as $date) {
+                                    if ($date->selected == 1) {
+                                        $dateSelected = true;
+                                        break;
+                                    }
+                                }
+                            @endphp
+            
+                        @if ($dateSelected === false)
+                            <div class="flex justify-center my-8">
+                                @include('meetings.vote')
+                            </div>
+                        @endif
                     @endif
             </div>
             @else

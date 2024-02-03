@@ -1,4 +1,5 @@
 @if($selectedDate)
+
     <button class="text-black flex justify-center hover:bg-gray-300 mt-2 btn btn-ghost shadow-xl"
             onclick="exportModal.showModal()">{{ __('meeting-cards.export') }}</button>
     <dialog id="exportModal" class="modal">
@@ -49,4 +50,10 @@
             <button>close</button>
         </form>
     </dialog>
+
+    <a href="{{ route('export.ics', ['meeting_id' => $meeting->id, 'date_id' => $selectedDate->id])}}"
+       class="text-black flex justify-center hover:bg-gray-300 mt-2 btn btn-ghost shadow-xl">
+        {{ __('meeting-cards.export') }}
+    </a>
+
 @endif
