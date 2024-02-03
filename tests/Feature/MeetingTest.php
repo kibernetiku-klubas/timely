@@ -21,10 +21,10 @@ class MeetingTest extends TestCase
             'location' => 'Test Location',
             'timezone' => 'Europe/Vilnius',
             'duration' => 60,
-            'delete_after' => 30,
+//            'delete_after' => 30,
             'is1v1' => 0,
             'voter_invisible' => 0,
-            'voting_deadline' => 5,
+//            'voting_deadline' => 5,
             'custom_url' => 'custom-meeting'
         ];
 
@@ -38,8 +38,8 @@ class MeetingTest extends TestCase
             'location' => $formData['location'],
             'timezone' => $formData['timezone'],
             'duration' => $formData['duration'],
-            'delete_after' => $formData['delete_after'],
-            'voting_deadline' => $formData['voting_deadline'],
+//            'delete_after' => $formData['delete_after'],
+//            'voting_deadline' => $formData['voting_deadline'],
             'custom_url' => $formData['custom_url'],
         ]);
     }
