@@ -65,10 +65,11 @@
 <script>
     document.getElementById("copyLink").addEventListener("click", function () {
         const meetingId = this.getAttribute('data-meeting-id');
-        const meetingLink = `https://timely.lt/${meetingId}`;
+        const meetingLink = `https://timely.lt/meetings/${meetingId}`;
 
         let customUrl = '{{ $meeting->custom_url ?? '' }}';
-        let copiedLink = customUrl ? `https://timely.lt/${customUrl}` : meetingLink;
+        let meetingCreator = '{{ $meeting->creator->name }}'
+        let copiedLink = customUrl ? `https://timely.lt/${meetingCreator}/${customUrl}` : meetingLink;
 
         navigator.clipboard.writeText(copiedLink)
             .then(() => console.log('Text copied to clipboard'))
