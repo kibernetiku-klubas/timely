@@ -25,6 +25,7 @@ class MeetingTest extends TestCase
             'is1v1' => 0,
             'voter_invisible' => 0,
             'voting_deadline' => 5,
+            'custom_url' => 'custom-meeting'
         ];
 
         $response = $this->actingAs($user)->post(route('meetings.store'), $formData);
@@ -39,6 +40,7 @@ class MeetingTest extends TestCase
             'duration' => $formData['duration'],
             'delete_after' => $formData['delete_after'],
             'voting_deadline' => $formData['voting_deadline'],
+            'custom_url' => $formData['custom_url'],
         ]);
     }
 
