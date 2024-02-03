@@ -181,7 +181,7 @@
             <div>
                 <details class="collapse collapse-arrow bg-white my-2 md:my-0 md:w-1/2">
                     <summary
-                        class="collapse-title text-lg font-bold hover:bg-gray-300">{{ __('Additional options') }}</summary>
+                        class="collapse-title text-lg font-bold hover:bg-gray-300">{{ __('add.additionaloptions') }}</summary>
                     <div class="collapse-content px-4 md:px-6">
                         <div class="my-4">
                             {{--Invisible voters--}}
@@ -205,13 +205,13 @@
                         <div class="my-4">
                             {{--Custom link--}}
                             <x-input-label for="custom_url" class="text-black text-md uppercase"
-                                           :value="__('Enter a custom link for a meeting (leave empty for default):')"/>
+                                           :value="__('add.customlinklabel')"/>
                             <div class="flex items-center justify-between space-x-1">
                                 <span class="text-lg">{{ str_replace(' ', '-', Auth::user()->name) }}/</span>
                                 <x-text-input type="text" id="custom_url"
                                               class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
                                               name="custom_url" :value="old('custom_url')"
-                                              placeholder="{{ __('Enter Custom Link') }}" maxlength="46"/>
+                                              placeholder="{{ __('add.entercustomurl') }}" maxlength="46"/>
                             </div>
                             <x-input-error :messages="$errors->get('custom_url')" class="mt-2"/>
                         </div>

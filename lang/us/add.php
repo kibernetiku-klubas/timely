@@ -18,11 +18,11 @@ return [
     'tab_name' => 'Create a meeting',
     'which' => 'Which meeting type is right for me?',
     'group' => 'Group meeting.',
-    'group_expl' => 'Choose group meeting if you need to find 
+    'group_expl' => 'Choose group meeting if you need to find
     the meeting time that suits the most people',
     'or' => 'OR',
     '1v1' => '1 on 1 meeting.',
-    '1v1_expl' => 'Choose multiple times and allow participants to book the slot 
+    '1v1_expl' => 'Choose multiple times and allow participants to book the slot
     that best suits their schedule.',
     'ok' => 'Got it!',
     'select' => 'SELECT MEETING TYPE',
@@ -44,4 +44,7 @@ return [
     'voteinvis' => 'Vote results invisible to participants',
     'voting_deadline' => 'Choose a deadline for submitting votes (0 for none)',
     'deadlinetext' => 'Days till deletion',
+    'additionaloptions' => 'Additional options',
+    'customlinklabel' => 'Enter a custom link for a meeting (leave empty for default):',
+    'entercustomurl' => 'Enter Custom Link',
 ];
