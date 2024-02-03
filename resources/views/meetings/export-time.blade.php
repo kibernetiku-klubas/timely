@@ -23,11 +23,12 @@
 
             <div class="flex justify-center items-center my-6">
                 <div class="tooltip mb-2" data-tip="{{ __('meeting-info.data-tip') }}">
-                    <a class="link text-lg" id="icsLink"
+                    <a class="link break-all text-xl" id="icsLink"
                        href="https://timely.lt/export/{{ $meeting->id }}/{{ $selectedDate->id }}/ics">https://timely.lt/export/{{ $meeting->id }}
                         /{{ $selectedDate->id }}/ics</a>
                 </div>
-                <a id="copyIcsLink" class="btn-ghost rounded-lg" data-meeting-id="{{ $meeting->id }}" data-date-id="{{ $selectedDate->id }}">
+                <a id="copyIcsLink" class="btn-ghost rounded-lg" data-meeting-id="{{ $meeting->id }}"
+                   data-date-id="{{ $selectedDate->id }}">
                     <svg width="30" height="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -40,7 +41,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="py-4 ">{{ __('meeting-cards.calendartutorial') }}</p>
+            <p class="pb-4 ">{{ __('meeting-cards.calendartutorial') }}</p>
 
             <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700">
 
