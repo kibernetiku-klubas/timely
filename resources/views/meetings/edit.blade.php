@@ -95,7 +95,7 @@
             <div>
                 <details class="collapse collapse-arrow bg-white my-2 md:my-0 md:w-1/2">
                     <summary
-                        class="collapse-title text-lg font-bold hover:bg-gray-300">{{ __('add.additionaloptions') }}</summary>
+                        class="collapse-title text-lg font-bold hover:bg-gray-300 text-gray-700">{{ __('add.additionaloptions') }}</summary>
                     <div class="collapse-content px-4 md:px-6">
                         <div class="my-4">
                             {{--Invisible voters--}}

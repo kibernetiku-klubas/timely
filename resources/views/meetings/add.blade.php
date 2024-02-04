@@ -181,7 +181,7 @@
             <div>
                 <details class="collapse collapse-arrow bg-white my-2 md:my-0 md:w-1/2">
                     <summary
-                        class="collapse-title text-lg font-bold hover:bg-gray-300">{{ __('add.additionaloptions') }}</summary>
+                        class="collapse-title text-lg font-bold hover:bg-gray-300 text-gray-700">{{ __('add.additionaloptions') }}</summary>
                     <div class="collapse-content px-4 md:px-6">
                         <div class="my-4">
                             {{--Invisible voters--}}
@@ -207,7 +207,7 @@
                             <x-input-label for="custom_url" class="text-black text-md uppercase"
                                            :value="__('add.customlinklabel')"/>
                             <div class="flex items-center justify-between space-x-1">
-                                <span class="text-lg">{{ str_replace(' ', '-', Auth::user()->name) }}/</span>
+                                <span class="text-lg text-gray-700">{{ str_replace(' ', '-', Auth::user()->name) }}/</span>
                                 <x-text-input type="text" id="custom_url"
                                               class="block mt-1 w-full border border-gray-300 bg-white p-2 text-black"
                                               name="custom_url" :value="old('custom_url')"
