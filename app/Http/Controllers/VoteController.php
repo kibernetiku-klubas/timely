@@ -7,6 +7,7 @@ use App\Models\Vote;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class VoteController extends Controller
@@ -52,6 +53,13 @@ class VoteController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         $vote = Vote::findOrFail($id);
+        $meetingId = $vote->date->meeting->id;
+
+        // Check if the authenticated user is the meeting creator
+        if (! $this->isUserMeetingCreator($meetingId)) {
+            return redirect()->back()->with('error', 'Unauthorized');
+        }
+
         $vote->voted_by = $request->input('voted_by');
         $vote->save();
 
@@ -63,10 +71,23 @@ class VoteController extends Controller
     {
         $vote = Vote::findOrFail($id);
         $meetingId = $vote->date->meeting->id;
+
+        // Check if the authenticated user is the meeting creator
+        if (! $this->isUserMeetingCreator($meetingId)) {
+            return redirect()->back()->with('error', 'Unauthorized');
+        }
+
         $vote->delete();
 
         return redirect()->route('meeting.show', ['id' => $meetingId])
             ->with('error', __('VoteController.delete'));
+    }
+
+    private function isUserMeetingCreator(string $meetingId): bool
+    {
+        return Meeting::where('id', $meetingId)
+            ->where('user_id', Auth::user()->id)
+            ->exists();
     }
 
     private function registerVotes($meeting, $dateIds, $votes, $votedBy): void
