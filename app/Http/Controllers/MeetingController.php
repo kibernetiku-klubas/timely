@@ -215,41 +215,5 @@ class MeetingController extends Controller
         return redirect($redirectUrl)->with('success', $message ?? __('MeetingController.saved'));
     }
 
-    public function showFinalizeDate($id)
-    {
-        $meeting = Meeting::findOrFail($id);
-
-        $sortedDates = $meeting->dates->sortByDesc(function ($date) {
-            return $date->votes->count();
-        });
-
-        return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
-    }
-
-    public function finalizeDate(StoreDate $request, $id)
-    {
-        $meeting = Meeting::findOrFail($id);
-
-        if ($meeting->user_id !== Auth::user()->id) {
-            return redirect()->back()->with('error', __('MeetingController.noauth'));
-        }
-
-        if ($meeting->dates->isEmpty()) {
-            return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
-        }
-
-        $selectedDateId = $request->input('selected_date');
-        $meeting->dates()->update(['selected' => 0]);
-
-
-        $selectedDate = Date::where('id', $selectedDateId)
-            ->where('meeting_id', $meeting->id)
-            ->firstOrFail();
-
-        $selectedDate->selected = 1;
-        $selectedDate->save();
-
-        return redirect()->route('meeting.show', $meeting->id)->with('success', __('MeetingController.finalized'));
-    }
 
 }

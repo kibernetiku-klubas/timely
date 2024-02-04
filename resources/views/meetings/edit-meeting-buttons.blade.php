@@ -1,6 +1,6 @@
 @if ($isUserCreator)
     @if(!$meeting->is1v1)
-    <a href='{{ route('meetings.show-finalize-date', $meeting->id) }}'>
+    <a href='{{ route('dates.show-finalize-date', $meeting->id) }}'>
         <x-secondary-button class="mt-2">{{ __('edit-meeting-buttons.finalize') }}</x-secondary-button>
     </a>
     @endif

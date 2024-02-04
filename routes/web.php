@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\DateController;
-use App\Http\Controllers\VoteController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -27,16 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meetings.delete');
     Route::get('/meeting/{id}/edit', [MeetingController::class, 'displayEdit']);
     Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
-    Route::post('/meeting/{id}/finalize-date', [MeetingController::class, 'finalizeDate'])->name('meetings.finalize-date');
-    Route::get('/meeting/{id}/finalize-date', [MeetingController::class, 'showFinalizeDate'])->name('meetings.show-finalize-date');
-
-
     Route::view('/add-meeting', 'meetings.add');
 
     Route::resource('dates', DateController::class);
     Route::post('/dates', [DateController::class, 'store'])->name('dates.store');
     Route::put('/dates/{id}', [DateController::class, 'update'])->name('dates.update');
     Route::delete('/dates/{id}', [DateController::class, 'destroy'])->name('dates.destroy');
+    Route::post('/meeting/{id}/finalize-date', [DateController::class, 'finalizeDate'])->name('dates.finalize-date');
+    Route::get('/meeting/{id}/finalize-date', [DateController::class, 'showFinalizeDate'])->name('dates.show-finalize-date');
 
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
@@ -45,6 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::view('/pr', 'pr-egg');
 });
 
-require __DIR__ . '/auth.php';
-
-
+require __DIR__.'/auth.php';
