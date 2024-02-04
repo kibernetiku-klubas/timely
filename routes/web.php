@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('meetings', MeetingController::class);
+    Route::post('/meetings', [MeetingController::class, 'store'])->name('meetings.store');
     Route::get('/meeting/{id}/delete', [MeetingController::class, 'confirmDelete']);
     Route::delete('/meeting/{id}/delete', [MeetingController::class, 'destroy'])->name('meetings.delete');
     Route::get('/meeting/{id}/edit', [MeetingController::class, 'displayEdit']);
