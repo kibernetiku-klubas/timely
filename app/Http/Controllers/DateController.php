@@ -18,6 +18,10 @@ class DateController extends Controller
         $validatedData = $request->validated();
         $meetingId = $request->input('meeting_id');
 
+        if (! $this->isUserMeetingCreator($meetingId)) {
+            return redirect()->back()->with('error', __('Not authorized'));
+        }
+
         $date = new Date;
         $date->meeting_id = $meetingId;
         $date->date_and_time = $validatedData['new_time'];
