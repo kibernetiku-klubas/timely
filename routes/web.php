@@ -29,9 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/meeting/{id}/edit', [MeetingController::class, 'update'])->name('meetings.update');
     Route::view('/add-meeting', 'meetings.add');
 
-    Route::resource('dates', DateController::class);
     Route::post('/dates', [DateController::class, 'store'])->name('dates.store');
-    Route::put('/dates/{id}', [DateController::class, 'update'])->name('dates.update');
     Route::delete('/dates/{id}', [DateController::class, 'destroy'])->name('dates.destroy');
     Route::post('/meeting/{id}/finalize-date', [DateController::class, 'finalizeDate'])->name('dates.finalize-date');
     Route::get('/meeting/{id}/finalize-date', [DateController::class, 'showFinalizeDateView'])->name('dates.show-finalize-date-view');
