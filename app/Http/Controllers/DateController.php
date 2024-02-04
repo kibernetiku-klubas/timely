@@ -45,11 +45,22 @@ class DateController extends Controller
             ->exists();
     }
 
+    public function showFinalizeDateView($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+
+        $sortedDates = $meeting->dates->sortByDesc(function ($date) {
+            return $date->votes->count();
+        });
+
+        return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
+    }
+
     public function finalizeDate(StoreDate $request, $id)
     {
         $meeting = Meeting::findOrFail($id);
 
-        if ($meeting->user_id !== Auth::user()->id) {
+        if (! $this->isUserMeetingCreator($meeting->id)) {
             return redirect()->back()->with('error', __('MeetingController.noauth'));
         }
 
@@ -68,17 +79,6 @@ class DateController extends Controller
         $selectedDate->save();
 
         return redirect()->route('meeting.show', $meeting->id)->with('success', __('MeetingController.finalized'));
-    }
-
-    public function showFinalizeDate($id)
-    {
-        $meeting = Meeting::findOrFail($id);
-
-        $sortedDates = $meeting->dates->sortByDesc(function ($date) {
-            return $date->votes->count();
-        });
-
-        return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
     }
 
     /**

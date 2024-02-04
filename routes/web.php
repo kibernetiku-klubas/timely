@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/dates/{id}', [DateController::class, 'update'])->name('dates.update');
     Route::delete('/dates/{id}', [DateController::class, 'destroy'])->name('dates.destroy');
     Route::post('/meeting/{id}/finalize-date', [DateController::class, 'finalizeDate'])->name('dates.finalize-date');
-    Route::get('/meeting/{id}/finalize-date', [DateController::class, 'showFinalizeDate'])->name('dates.show-finalize-date');
+    Route::get('/meeting/{id}/finalize-date', [DateController::class, 'showFinalizeDateView'])->name('dates.show-finalize-date-view');
 
     Route::put('/vote/{id}', [VoteController::class, 'update'])->name('vote.update');
     Route::delete('/vote/{id}', [VoteController::class, 'destroy'])->name('vote.destroy');
