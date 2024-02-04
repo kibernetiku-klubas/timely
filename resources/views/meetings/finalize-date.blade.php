@@ -6,7 +6,7 @@
         </div>
     </div>
     <x-meet-form-layout>
-        <form method="POST" action="{{ route('meetings.finalize-date', $meeting->id) }}">
+        <form method="POST" action="{{ route('dates.finalize-date', $meeting->id) }}">
             @csrf
             <p class='text-black mt-2 font-medium'>{{ __('finalize-date.mark') }}</p>
             <p class='text-black font-bold text-xl uppercase mt-4'>{{ __('finalize-date.select') }}</p>
