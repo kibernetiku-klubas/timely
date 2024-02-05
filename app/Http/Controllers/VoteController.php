@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use App\Models\Vote;
+use App\Traits\MeetingAuthorizationTrait;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class VoteController extends Controller
 {
+    use MeetingAuthorizationTrait;
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -81,13 +83,6 @@ class VoteController extends Controller
 
         return redirect()->route('meeting.show', ['id' => $meetingId])
             ->with('error', __('VoteController.delete'));
-    }
-
-    private function isUserMeetingCreator(string $meetingId): bool
-    {
-        return Meeting::where('id', $meetingId)
-            ->where('user_id', Auth::user()->id)
-            ->exists();
     }
 
     private function registerVotes($meeting, $dateIds, $votes, $votedBy): void
