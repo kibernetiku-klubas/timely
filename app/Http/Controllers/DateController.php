@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDate;
 use App\Models\Date;
 use App\Models\Meeting;
+use App\Traits\MeetingAuthorizationTrait;
 use DateInterval;
 use DateTime;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 
 class DateController extends Controller
 {
+    use MeetingAuthorizationTrait;
+
+    /**
+     * Store dates for the meeting
+     */
     public function store(StoreDate $request): RedirectResponse
     {
         $validatedData = $request->validated();
@@ -30,9 +35,13 @@ class DateController extends Controller
         return redirect("/meetings/$meetingId")->with('success', __('DateController.saved'));
     }
 
+    /**
+     * Delete dates for the meeting
+     */
     public function destroy($id): RedirectResponse
     {
         $date = Date::findOrFail($id);
+
         if ($this->isUserMeetingCreator($date->meeting_id)) {
             $date->delete();
 
@@ -42,17 +51,14 @@ class DateController extends Controller
         return redirect()->back()->with('error', __('DateController.noauth'));
     }
 
-    private function isUserMeetingCreator(string $meetingId): bool
-    {
-        return Meeting::where('id', $meetingId)
-            ->where('user_id', Auth::user()->id)
-            ->exists();
-    }
-
+    /**
+     * Show the view for finalizing a date
+     */
     public function showFinalizeDateView($id)
     {
         $meeting = Meeting::findOrFail($id);
 
+        // Sort the dates of the meeting in descending order based on the vote count
         $sortedDates = $meeting->dates->sortByDesc(function ($date) {
             return $date->votes->count();
         });
@@ -60,6 +66,9 @@ class DateController extends Controller
         return view('meetings.finalize-date', compact('meeting', 'sortedDates'));
     }
 
+    /**
+     * Save the date finalized
+     */
     public function finalizeDate(StoreDate $request, $id)
     {
         $meeting = Meeting::findOrFail($id);
@@ -68,13 +77,18 @@ class DateController extends Controller
             return redirect()->back()->with('error', __('MeetingController.noauth'));
         }
 
+        // Return error if the meeting has no dates
         if ($meeting->dates->isEmpty()) {
             return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
         }
 
+        // Get the id of selected date
         $selectedDateId = $request->input('selected_date');
+
+        // Mark all dates as not selected
         $meeting->dates()->update(['selected' => 0]);
 
+        // Find the selected date and update it's selected status
         $selectedDate = Date::where('id', $selectedDateId)
             ->where('meeting_id', $meeting->id)
             ->firstOrFail();
@@ -87,18 +101,22 @@ class DateController extends Controller
 
     /**
      * @throws Exception
+     * Creates an .ics file for exporting selected date to calendar
      */
     public function exportToICalendar($meetingId, $dateId)
     {
         $date = Date::findOrFail($dateId);
         $meeting = Meeting::findOrFail($meetingId);
 
+        // Initialize iCalendar content
         $icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\n";
 
+        // Create start and end dates for the meeting
         $startDate = new DateTime($date->date_and_time);
         $endDate = clone $startDate;
         $endDate->add(new DateInterval('PT'.$meeting->duration.'M'));
 
+        // Add event details to iCalendar content
         $icsContent .= "BEGIN:VEVENT\r\n";
         $icsContent .= 'DTSTART:'.$startDate->format('Ymd\THis')."\r\n";
         $icsContent .= 'DTEND:'.$endDate->format('Ymd\THis')."\r\n";
@@ -107,8 +125,10 @@ class DateController extends Controller
         $icsContent .= 'LOCATION:'.$meeting->location."\r\n";
         $icsContent .= "END:VEVENT\r\n";
 
+        // Close iCalendar
         $icsContent .= 'END:VCALENDAR';
 
+        // Return iCalendar response
         return response($icsContent)->header('Content-Type', 'text/calendar');
     }
 }
