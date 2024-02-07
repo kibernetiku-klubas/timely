@@ -16,7 +16,5 @@ return [
     'delete' => 'Susitikimas ištrintas.',
     'success' => 'Susitikimas sukurtas sėkmingai.',
     'saved' => 'Susitikimas išsaugotas sėkmingai.',
-    'noauth' => 'Neturite teisių paskirti šios datos.',
-    'finalized' => 'Data paskirta sėkmingai.',
     'meetings_limit_reached' => 'Pasiekėte maksimalų susitikimų skaičių.',
 ];

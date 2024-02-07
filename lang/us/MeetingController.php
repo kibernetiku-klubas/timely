@@ -16,7 +16,5 @@ return [
     'delete' => 'Meeting deleted.',
     'success' => 'Meeting created successfully.',
     'saved' => 'Meeting saved succesfully.',
-    'noauth' => 'Not authorized to finalize this date.',
-    'finalized' => 'Date finalized successfully.',
     'meetings_limit_reached' => 'You have reached the maximum meetings limit.',
 ];

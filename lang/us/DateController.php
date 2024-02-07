@@ -13,8 +13,11 @@ return [
     |
     */
 
-    'saved' => 'Date saved.',
-    'success' => 'Date deleted successfully.',
-    'noauth' => 'Not authorized to delete this date.',
-    
+    'saved' => 'Date saved',
+    'success' => 'Date deleted successfully',
+    'noauthdelete' => 'Not authorized to delete this date',
+    'noauthsave' => 'Not authorized to add dates to this meeting',
+    'noauthfinalize' => 'Not authorized to finalize this date',
+    'finalized' => 'Date finalized successfully',
+    'nodates' => 'Cannot finalize date. The meeting has no dates',
 ];

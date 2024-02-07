@@ -24,13 +24,10 @@ class DateController extends Controller
         $meetingId = $request->input('meeting_id');
 
         if (! $this->isUserMeetingCreator($meetingId)) {
-            return redirect()->back()->with('error', __('Not authorized'));
+            return redirect()->back()->with('error', __('DateController.noauthsave'));
         }
 
-        $date = new Date;
-        $date->meeting_id = $meetingId;
-        $date->date_and_time = $validatedData['new_time'];
-        $date->save();
+        $this->createDate($meetingId, $validatedData);
 
         return redirect("/meetings/$meetingId")->with('success', __('DateController.saved'));
     }
@@ -42,13 +39,21 @@ class DateController extends Controller
     {
         $date = Date::findOrFail($id);
 
-        if ($this->isUserMeetingCreator($date->meeting_id)) {
-            $date->delete();
-
-            return redirect()->back()->with('success', __('DateController.success'));
+        if (! $this->isUserMeetingCreator($date->meeting_id)) {
+            return redirect()->back()->with('error', __('DateController.noauthdelete'));
         }
 
-        return redirect()->back()->with('error', __('DateController.noauth'));
+        $date->delete();
+
+        return redirect()->back()->with('success', __('DateController.success'));
+    }
+
+    public function createDate($meetingId, $validatedData)
+    {
+        $date = new Date;
+        $date->meeting_id = $meetingId;
+        $date->date_and_time = $validatedData['new_time'];
+        $date->save();
     }
 
     /**
@@ -74,12 +79,12 @@ class DateController extends Controller
         $meeting = Meeting::findOrFail($id);
 
         if (! $this->isUserMeetingCreator($meeting->id)) {
-            return redirect()->back()->with('error', __('MeetingController.noauth'));
+            return redirect()->back()->with('error', __('DateController.noauthfinalize'));
         }
 
         // Return error if the meeting has no dates
         if ($meeting->dates->isEmpty()) {
-            return redirect()->route('meeting.show', $meeting->id)->with('error', 'Cannot finalize date. The meeting has no dates.');
+            return redirect()->route('meeting.show', $meeting->id)->with('error', __('DateController.nodates'));
         }
 
         // Get the id of selected date
@@ -96,7 +101,7 @@ class DateController extends Controller
         $selectedDate->selected = 1;
         $selectedDate->save();
 
-        return redirect()->route('meeting.show', $meeting->id)->with('success', __('MeetingController.finalized'));
+        return redirect()->route('meeting.show', $meeting->id)->with('success', __('DateController.finalized'));
     }
 
     /**

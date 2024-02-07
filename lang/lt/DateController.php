@@ -13,8 +13,11 @@ return [
     |
     */
 
-    'saved' => 'Data išsaugota.',
-    'success' => 'Data ištrinta sėkmingai.',
-    'noauth' => 'Neturite teisių ištrinti šios datos.',
-    
+    'saved' => 'Data išsaugota',
+    'success' => 'Data ištrinta sėkmingai',
+    'noauthdelete' => 'Neturite teisių ištrinti šios datos',
+    'noauthsave' => 'Neturite teisių pridėti datų prie šio susitikimo',
+    'noauthfinalize' => 'Neturite teisių paskirti šios datos',
+    'finalized' => 'Data paskirta sėkmingai.',
+    'nodates' => 'Negalima paskirti galutinės datos. Susitikimas neturi datų',
 ];
