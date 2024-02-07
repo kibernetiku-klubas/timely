@@ -48,6 +48,9 @@ class DateController extends Controller
         return redirect()->back()->with('success', __('DateController.success'));
     }
 
+    /**
+     * Creates a new date for a meeting.
+     */
     public function createDate($meetingId, $validatedData)
     {
         $date = new Date;
