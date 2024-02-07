@@ -33,15 +33,15 @@ class StoreDate extends FormRequest
             return [];
         }
 
-    $existingDatesCount = $this->getExistingDatesCount($meetingId);
+        $existingDatesCount = $this->getExistingDatesCount($meetingId);
 
-    return [
-        'new_time' => [
-            'required',
-            $this->ruleUniqueDate($meetingId),
-            $this->ruleMaxDates($existingDatesCount),
-        ],
-    ];
+        return [
+            'new_time' => [
+                'required',
+                $this->ruleUniqueDate($meetingId),
+                $this->ruleMaxDates($existingDatesCount),
+            ],
+        ];
     }
 
     private function getExistingDatesCount($meetingId): int
