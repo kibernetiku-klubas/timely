@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreDate;
+use App\Http\Requests\StoreDateRequest;
 use App\Models\Date;
 use App\Models\Meeting;
 use App\Traits\MeetingAuthorizationTrait;
@@ -18,7 +18,7 @@ class DateController extends Controller
     /**
      * Store dates for the meeting
      */
-    public function store(StoreDate $request): RedirectResponse
+    public function store(StoreDateRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
         $meetingId = $request->input('meeting_id');
@@ -77,7 +77,7 @@ class DateController extends Controller
     /**
      * Save the date finalized
      */
-    public function finalizeDate(StoreDate $request, $id)
+    public function finalizeDate(StoreDateRequest $request, $id)
     {
         $meeting = Meeting::findOrFail($id);
 
