@@ -22,4 +22,6 @@ return [
     'update' => 'Vote updated successfully.',
     'delete' => 'Vote deleted successfully.',
     'deadline' => 'Vote submissions are no longer being accepted',
+    'noauthupdate' => 'Not authorized to edit this vote',
+    'noauthdelete' => 'Not authorized to delete this vote',
 ];

@@ -22,4 +22,6 @@ return [
     'update' => 'Balsas sėkmingas atnaujintas.',
     'delete' => 'Balsas sėkmingai ištrintas.',
     'deadline' => 'Balsų pateikimai nebepriimami',
+    'noauthupdate' => 'Neturite teisių redaguoti šio balso',
+    'noauthdelete' => 'Neturite teisių ištrinti šio balso',
 ];
