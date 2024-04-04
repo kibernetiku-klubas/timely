@@ -17,6 +17,10 @@ return new class extends Migration
              * for contextual info about the structure of the table,
              * refer to docs/feature-docs/meeting-migration
              */
+
+            // This id is to solve digitalocean's requirement for primary id (https://stackoverflow.com/questions/62418099/unable-to-create-or-change-a-table-without-a-primary-key-laravel-digitalocean)
+            $table->id('db_id')->unique();
+            
             $table->uuid('id')->unique(); // string
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
